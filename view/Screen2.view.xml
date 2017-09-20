@@ -1,0 +1,211 @@
+<mvc:View controllerName="ZHR_144.controller.Screen2" xmlns:layout="sap.ui.layout" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core"
+	xmlns:u="sap.ui.unified" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m">
+	<NavContainer id="wizardNavContainer">
+		<pages>
+			<Page id="wizardContentPage" showHeader="false">
+				<content>
+					<Wizard id="CreateProductWizard" complete="wizardCompletedHandler">
+						<WizardStep id="GenelStep2" title="Genel Bilgiler" validated="true">
+							<form:SimpleForm columnsXL="3" emptySpanM="0" columnsM="2" columnsL="2" editable="true" emptySpanL="0" emptySpanXL="0" labelSpanL="4"
+								labelSpanM="4" labelSpanXL="4" layout="ResponsiveGridLayout" maxContainerCols="3">
+								<form:content>
+									<core:Title/>
+									<Label text="Fiş Konusu"/>
+									<Input class="inputForm" value="İşten Çıkış" enabled="false" id="fisKonu2"/>
+									<Label text="Sicil No"/>
+									<SearchField class="inputForm" width="60%" id="sicilNo2" placeholder="Ara" search="handleSicilNoSearch"/>
+									<Label text="Ad Soyad"/>
+									<Input class="inputForm" value="" enabled="false" id="adSoyad2"/>
+									<Label text="TC Kimlik No"/>
+									<Input class="inputForm" value="" enabled="false" id="idTC2"/>
+									<core:Title/>
+									<Label text="Doğum Tarihi"/>
+									<DatePicker class="inputForm" value="" enabled="false" id="dogumTarih2"/>
+									<Label text="Geçerlilik Tarihi"/>
+									<DatePicker class="inputForm" value="" enabled="false" id="gecerTarih2"/>
+								</form:content>
+							</form:SimpleForm>
+						</WizardStep>
+						<WizardStep id="YeniStep2" validated="false" title="Yeni" activate="additionalInfoValidation">
+							<form:SimpleForm columnsXL="3" emptySpanM="0" columnsM="2" columnsL="2" editable="true" emptySpanL="0" emptySpanXL="0" labelSpanL="4"
+								labelSpanM="4" labelSpanXL="4" layout="ResponsiveGridLayout" maxContainerCols="3">
+								<form:content>
+									<core:Title/>
+									<Label text="Pozisyon"/>
+									<Input class="inputForm" id="PosAd2" value="" enabled="false"/>
+									<Label text="Personel Alanı"/>
+									<Input class="inputForm" value="" id="perAlan2" enabled="false"/>
+									<Label text="Personel Alt Alanı"/>
+									<Input class="inputForm" value="" id="perAltAlan2" enabled="false"/>
+									<Label text="Şirket"/>
+									<Input class="inputForm" value="" enabled="false" id="sirket2"/>
+									<Label text="İş Alanı"/>
+									<Input class="inputForm" id="isAlan2" value="" enabled="false"/>
+									<Label text="İş Anahtarı"/>
+									<Input class="inputForm" value="" enabled="false" id="isAnahtari2"/>
+									<Label text="Org. Birimi"/>
+									<Input class="inputForm" value="" enabled="false" id="orgBirim2"/>
+									<Label text="Çalışan Grb."/>
+									<Input class="inputForm" value="" enabled="false" id="calisanGrp2"/>
+									<core:Title/>
+									<Label text="Çalışan Alt Grb."/>
+									<Input class="inputForm" value="" enabled="false" id="calisanAlt2"/>
+									<Label text="Skala Kodu"/>
+									<Input class="inputForm" value="" enabled="false" id="skala2"/>
+									<Label text="Ücret"/>
+									<Input class="inputForm" value="" enabled="false" id="ucret2"/>
+									<Label text="Dil Primi"/>
+									<Input class="inputForm" value="" enabled="false" id="dilPrim2"/>
+									<Label text="Araç Primi"/>
+									<Input class="inputForm" value="" enabled="false" id="aracPrim2"/>
+									<Label text="Mevsimlik Prim"/>
+									<Input class="inputForm" value="" enabled="false" id="mevPrim2"/>
+									<Label text="Vekalet Primi"/>
+									<Input class="inputForm" value="43555" enabled="false" id="vekPrim2"/>
+									<Label text="Diğer Bilgiler"/>
+									<Input class="inputForm" value="" enabled="false" id="diger2"/>
+								</form:content>
+							</form:SimpleForm>
+						</WizardStep>
+						<WizardStep id="OptionalInfoStep" validated="true" activate="optionalStepActivation" title="Gerçek Ayrılma Nedeni">
+							<form:SimpleForm columnsXL="3" emptySpanM="0" columnsM="2" columnsL="2" editable="true" emptySpanL="0" emptySpanXL="0" labelSpanL="4"
+								labelSpanM="4" labelSpanXL="4" layout="ResponsiveGridLayout" maxContainerCols="3">
+								<form:content>
+									<core:Title/>
+									<Label text="Gerçek Ayrılma Nedeni"/>
+									<Input class="inputForm" id="gercekAyrilmaKod2" placeholder="Gerçek Ayrılma Nedeni" liveChange="additionalInfoValidation"
+										showSuggestion="true" showValueHelp="true" type="Text" valueHelpRequest="handleValueHelpAyrilmaGercek" valueState="{/gercekayrilmaState}">
+										<suggestionItems>
+											<core:Item key="" text=""/>
+										</suggestionItems>
+									</Input>
+									<core:Title/>
+								</form:content>
+							</form:SimpleForm>
+						</WizardStep>
+						<WizardStep id="PricingStep" activate="pricingActivate" complete="pricingComplete" validated="true" title="Ayrılma Nedeni">
+							<form:SimpleForm columnsXL="3" emptySpanM="0" columnsM="2" columnsL="2" editable="true" emptySpanL="0" emptySpanXL="0" labelSpanL="4"
+								labelSpanM="4" labelSpanXL="4" layout="ResponsiveGridLayout" maxContainerCols="3">
+								<form:content>
+									<core:Title/>
+									<Label text="İşten Ayrılma Nedeni"/>
+									<Input class="inputForm" id="ayrilmaKod2" placeholder="Ayrılma Nedeni" liveChange="additionalInfoValidation" showSuggestion="true"
+										showValueHelp="true" suggestionItems="{/AyrilmaSet}" type="Text" valueHelpRequest="handleValueHelpAyrilma" valueState="{/ayrilmaState}">
+										<suggestionItems>
+											<core:Item key="{Massg}" text="{Mgtxt}"/>
+										</suggestionItems>
+									</Input>
+									<core:Title/>
+								</form:content>
+							</form:SimpleForm>
+						</WizardStep>
+					</Wizard>
+					<!--<Wizard id="CreateWizard" complete="wizardCompletedHandler">
+						<WizardStep id="ProductTypeStep" title="Genel Bilgiler" validated="true">
+							<form:SimpleForm columnsXL="3" emptySpanM="0" columnsM="2" columnsL="2" editable="true" emptySpanL="0" emptySpanXL="0" labelSpanL="4"
+								labelSpanM="4" labelSpanXL="4" layout="ResponsiveGridLayout" maxContainerCols="3">
+								<form:content>
+									<core:Title/>
+									<Label text="Fiş Konusu"/>
+									<Input class="inputForm" value="İşten Çıkış" enabled="false" id="fisKonu2"/>
+									<Label text="Sicil No"/>
+									<SearchField class="inputForm" width="60%" id="sicilNo2" placeholder="Ara" search="handleSicilNoSearch"/>
+									<Label text="Ad Soyad"/>
+									<Input class="inputForm" value="" enabled="false" id="adSoyad2"/>
+									<Label text="TC Kimlik No"/>
+									<Input class="inputForm" value="" enabled="false" id="idTC2"/>
+									<core:Title/>
+									<Label text="Doğum Tarihi"/>
+									<DatePicker class="inputForm" value="" enabled="false" id="dogumTarih2"/>
+									<Label text="Geçerlilik Tarihi"/>
+									<DatePicker class="inputForm" value="" enabled="false" id="gecerTarih2"/>
+								</form:content>
+							</form:SimpleForm>
+						</WizardStep>
+						<WizardStep id="YeniStep2" validated="true" title="Yeni">
+							<form:SimpleForm columnsXL="3" emptySpanM="0" columnsM="2" columnsL="2" editable="true" emptySpanL="0" emptySpanXL="0" labelSpanL="4"
+								labelSpanM="4" labelSpanXL="4" layout="ResponsiveGridLayout" maxContainerCols="3">
+								<form:content>
+									<core:Title/>
+									<Label text="Pozisyon"/>
+									<Input class="inputForm" id="PosAd2" value="" enabled="false"/>
+									<Label text="Personel Alanı"/>
+									<Input class="inputForm" value="" id="perAlan2" enabled="false"/>
+									<Label text="Personel Alt Alanı"/>
+									<Input class="inputForm" value="" id="perAltAlan2" enabled="false"/>
+									<Label text="Şirket"/>
+									<Input class="inputForm" value="" enabled="false" id="sirket2"/>
+									<Label text="İş Alanı"/>
+									<Input class="inputForm" id="isAlan2" value="" enabled="false"/>
+									<Label text="İş Anahtarı"/>
+									<Input class="inputForm" value="" enabled="false" id="isAnahtari2"/>
+									<Label text="Org. Birimi"/>
+									<Input class="inputForm" value="" enabled="false" id="orgBirim2"/>
+									<Label text="Çalışan Grb."/>
+									<Input class="inputForm" value="" enabled="false" id="calisanGrp2"/>
+									<core:Title/>
+									<Label text="Çalışan Alt Grb."/>
+									<Input class="inputForm" value="" enabled="false" id="calisanAlt2"/>
+									<Label text="Skala Kodu"/>
+									<Input class="inputForm" value="" enabled="false" id="skala2"/>
+									<Label text="Ücret"/>
+									<Input class="inputForm" value="" enabled="false" id="ucret2"/>
+									<Label text="Dil Primi"/>
+									<Input class="inputForm" value="" enabled="false" id="dilPrim2"/>
+									<Label text="Araç Primi"/>
+									<Input class="inputForm" value="" enabled="false" id="aracPrim2"/>
+									<Label text="Mevsimlik Prim"/>
+									<Input class="inputForm" value="" enabled="false" id="mevPrim2"/>
+									<Label text="Vekalet Primi"/>
+									<Input class="inputForm" value="43555" enabled="false" id="vekPrim2"/>
+									<Label text="Diğer Bilgiler"/>
+									<Input class="inputForm" value="" enabled="false" id="diger2"/>
+								</form:content>
+							</form:SimpleForm>
+						</WizardStep>
+						<WizardStep id="idAbility" title="Zihinsel Beceri" validated="true">
+							<form:SimpleForm columnsXL="3" emptySpanM="0" columnsM="2" columnsL="2" editable="true" emptySpanL="0" emptySpanXL="0" labelSpanL="4"
+								labelSpanM="4" labelSpanXL="4" layout="ResponsiveGridLayout" maxContainerCols="3">
+								<form:content>
+									<core:Title/>
+									<Label text="Gerçek Ayrılma Nedeni"/>
+									<Input class="inputForm" id="gercekAyrilmaKod2" placeholder="Gerçek Ayrılma Nedeni" liveChange="additionalInfoValidation"
+										showSuggestion="true" showValueHelp="true" type="Text" valueHelpRequest="handleValueHelpAyrilmaGercek" valueState="{/gercekayrilmaState}">
+										<suggestionItems>
+											<core:Item key="" text=""/>
+										</suggestionItems>
+									</Input>
+									<core:Title/>
+								</form:content>
+							</form:SimpleForm>
+						</WizardStep>
+						<WizardStep id="PricingStep" activate="pricingActivate" complete="pricingComplete" validated="true" title="İşten Ayrılma">
+							<form:SimpleForm columnsXL="3" emptySpanM="0" columnsM="2" columnsL="2" editable="true" emptySpanL="0" emptySpanXL="0" labelSpanL="4"
+								labelSpanM="4" labelSpanXL="4" layout="ResponsiveGridLayout" maxContainerCols="3">
+								<form:content>
+									<core:Title/>
+									<Label text="İşten Ayrılma Nedeni"/>
+									<Input class="inputForm" id="ayrilmaKod2" placeholder="Ayrılma Nedeni" liveChange="additionalInfoValidation" showSuggestion="true"
+										showValueHelp="true" suggestionItems="{/AyrilmaSet}" type="Text" valueHelpRequest="handleValueHelpAyrilma" valueState="{/ayrilmaState}">
+										<suggestionItems>
+											<core:Item key="{Massg}" text="{Mgtxt}"/>
+										</suggestionItems>
+									</Input>
+									<core:Title/>
+								</form:content>
+							</form:SimpleForm>
+						</WizardStep>
+					</Wizard>-->
+				</content>
+				<footer>
+					<OverflowToolbar id="otbFooter93">
+						<ToolbarSpacer/>
+						<Button type="Transparent" text="Geri" press="onBackScreen">
+							<layoutData><OverflowToolbarLayoutData moveToOverflow="false"/></layoutData>
+						</Button>
+					</OverflowToolbar>
+				</footer>
+			</Page>
+		</pages>
+	</NavContainer>
+</mvc:View>

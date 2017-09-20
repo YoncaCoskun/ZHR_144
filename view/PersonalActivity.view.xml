@@ -1,0 +1,43 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
+	controllerName="ZHR_144.controller.PersonalActivity" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:f="sap.ui.layout.form">
+	<App>
+		<pages>
+			<Page title="Durum Fişi Oluştur">
+				<content>
+					<Panel class="panelBottom" id="panelFirstContainerBudget" width="auto">
+						<content>
+							<VBox class="sapUiSmallMargin">
+								<f:SimpleForm columnsXL="3" emptySpanM="0" columnsM="2" columnsL="2" editable="true" emptySpanL="0" emptySpanXL="0" labelSpanL="4"
+									labelSpanM="4" labelSpanXL="4" layout="ResponsiveGridLayout" maxContainerCols="3" class="classForm">
+									<f:content>
+										<Select id="personalActivity" class="classSelect">
+											<items>
+												<core:Item key="0" text="İşe Giriş"/>
+												<core:Item key="1" text="İşten Çıkış"/>
+												<core:Item key="2" text="Terfi"/>
+												<core:Item key="3" text="Nakil"/>
+												<core:Item key="4" text="Görev Değişikliği"/>
+												<core:Item key="5" text="Ücret Değişikliği"/>
+											</items>
+										</Select>
+									</f:content>
+								</f:SimpleForm>
+							</VBox>
+						</content>
+					</Panel>
+				</content>
+				<footer>
+					<OverflowToolbar id="otbFooter">
+						<ToolbarSpacer/>
+						<Button type="Emphasized" text="Devam" press="onToNext">
+							<layoutData><OverflowToolbarLayoutData moveToOverflow="false"/></layoutData>
+						</Button>
+						<Button type="Transparent" text="Geçmiş" press="onHistory">
+							<layoutData><OverflowToolbarLayoutData moveToOverflow="false"/></layoutData>
+						</Button>
+					</OverflowToolbar>
+				</footer>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

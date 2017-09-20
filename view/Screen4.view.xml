@@ -1,0 +1,266 @@
+<mvc:View controllerName="ZHR_144.controller.Screen4" xmlns:layout="sap.ui.layout" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core"
+	xmlns:u="sap.ui.unified" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m">
+	<NavContainer id="wizardNavContainer">
+		<pages>
+			<Page id="wizardContentPage4" showHeader="false">
+				<content>
+					<Wizard id="CreateProductWizard4" complete="wizardCompletedHandler">
+						<WizardStep id="ProductTypeStep4" title="Genel Bilgiler" validated="true">
+							<form:SimpleForm columnsXL="3" emptySpanM="0" columnsM="2" columnsL="2" editable="true" emptySpanL="0" emptySpanXL="0" labelSpanL="4"
+								labelSpanM="4" labelSpanXL="4" layout="ResponsiveGridLayout" maxContainerCols="3">
+								<form:content>
+									<core:Title/>
+									<Label text="Fiş Konusu"/>
+									<Input class="inputForm" value="Nakil" enabled="false" id="fisKonu4"/>
+									<Label text="Sicil No"/>
+									<SearchField class="inputForm" width="50%" placeholder="Ara" search="handleSicilNoSearch" id="sicilNo4"/>
+									<Label text="Ad Soyad"/>
+									<Input class="inputForm" value="" enabled="false" id="adSoyad4"/>
+									<core:Title/>
+									<Label text="TC Kimlik No"/>
+									<Input class="inputForm" value="" enabled="false" id="idTC4"/>
+									<Label text="Doğum Tarihi"/>
+									<DatePicker class="inputForm" value="" enabled="false" id="dogumTarih4"/>
+									<Label text="Geçerlilik Tarihi"/>
+									<DatePicker class="inputForm" value="" enabled="false" id="gecerTarih4"/>
+								</form:content>
+							</form:SimpleForm>
+						</WizardStep>
+						<WizardStep id="YeniStep4" validated="false" title="Yeni" activate="additionalInfoValidation">
+							<form:SimpleForm columnsXL="3" emptySpanM="0" columnsM="2" columnsL="2" editable="true" emptySpanL="0" emptySpanXL="0" labelSpanL="4"
+								labelSpanM="4" labelSpanXL="4" layout="ResponsiveGridLayout" maxContainerCols="3">
+								<form:content>
+									<core:Title text="Mevcut"/>
+									<Label text="Pozisyon"/>
+									<Input class="inputForm" value="" enabled="false" id="PosAd4"/>
+									<Label text="Personel Alanı"/>
+									<Input class="inputForm" value="" enabled="false" id="perAlan4"/>
+									<Label text="Personel Alt Alanı"/>
+									<Input class="inputForm" value="" enabled="false" id="perAltAlan4"/>
+									<Label text="İş Alanı"/>
+									<Input class="inputForm" value="" enabled="false" id="isAlan4"/>
+									<Label text="Şirket"/>
+									<Input class="inputForm" value="" enabled="false" id="sirket4"/>
+									<Label text="İş Anahtarı"/>
+									<Input class="inputForm" value="" enabled="false" id="isAnahtari4"/>
+									<Label text="Org. Birimi"/>
+									<Input class="inputForm" value="" enabled="false" id="orgBirim4"/>
+									<Label text="Çalışan Grb."/>
+									<Input class="inputForm" value="" enabled="false" id="calisanGrp4"/>
+									<Label text="Çalışan Alt Grb."/>
+									<Input class="inputForm" value="" enabled="false" id="calisanAlt4"/>
+									<Label text="Skala Kodu"/>
+									<Input class="inputForm" value="" enabled="false" id="skala4"/>
+									<Label text="Ücret"/>
+									<Input class="inputForm" value="" enabled="false" id="ucret4"/>
+									<Label text="Dil Primi"/>
+									<Input class="inputForm" value="" enabled="false" id="dilPrim4"/>
+									<Label text="Araç Primi"/>
+									<Input class="inputForm" value="" enabled="false" id="aracPrim4"/>
+									<Label text="Mevsimlik Prim"/>
+									<Input class="inputForm" value="" enabled="false" id="mevPrim4"/>
+									<Label text="Vekalet Primi"/>
+									<Input class="inputForm" value="" enabled="false" id="vekPrim4"/>
+									<Label text="Diğer Bilgiler"/>
+									<Input class="inputForm" value="" enabled="false" id="diger4"/>
+									<core:Title text="Yeni"/>
+									<Label text="Pozisyon"/>
+									<Input class="inputForm" value="" id="InputPosAd4"/>
+									<Label text="Personel Alanı"/>
+									<Input class="inputForm" id="InputPerAlan4" placeholder="Personel Alanı" liveChange="additionalInfoValidation" showSuggestion="true"
+										showValueHelp="true" suggestionItems="{/PerAlanSet}" type="Text" valueHelpRequest="handleValueHelpPerA" valueState="{/perAlanState}">
+										<suggestionItems>
+											<core:Item key="{Persa}" text="{Name1}"/>
+										</suggestionItems>
+									</Input>
+									<Label text="Personel Alt Alanı"/>
+									<Input class="inputForm" id="InputPerAltAlan4" placeholder="Personel Alt Alanı" liveChange="additionalInfoValidation" showSuggestion="true"
+										showValueHelp="true" suggestionItems="{/PerAltAlanSet}" type="Text" valueHelpRequest="handleValueHelpPerAltA" valueState="{/perAltAlanState}">
+										<suggestionItems>
+											<core:Item key="{Btrtl}" text="{Btext}"/>
+										</suggestionItems>
+									</Input>
+									<Label text="İş Alanı"/>
+									<Input class="inputForm" id="InputIsAlan4" placeholder="İş Alanı" liveChange="additionalInfoValidation" showSuggestion="true"
+										showValueHelp="true" suggestionItems="{/IsAlaniSet}" type="Text" valueHelpRequest="handleValueHelpIsAlan">
+										<suggestionItems>
+											<core:Item key="{Gsber}" text="{Gtext}"/>
+										</suggestionItems>
+									</Input>
+									<Label text="Şirket"/>
+									<Input class="inputForm" value="" id="InputSirket4"/>
+									<Label text="İş Anahtarı"/>
+									<Input class="inputForm" value="" id="InputIsAnahtari4"/>
+									<Label text="Org. Birimi"/>
+									<Input class="inputForm" value="" id="InputOrgBirim4"/>
+									<Label text="Çalışan Grb."/>
+									<Input class="inputForm" id="InputCalisanGrp4" placeholder="Çalışan Grb." liveChange="additionalInfoValidation" showSuggestion="true"
+										showValueHelp="true" suggestionItems="{/CalisanGrSet}" type="Text" valueHelpRequest="handleValueHelp" valueState="{/calisanGrbState}">
+										<suggestionItems>
+											<core:Item key="{Persg}" text="{Ptext}"/>
+										</suggestionItems>
+									</Input>
+									<Label text="Çalışan Alt Grb."/>
+									<Input class="inputForm" id="InputCalisanAlt4" placeholder="Çalışan Alt Grubu" liveChange="additionalInfoValidation" showSuggestion="true"
+										showValueHelp="true" suggestionItems="{/CalisanAltGrSet}" type="Text" valueHelpRequest="handleValueHelpClsAlt"
+										valueState="{/calisanAltGrbState}">
+										<suggestionItems>
+											<core:Item key="{Persk}" text="{Ptext}"/>
+										</suggestionItems>
+									</Input>
+									<Label text="Skala Kodu"/>
+									<Input class="inputForm" id="InputSkala4" placeholder="Skala Kodu" liveChange="additionalInfoValidation" showSuggestion="true"
+										showValueHelp="true" suggestionItems="{/SkalaKoduSet}" type="Text" valueHelpRequest="handleValueHelpSkala">
+										<suggestionItems>
+											<core:Item key="{Persk}" text="{Ptext}"/>
+										</suggestionItems>
+									</Input>
+									<Label text="Ücret"/>
+									<Input class="inputForm" value="" id="InputUcret4"/>
+									<Label text="Dil Primi"/>
+									<Input class="inputForm" value="" id="InputDilPrim4"/>
+									<Label text="Araç Primi"/>
+									<Input class="inputForm" value="" id="InputAracPrim4"/>
+									<Label text="Mevsimlik Prim"/>
+									<Input class="inputForm" value="" id="InputMevPrim4"/>
+									<Label text="Vekalet Primi"/>
+									<Input class="inputForm" value="" id="InputVekPrim4"/>
+									<Label text="Diğer Bilgiler"/>
+									<Input class="inputForm" value="" id="InputDiger4"/>
+								</form:content>
+							</form:SimpleForm>
+						</WizardStep>
+						<WizardStep id="OptionalInfoStep4" validated="true" activate="optionalStepActivation" title="Eğitim Bilgileri">
+							<form:SimpleForm columnsXL="3" emptySpanM="0" columnsM="2" columnsL="2" editable="true" emptySpanL="0" emptySpanXL="0" labelSpanL="4"
+								labelSpanM="4" labelSpanXL="4" layout="ResponsiveGridLayout" maxContainerCols="3">
+								<form:content>
+									<core:Title/>
+									<Label text="Okul Türü"/>
+									<Input class="inputForm" value="" enabled="false" id="okulTur4"/>
+									<Label text="Okul Adı"/>
+									<Input class="inputForm" value="" enabled="false" id="okulAd4"/>
+									<Label text="Eğitim Dalı"/>
+									<Input class="inputForm" value="" enabled="false" id="egitim4"/>
+									<core:Title/>
+								</form:content>
+							</form:SimpleForm>
+						</WizardStep>
+						<WizardStep id="idLanguage4" validated="true" activate="stepLanguage" title="Yabancı Dil">
+							<Table growing="true" growingThreshold="10" id="idLanguageTable4" inset="false" items="{ path: '/results', sorter: { path: 'Sptxt' } }"
+								mode="SingleSelectMaster" selectionChange="onPressLang">
+								<headerToolbar>
+									<OverflowToolbar id="otbSubheader">
+										<ToolbarSpacer/>
+										<Button class="addButton"  text="Ekle" type="Emphasized" press="onAddLanguage"/>
+									</OverflowToolbar>
+								</headerToolbar>
+								<columns>
+									<Column width="12em">
+										<Text text="Dil Türü"/>
+									</Column>
+									<Column width="12em">
+										<Text text="Yabancı Dil"/>
+									</Column>
+									<Column width="12em">
+										<Text text="Puan"/>
+									</Column>
+									<Column width="12em">
+										<Text text="Tavan"/>
+									</Column>
+									<Column width="12em">
+										<Text text="Yazılı"/>
+									</Column>
+									<Column width="12em">
+										<Text text="Sözlü"/>
+									</Column>
+								</columns>
+								<items>
+									<ColumnListItem>
+										<cells>
+											<Text text="{Spras}"/>
+											<Text text="{Sptxt}"/>
+											<Text text="{Puan}"/>
+											<Text text="{Tavan}"/>
+											<Text text="{Yazili}"/>
+											<Text text="{Sozlu}"/>
+										</cells>
+									</ColumnListItem>
+								</items>
+							</Table>
+						</WizardStep>
+						<WizardStep id="idBeceri4" validated="true" activate="stepAbility" title="Zihinsel Beceri">
+							<Table growing="true" growingThreshold="10" id="idAbilityTable4" inset="false" items="{ path: '/results', sorter: { path: 'SinavTuru' } }"
+								mode="SingleSelectMaster" selectionChange="onPressZihin">
+								<headerToolbar>
+									<OverflowToolbar id="otbSubheader1">
+										<ToolbarSpacer/>
+										<Button class="addButton" text="Ekle" type="Emphasized" press="onAddAbility"/>
+									</OverflowToolbar>
+								</headerToolbar>
+								<columns>
+									<Column width="12em">
+										<Text text="Sınav Türü"/>
+									</Column>
+									<Column width="12em">
+										<Text text="Puan"/>
+									</Column>
+									<Column width="12em">
+										<Text text="Tavan"/>
+									</Column>
+								</columns>
+								<items>
+									<ColumnListItem>
+										<cells>
+											<Text text="{SinavTuru}"/>
+											<Text text="{Puan}"/>
+											<Text text="{Tavan}"/>
+										</cells>
+									</ColumnListItem>
+								</items>
+							</Table>
+						</WizardStep>
+						<WizardStep id="PricingStep4" activate="pricingActivate" complete="pricingComplete" validated="true" title="PD Sonuçları">
+							<Table growing="true" growingThreshold="10" id="idPDTable4" inset="false" items="{ path: '/results' }"
+								mode="SingleSelectMaster" selectionChange="onPressPD">
+								<headerToolbar>
+									<OverflowToolbar>
+										<ToolbarSpacer/>
+										<Button text="Ekle" type="Emphasized" press="onAddPD"/>
+									</OverflowToolbar>
+								</headerToolbar>
+								<columns>
+									<Column width="12em">
+										<Text text="Tarih"/>
+									</Column>
+									<Column width="12em">
+										<Text text="Sonuç"/>
+									</Column>
+									<Column width="12em">
+										<Text text="Puan"/>
+									</Column>
+								</columns>
+								<items>
+									<ColumnListItem>
+										<cells>
+											<Text text="{path: 'Pdyear' , formatter: '.vDate'}"/>
+											<Text text="{Pdsonuc}"/>
+											<Text text="{Pdpuan}"/>
+										</cells>
+									</ColumnListItem>
+								</items>
+							</Table>
+						</WizardStep>
+					</Wizard>
+				</content>
+				<footer>
+					<OverflowToolbar id="otbFooter53">
+						<ToolbarSpacer/>
+						<Button type="Transparent" text="Geri" press="onBackScreen">
+							<layoutData><OverflowToolbarLayoutData moveToOverflow="false"/></layoutData>
+						</Button>
+					</OverflowToolbar>
+				</footer>
+			</Page>
+		</pages>
+	</NavContainer>
+</mvc:View>

@@ -1,0 +1,231 @@
+<mvc:View controllerName="ZHR_144.controller.History" xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form" xmlns:form="sap.ui.layout.form"
+	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" xmlns:commons="sap.ui.commons" class="sapUiSizeCompact"
+	xmlns:html="http://www.w3.org/1999/xhtml" xmlns:l="sap.ui.layout" xmlns:mvc="sap.ui.core.mvc" xmlns:tnt="sap.tnt" xmlns="sap.m"
+	xmlns:semantic="sap.m.semantic">
+	<App>
+		<pages>
+			<Page title="" showNavButton="false" showHeader="false">
+				<SplitContainer>
+					<masterPages>
+						<semantic:MasterPage title="Formlar">
+							<List items="{/results}" id="historyList">
+								<items>
+									<ObjectListItem title="{Ename}" type="Active" press="onListItemPress" number="{Pernr}" numberUnit="{path: 'Pronr' , formatter: '.setTur'}">
+										<firstStatus>
+											<ObjectStatus title="" text="{path: 'Erdat' , formatter: '.vDate'}"/>
+										</firstStatus>
+									</ObjectListItem>
+								</items>
+							</List>
+						</semantic:MasterPage>
+					</masterPages>
+					<detailPages>
+						<semantic:DetailPage title="Özet" id="idDetail">
+							<ObjectHeader id="ohHistory" responsive="true" fullScreenOptimized="false" binding="{/ProductCollection/3}" icon="{ProductPicUrl}"
+								iconAlt="" intro="" title="Fiş Konusu" titleActive="true" titlePress="handleTitlePress"
+								number="{ parts:[{path:'Price'},{path:'CurrencyCode'}], type: 'sap.ui.model.type.Currency', formatOptions: {showMeasure: false} }"
+								numberUnit="{CurrencyCode}" numberState="Success" backgroundDesign="Translucent">
+								<attributes>
+									<ObjectAttribute title="" text="" id="fisApprove"/>
+									<ObjectAttribute title="Adı Soyadı" text="" id="adSoyadApprove"/>
+									<ObjectAttribute title="Doğum Tarihi" text="" id="dogumTarihApprove"/>
+									<ObjectAttribute title="Geçerlilik Tarihi" text="" id="gecerTarihApprove"/>
+								</attributes>
+								<!--	<statuses>
+									<ObjectStatus title="Approval" text="Pending" state="Warning"/>
+								</statuses>-->
+								<headerContainer>
+									<IconTabBar id="iconTabInf" selectedKey="key3" upperCase="true" class="sapUiResponsiveContentPadding">
+										<items>
+											<IconTabFilter icon="sap-icon://hint">
+												<VBox>
+													<form:SimpleForm columnsXL="3" emptySpanM="0" columnsM="2" columnsL="2" editable="true" emptySpanL="0" emptySpanXL="0" labelSpanL="4"
+														labelSpanM="4" labelSpanXL="4" layout="ResponsiveGridLayout" maxContainerCols="3" title="Özet Bilgi">
+														<form:content>
+															<core:Title/>
+															<Label text="Sicil No"/>
+															<Input class="inputForm" value="" editable="false" id="sicilApprove"/>
+															<Label text="TC Kimlik"/>
+															<Input class="inputForm" value="" editable="false" id="tcApprove"/>
+															<Label text="Pozisyon"/>
+															<Input class="inputForm" value="" editable="false" id="posApprove"/>
+															<Label text="Personel Alanı"/>
+															<Input class="inputForm" value="" editable="false" id="perAlanApprove"/>
+															<Label text="Personel Alt Alanı"/>
+															<Input class="inputForm" value="" editable="false" id="perAltAlanApprove"/>
+															<Label text="Şirket"/>
+															<Input class="inputForm" value="" editable="false" id="sirketApprove"/>
+															<Label text="İş Alanı"/>
+															<Input class="inputForm" value="" editable="false" id="isAlanApprove"/>
+															<Label text="İş Anahtarı"/>
+															<Input class="inputForm" value="" editable="false" id="isAnahApprove"/>
+															<Label text="Org. Birimi"/>
+															<Input class="inputForm" value="" editable="false" id="orgBrmApprove"/>
+															<Label text="Çalışan Grb."/>
+															<Input class="inputForm" value="" editable="false" id="clsGrpApprove"/>
+															<Label text="Çalışan Alt Grb."/>
+															<Input class="inputForm" value="" editable="false" id="clsAltGrpApprove"/>
+															<core:Title/>
+															<Label text="Skala Kodu"/>
+															<Input class="inputForm" value="" editable="false" id="skalaApprove"/>
+															<Label text="Ücret"/>
+															<Input class="inputForm" value="" editable="false" id="ucretApprove"/>
+															<Label text="Diğer Bilgiler"/>
+															<Input class="inputForm" value="" editable="false" id="digerApprove"/>
+															<Label text="Okul Türü"/>
+															<Input class="inputForm" value="" editable="false" id="okulTurApprove"/>
+															<Label text="Okul Adı"/>
+															<Input class="inputForm" value="" editable="false" id="okulAdApprove"/>
+															<Label text="Eğitim Dalı"/>
+															<Input class="inputForm" value="" editable="false" id="egitimApprove"/>
+															<Label text="Dil Primi"/>
+															<Input class="inputForm" value="" editable="false" id="dilPrimApprove"/>
+															<Label text="Araç Primi"/>
+															<Input class="inputForm" value="" editable="false" id="aracPrimApprove"/>
+															<Label text="Mevsimlik Prim"/>
+															<Input class="inputForm" value="" editable="false" id="mevPrimApprove"/>
+															<Label text="Vekalet Primi"/>
+															<Input class="inputForm" value="" editable="false" id="vekPrimApprove"/>
+														</form:content>
+													</form:SimpleForm>
+												</VBox>
+											</IconTabFilter>
+											<IconTabFilter id="IconTabAttach" key="Attachments" count="{NumberOfAttachments}" icon="sap-icon://attachment"
+												visible="{NumberOfAttachments}">
+												<List id="listAttach" showSeparators="None" inset="true" items="{attachModel>/results}">
+													<StandardListItem id="fList" title="{attachModel>Filename}" icon="{attachModel>Filemime}" description="{attachModel>FileSize}"
+														iconInset="false" press="onAttachment" type="Active" info="{attachModel>CreatedAt}"></StandardListItem>
+												</List>
+											</IconTabFilter>
+											<IconTabFilter icon="sap-icon://table-view" id="iconTabTable">
+												<VBox>
+													<form:SimpleForm columnsXL="3" emptySpanM="0" columnsM="2" columnsL="2" editable="true" emptySpanL="0" emptySpanXL="0" labelSpanL="4"
+														labelSpanM="4" labelSpanXL="4" layout="ResponsiveGridLayout" maxContainerCols="3" title="Yabancı Dil">
+														<form:content>
+															<Table growing="true" growingThreshold="10" id="idLanguageTable" inset="false" items="{ path: '/results', sorter: { path: 'Sptxt' } }"
+																mode="SingleSelectMaster">
+																<columns>
+																	<Column width="12em">
+																		<Text text="Dil Türü"/>
+																	</Column>
+																	<Column width="12em">
+																		<Text text="Yabancı Dil"/>
+																	</Column>
+																	<Column width="12em">
+																		<Text text="Puan"/>
+																	</Column>
+																	<Column width="12em">
+																		<Text text="Tavan"/>
+																	</Column>
+																	<Column width="12em">
+																		<Text text="Yazılı"/>
+																	</Column>
+																	<Column width="12em">
+																		<Text text="Sözlü"/>
+																	</Column>
+																</columns>
+																<items>
+																	<ColumnListItem>
+																		<cells>
+																			<Text text="{Spras}"/>
+																			<Text text="{Sptxt}"/>
+																			<Text text="{Puan}"/>
+																			<Text text="{Tavan}"/>
+																			<Text text="{Yazili}"/>
+																			<Text text="{Sozlu}"/>
+																		</cells>
+																	</ColumnListItem>
+																</items>
+															</Table>
+														</form:content>
+													</form:SimpleForm>
+												</VBox>
+												<VBox>
+													<form:SimpleForm columnsXL="3" emptySpanM="0" columnsM="2" columnsL="2" editable="true" emptySpanL="0" emptySpanXL="0" labelSpanL="4"
+														labelSpanM="4" labelSpanXL="4" layout="ResponsiveGridLayout" maxContainerCols="3" title="Zihinsel Beceri">
+														<form:content>
+															<Table growing="true" growingThreshold="10" id="idAbilityTable" inset="false" items="{ path: '/results', sorter: { path: 'SinavTuru' } }"
+																mode="SingleSelectMaster">
+																<columns>
+																	<Column width="12em">
+																		<Text text="Sınav Türü"/>
+																	</Column>
+																	<Column width="12em">
+																		<Text text="Puan"/>
+																	</Column>
+																	<Column width="12em">
+																		<Text text="Tavan"/>
+																	</Column>
+																</columns>
+																<items>
+																	<ColumnListItem>
+																		<cells>
+																			<Text text="{SinavTuru}"/>
+																			<Text text="{Puan}"/>
+																			<Text text="{Tavan}"/>
+																		</cells>
+																	</ColumnListItem>
+																</items>
+															</Table>
+														</form:content>
+													</form:SimpleForm>
+												</VBox>
+												<VBox>
+													<form:SimpleForm columnsXL="3" emptySpanM="0" columnsM="2" columnsL="2" editable="true" emptySpanL="0" emptySpanXL="0" labelSpanL="4"
+														labelSpanM="4" labelSpanXL="4" layout="ResponsiveGridLayout" maxContainerCols="3" title="PD Sonuçları"  id="formPD">
+														<form:content>
+															<Table growing="true" growingThreshold="10" id="idPDTable3" inset="false" items="{ path: '/results', sorter: { path: 'Pdyear' } }"
+																mode="SingleSelectMaster">
+																<columns>
+																	<Column width="12em">
+																		<Text text="Tarih"/>
+																	</Column>
+																	<Column width="12em">
+																		<Text text="Sonuç"/>
+																	</Column>
+																	<Column width="12em">
+																		<Text text="Puan"/>
+																	</Column>
+																</columns>
+																<items>
+																	<ColumnListItem>
+																		<cells>
+																			<Text text="{path: 'Pdyear' , formatter: '.vDatePdyear'}"/>
+																			<Text text="{Pdsonuc}"/>
+																			<Text text="{Pdpuan}"/>
+																		</cells>
+																	</ColumnListItem>
+																</items>
+															</Table>
+														</form:content>
+													</form:SimpleForm>
+												</VBox>
+											</IconTabFilter>
+											<IconTabFilter id="IconTabBarFilterPRApprover" icon="sap-icon://hr-approval" iconColor="Default" count="" key="contentNotes">
+												<List id="listOnayci" showSeparators="None" inset="true" items="{onayciModel>/results}">
+													<StandardListItem id="fOnayciList" title="{onayciModel>OnayciAdi} {onayciModel>OnayciSoyadi}" description="{onayciModel>Decnm}"
+														info="{path: 'onayciModel>Decdt',formatter: '.vDatePdyear'}" icon="{path: 'onayciModel>Statu',formatter: '.statusIcon'}"
+														infoState="{path:'onayciModel>Statu', formatter: '.status'}"/>
+												</List>
+											</IconTabFilter>
+										</items>
+									</IconTabBar>
+								</headerContainer>
+							</ObjectHeader>
+							<semantic:customFooterContent>
+								<Button type="Transparent" text="Geri" press="onBack">
+									<layoutData><OverflowToolbarLayoutData moveToOverflow="false"/></layoutData>
+								</Button>
+								<!--<Button type="Transparent" text="Çıkış" press="onCancel">
+
+									<layoutData><OverflowToolbarLayoutData moveToOverflow="false"/></layoutData>
+
+								</Button>-->
+							</semantic:customFooterContent>
+						</semantic:DetailPage>
+					</detailPages>
+				</SplitContainer>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

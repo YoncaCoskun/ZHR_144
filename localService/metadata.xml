@@ -1,0 +1,155 @@
+<edmx:Edmx xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+	xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData" Version="1.0">
+	<edmx:DataServices m:DataServiceVersion="2.0">
+		<Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="ZHR_144_SRV_01" xml:lang="tr" sap:schema-version="1">
+			<EntityType Name="ZHRTerfiPozisyon" sap:content-version="1">
+				<Key>
+					<PropertyRef Name="Objid"/>
+				</Key>
+				<Property Name="Objid" Type="Edm.String" Nullable="false" MaxLength="12" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/>
+				<Property Name="Objid2" Type="Edm.String" Nullable="false" MaxLength="12" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/>
+				<Property Name="Otype" Type="Edm.String" Nullable="false" MaxLength="2" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/>
+				<Property Name="Stext" Type="Edm.String" Nullable="false" MaxLength="40" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/>
+				<Property Name="Level" Type="Edm.Int32" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/>
+			</EntityType>
+			<EntityType Name="ZHRAyrilmaNeden" sap:content-version="1">
+				<Key>
+					<PropertyRef Name="Massn"/>
+				</Key>
+				<Property Name="Massn" Type="Edm.String" Nullable="false" MaxLength="2" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/>
+				<Property Name="Massg" Type="Edm.String" Nullable="false" MaxLength="2" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/>
+				<Property Name="Mgtxt" Type="Edm.String" Nullable="false" MaxLength="30" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/>
+			</EntityType>
+			<EntityType Name="ZHRTerfi" sap:content-version="1">
+				<Key>
+					<PropertyRef Name="IvPernr"/>
+				</Key>
+				<Property Name="IvPernr" Type="Edm.String" Nullable="false" MaxLength="8" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/>
+				<Property Name="Pernr" Type="Edm.String" Nullable="false" MaxLength="8" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/>
+				<Property Name="Ename" Type="Edm.String" Nullable="false" MaxLength="40" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/>
+				<Property Name="Merni" Type="Edm.String" Nullable="false" MaxLength="12" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/>
+				<Property Name="Gbdat" Type="Edm.DateTime" Precision="8" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/>
+				<Property Name="Endda" Type="Edm.DateTime" Precision="8" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/>
+				<Property Name="Plans" Type="Edm.String" Nullable="false" MaxLength="8" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/>
+				<Property Name="Bukrs" Type="Edm.String" Nullable="false" MaxLength="4" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/>
+				<Property Name="Gsber" Type="Edm.String" Nullable="false" MaxLength="4" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/>
+				<Property Name="Stell" Type="Edm.String" Nullable="false" MaxLength="8" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/>
+				<Property Name="Orgeh" Type="Edm.String" Nullable="false" MaxLength="8" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/>
+				<Property Name="Persg" Type="Edm.String" Nullable="false" MaxLength="1" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/>
+				<Property Name="Persk" Type="Edm.String" Nullable="false" MaxLength="2" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/>
+				<Property Name="Trfgr" Type="Edm.String" Nullable="false" MaxLength="8" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/>
+				<Property Name="Ucret" Type="Edm.Decimal" Precision="14" Scale="3" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/>
+				<Property Name="Dilpr" Type="Edm.Decimal" Precision="14" Scale="3" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/>
+				<Property Name="Arcpr" Type="Edm.Decimal" Precision="14" Scale="3" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/>
+				<Property Name="Mevpr" Type="Edm.Decimal" Precision="14" Scale="3" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/>
+				<Property Name="Vklpr" Type="Edm.Decimal" Precision="14" Scale="3" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/>
+				<Property Name="Waers" Type="Edm.String" Nullable="false" MaxLength="5" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/>
+				<Property Name="Diger" Type="Edm.String" Nullable="false" MaxLength="100" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/>
+				<Property Name="YabanciDil" Type="Edm.String" Nullable="false" MaxLength="1" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/>
+				<Property Name="Puan" Type="Edm.Decimal" Nullable="false" Precision="6" Scale="3" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/>
+				<Property Name="Tavan" Type="Edm.Decimal" Nullable="false" Precision="6" Scale="3" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/>
+				<Property Name="Yazili" Type="Edm.Decimal" Nullable="false" Precision="6" Scale="3" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/>
+				<Property Name="Sozlu" Type="Edm.Decimal" Nullable="false" Precision="6" Scale="3" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/>
+				<Property Name="Yil" Type="Edm.String" Nullable="false" MaxLength="4" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/>
+				<Property Name="Sonuc" Type="Edm.Decimal" Nullable="false" Precision="6" Scale="3" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/>
+				<Property Name="SinavTuru" Type="Edm.String" Nullable="false" MaxLength="2" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/>
+			</EntityType>
+			<EntityType Name="ZHRIstenCikis" sap:content-version="1">
+				<Key>
+					<PropertyRef Name="IvPernr"/>
+				</Key>
+				<Property Name="IvPernr" Type="Edm.String" Nullable="false" MaxLength="8" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/>
+				<Property Name="Pernr" Type="Edm.String" Nullable="false" MaxLength="8" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/>
+				<Property Name="Ename" Type="Edm.String" Nullable="false" MaxLength="40" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/>
+				<Property Name="Merni" Type="Edm.String" Nullable="false" MaxLength="12" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/>
+				<Property Name="Gbdat" Type="Edm.String" Nullable="false" MaxLength="8" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/>
+				<Property Name="Begda" Type="Edm.String" Nullable="false" MaxLength="8" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/>
+				<Property Name="Plans" Type="Edm.String" Nullable="false" MaxLength="8" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/>
+				<Property Name="Bukrs" Type="Edm.String" Nullable="false" MaxLength="4" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/>
+				<Property Name="Gsber" Type="Edm.String" Nullable="false" MaxLength="4" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/>
+				<Property Name="Stell" Type="Edm.String" Nullable="false" MaxLength="8" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/>
+				<Property Name="Orgeh" Type="Edm.String" Nullable="false" MaxLength="8" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/>
+				<Property Name="Persg" Type="Edm.String" Nullable="false" MaxLength="1" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/>
+				<Property Name="Persk" Type="Edm.String" Nullable="false" MaxLength="2" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/>
+				<Property Name="Ucret" Type="Edm.String" Nullable="false" MaxLength="18" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/>
+				<Property Name="Dilpr" Type="Edm.String" Nullable="false" MaxLength="18" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/>
+				<Property Name="Arcpr" Type="Edm.String" Nullable="false" MaxLength="18" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/>
+				<Property Name="Mevpr" Type="Edm.String" Nullable="false" MaxLength="18" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/>
+				<Property Name="Vklpr" Type="Edm.String" Nullable="false" MaxLength="18" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/>
+				<Property Name="Diger" Type="Edm.String" Nullable="false" MaxLength="100" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/>
+				<Property Name="Massg" Type="Edm.String" Nullable="false" MaxLength="2" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/>
+				<Property Name="Mgtxt" Type="Edm.String" Nullable="false" MaxLength="30" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/>
+			</EntityType>
+			<EntityContainer Name="ZHR_144_SRV_01_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+				<EntitySet Name="ZHRTerfiPozisyonSet" EntityType="ZHR_144_SRV_01.ZHRTerfiPozisyon" sap:creatable="false" sap:updatable="false"
+					sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+				<EntitySet Name="ZHRAyrilmaNedenSet" EntityType="ZHR_144_SRV_01.ZHRAyrilmaNeden" sap:creatable="false" sap:updatable="false"
+					sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+				<EntitySet Name="ZHRTerfiSet" EntityType="ZHR_144_SRV_01.ZHRTerfi" sap:creatable="false" sap:updatable="false" sap:deletable="false"
+					sap:pageable="false" sap:content-version="1"/>
+				<EntitySet Name="ZHRIstenCikisSet" EntityType="ZHR_144_SRV_01.ZHRIstenCikis" sap:creatable="false" sap:updatable="false"
+					sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+			</EntityContainer>
+			<atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="self" href="./sap/ZHR_144_SRV_01/$metadata"/>
+			<atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="latest-version" href="./sap/ZHR_144_SRV_01/$metadata"/>
+		</Schema>
+	</edmx:DataServices>
+</edmx:Edmx>

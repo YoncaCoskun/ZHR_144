@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+	<meta charset="UTF-8">
+
+	<link rel="stylesheet" type="text/css" href="css/index.css"  />
+
+    <title>Durum Fişi</title>
+
+
+
+		<script id='sap-ui-bootstrap' type='text/javascript'
+
+		src='resources/sap-ui-core.js'
+
+		data-sap-ui-theme='sap_bluecrystal'
+
+		data-sap-ui-libs='sap.m, sap.ui.layout'
+
+		data-sap-ui-xx-bindingSyntax="complex"
+
+		data-sap-ui-resourceroots='{"ZHR_144": ""}'> 
+
+		</script>
+
+		
+
+
+
+
+
+
+
+	<script>
+
+
+
+			sap.ui.getCore().attachInit(function() {
+
+				new sap.m.App ({
+
+					pages: [
+
+						new sap.m.Page({
+
+							enableScrolling : false,
+
+							showHeader: false,
+
+							content: [ new sap.ui.core.ComponentContainer({
+
+								height : "100%", name : "ZHR_144"
+
+							})]
+
+						})
+
+					]
+
+				}).placeAt("content");
+
+			});
+
+
+
+		</script>
+
+
+
+</head>
+
+<body class="sapUiBody" id="content">
+
+</body>
+
+</html>

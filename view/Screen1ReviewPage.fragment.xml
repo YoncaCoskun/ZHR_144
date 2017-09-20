@@ -1,0 +1,153 @@
+<core:FragmentDefinition xmlns:layout="sap.ui.layout" xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core"
+	xmlns="sap.m">
+	<Page id="wizardReviewPage1" showHeader="false">
+		<content>
+			<form:SimpleForm title="1. Genel Bilgiler" minWidth="1024" editable="false" layout="ResponsiveGridLayout">
+				<form:content>
+					<core:Title/>
+					<Label text="Fiş Konusu"/>
+					<Input class="inputForm" value="" enabled="false" id="fisKonuRew1"/>
+					<Label text="Ad Soyad"/>
+					<Input class="inputForm" value="" enabled="false" id="adSoyadRew1"/>
+					<core:Title/>
+					<Label text="Doğum Tarihi"/>
+					<DatePicker class="inputForm" value="" enabled="false" id="dogumTarihRew1"/>
+					<Label text="Geçerlilik Tarihi"/>
+					<DatePicker class="inputForm" value="" enabled="false" id="gecerTarihRew1"/>
+				</form:content>
+			</form:SimpleForm>
+			<form:SimpleForm title="2. Yeni" minWidth="1024" enabled="false" layout="ResponsiveGridLayout">
+				<form:content>
+					<core:Title/>
+					<Label text="Pozisyon"/>
+					<Input class="inputForm" value="" enabled="false" id="PosAdRew1"/>
+					<Label text="Personel Alanı"/>
+					<Input class="inputForm" value="" enabled="false" id="perAlanRew1"/>
+					<Label text="Personel Alt Alanı"/>
+					<Input class="inputForm" value="" enabled="false" id="perAltAlanRew1"/>
+					<Label text="İş Alanı"/>
+					<Input class="inputForm" value="" enabled="false" id="isAlanRew1"/>
+					<Label text="İş Anahtarı"/>
+					<Input class="inputForm" value="" enabled="false" id="isAnahRew1"/>
+					<Label text="Org. Birimi"/>
+					<Input class="inputForm" value="" enabled="false" id="orgBirRew1"/>
+					<core:Title/>
+					<Label text="Çalışan Grb."/>
+					<Input class="inputForm" value="" enabled="false" id="clsRew1"/>
+					<Label text="Çalışan Alt Grb."/>
+					<Input class="inputForm" value="" enabled="false" id="clsAltRew1"/>
+					<Label text="Skala Kodu"/>
+					<Input class="inputForm" value="" enabled="false" id="skalaRew1"/>
+					<Label text="Ücret"/>
+					<Input class="inputForm" value="" enabled="false" id="ucretRew1"/>
+					<Label text="Diğer Bilgiler"/>
+					<Input class="inputForm" value="" enabled="false" id="digerRew1"/>
+				</form:content>
+			</form:SimpleForm>
+			<form:SimpleForm title="3. Eğitim Bilgileri" minWidth="1024" editable="false" layout="ResponsiveGridLayout">
+				<form:content>
+					<core:Title/>
+					<Label text="Okul Türü"/>
+					<Input class="inputForm" value="" enabled="false" id="okulRew1"/>
+					<Label text="Okul Adı"/>
+					<Input class="inputForm" value="" enabled="false" id="okulAdRew1"/>
+					<Label text="Eğitim Dalı"/>
+					<Input class="inputForm" value="" enabled="false" id="egitimRew1"/>
+					<core:Title/>
+				</form:content>
+			</form:SimpleForm>
+			<form:SimpleForm title="4. Yabancı Dil" minWidth="1024" editable="false" layout="ResponsiveGridLayout">
+				<form:content>
+					<core:Title/>
+					<Table id="idDil" growing="true" growingThreshold="10" inset="false" items="{ path: '/results', sorter: { path: 'Sptxt' } }">
+						<columns>
+							<Column width="12em">
+								<Text text="Dil Türü"/>
+							</Column>
+							<Column width="12em">
+								<Text text="Yabancı Dil"/>
+							</Column>
+							<Column width="12em">
+								<Text text="Puan"/>
+							</Column>
+							<Column width="12em">
+								<Text text="Sınav Tarihi"/>
+							</Column>
+							<Column width="12em">
+								<Text text="Yazma"/>
+							</Column>
+							<Column width="12em">
+								<Text text="Okuma"/>
+							</Column>
+							<Column width="12em">
+								<Text text="Dinleme"/>
+							</Column>
+							<Column width="12em">
+								<Text text="Genel"/>
+							</Column>
+						</columns>
+						<items>
+							<ColumnListItem>
+								<cells>
+									<Text text="{Spras}"/>
+									<Text text="{Sptxt}"/>
+									<Text text="{Puan}"/>
+									<Text text="{SinavTarihi}"/>
+									<Text text="{Yazma}"/>
+									<Text text="{Okuma}"/>
+									<Text text="{Dinleme}"/>
+									<Text text="{Genel}"/>
+								</cells>
+							</ColumnListItem>
+						</items>
+					</Table>
+				</form:content>
+			</form:SimpleForm>
+			<form:SimpleForm title="5. Zihinsel Beceri" minWidth="1024" editable="false" layout="ResponsiveGridLayout">
+				<form:content>
+					<core:Title/>
+					<Table id="idZihinsel" growing="true" growingThreshold="10" width="100%" inset="false"
+						items="{ path: '/results', sorter: { path: 'SinavTuru' } }">
+						<columns>
+							<Column width="12em">
+								<Text text="Sınav Türü"/>
+							</Column>
+							<Column width="12em">
+								<Text text="Puan"/>
+							</Column>
+							<Column width="12em">
+								<Text text="Sınav Tarihi"/>
+							</Column>
+						</columns>
+						<items>
+							<ColumnListItem>
+								<cells>
+									<Text text="{SinavTuru}"/>
+									<Text text="{Puan}"/>
+									<Text text="{SinavTarihi}"/>
+								</cells>
+							</ColumnListItem>
+						</items>
+					</Table>
+				</form:content>
+			</form:SimpleForm>
+			<form:SimpleForm title="6. Ek" minWidth="1024" editable="false" layout="ResponsiveGridLayout">
+				<form:content>
+					<Label text="Ek"/>
+				</form:content>
+			</form:SimpleForm>
+			<form:SimpleForm editable="false" id="formAttachDisplay"></form:SimpleForm>
+		</content>
+		<footer>
+			<OverflowToolbar>
+				<ToolbarSpacer/>
+				<Button type="Transparent" text="Geri" press="backOnayPage">
+					<layoutData><OverflowToolbarLayoutData moveToOverflow="false"/></layoutData>
+				</Button>
+				<Button type="Emphasized" text="Devam" press="nextOnayPage">
+					<layoutData><OverflowToolbarLayoutData moveToOverflow="false"/></layoutData>
+				</Button>
+			</OverflowToolbar>
+		</footer>
+	</Page>
+</core:FragmentDefinition>

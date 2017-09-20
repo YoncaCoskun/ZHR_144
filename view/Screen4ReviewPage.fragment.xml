@@ -1,0 +1,209 @@
+<core:FragmentDefinition xmlns:layout="sap.ui.layout" xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core"
+	xmlns="sap.m">
+	<Page id="wizardReviewPage4" showHeader="false">
+		<content>
+			<form:SimpleForm title="1. Genel Bilgiler" minWidth="1024" editable="false" layout="ResponsiveGridLayout">
+				<form:content>
+					<core:Title/>
+					<Label text="Fiş Konusu"/>
+					<Input class="inputForm" value="" enabled="false" id="fisKonuRew4"/>
+					<Label text="Sicil No"/>
+					<Input class="inputForm" value="" enabled="false" id="sicilNoRew4"/>
+					<Label text="Ad Soyad"/>
+					<Input class="inputForm" value="" enabled="false" id="adSoyadRew4"/>
+					<core:Title/>
+					<Label text="TC Kimlik No"/>
+					<Input class="inputForm" value="" enabled="false"  id="tcRew4"/>
+					<Label text="Doğum Tarihi"/>
+					<DatePicker class="inputForm" value="" enabled="false"  id="dogumTarihRew4"/>
+					<Label text="Geçerlilik Tarihi"/>
+					<DatePicker class="inputForm" value="" enabled="false" id="gecerTarihRew4"/>
+				</form:content>
+			</form:SimpleForm>
+			<form:SimpleForm title="2. Yeni" minWidth="1024" editable="false" layout="ResponsiveGridLayout">
+				<form:content>
+					<core:Title text="Mevcut"/>
+					<Label text="Pozisyon"/>
+					<Input class="inputForm" value="" enabled="false" id="PosAdRew4"/>
+					<Label text="Personel Alanı"/>
+					<Input class="inputForm" value="" enabled="false" id="perAlanRew4"/>
+					<Label text="Personel Alt Alanı"/>
+					<Input class="inputForm" value="" enabled="false" id="perAltAlanRew4"/>
+					<Label text="İş Alanı"/>
+					<Input class="inputForm" value="" enabled="false" id="isAlanRew4" />
+					<Label text="Şirket"/>
+					<Input class="inputForm" value="" enabled="false" id="sirketRew4"/>
+					<Label text="İş Anahtarı"/>
+					<Input class="inputForm" value="" enabled="false" id="isAnahRew4"/>
+					<Label text="Org. Birimi"/>
+					<Input class="inputForm" value="" enabled="false" id="orgBirRew4"/>
+					<Label text="Çalışan Grb."/>
+					<Input class="inputForm" value="" enabled="false" id="clsRew4"/>
+					<Label text="Çalışan Alt Grb."/>
+					<Input class="inputForm" value="" enabled="false" id="clsAltRew4"/>
+					<Label text="Skala Kodu"/>
+					<Input class="inputForm" value="" enabled="false" id="skalaRew4"/>
+					<Label text="Ücret"/>
+					<Input class="inputForm" value="" enabled="false" id="ucretRew4"/>
+					<Label text="Dil Primi"/>
+					<Input class="inputForm" value="" enabled="false" id="dilPrimRew4"/>
+					<Label text="Araç Primi"/>
+					<Input class="inputForm" value="" enabled="false" id="aracPrimRew4"/>
+					<Label text="Mevsimlik Prim"/>
+					<Input class="inputForm" value="" enabled="false" id="mevPrimRew4"/>
+					<Label text="Vekalet Primi"/>
+					<Input class="inputForm" value="" enabled="false" id="vekPrimRew4"/>
+					<Label text="Diğer Bilgiler"/>
+					<Input class="inputForm" value="" enabled="false" id="digerRew4"/>
+					<core:Title text="Yeni"/>
+					<Label text="Pozisyon"/>
+					<Input class="inputForm" value="" enabled="false" id="inputPosAdRew4"/>
+					<Label text="Personel Alanı"/>
+					<Input class="inputForm" value="" enabled="false" id="inputPerAlanRew4"/>
+					<Label text="Personel Alt Alanı"/>
+					<Input class="inputForm" value="" enabled="false" id="inputPerAltAlanRew4"/>
+					<Label text="Şirket"/>
+					<Input class="inputForm" value="" enabled="false" id="inputsirketRew4"/>
+					<Label text="İş Alanı"/>
+					<Input class="inputForm" value="" enabled="false" id="inputIsAlanRew4"/>
+					<Label text="İş Anahtarı"/>
+					<Input class="inputForm" value="" enabled="false"  id="inputIsAnahRew4"/>
+					<Label text="Org. Birimi"/>
+					<Input class="inputForm" value="" enabled="false" id="inputOrgBirRew4"/>
+					<Label text="Çalışan Grb."/>
+					<Input class="inputForm" value="" enabled="false" id="inputClsRew4"/>
+					<Label text="Çalışan Alt Grb."/>
+					<Input class="inputForm" value="" enabled="false" id="inputClsAltRew4"/>
+					<Label text="Skala Kodu"/>
+					<Input class="inputForm" value="" enabled="false" id="inputSkalaRew4"/>
+					<Label text="Ücret"/>
+					<Input class="inputForm" value="" enabled="false" id="inputUcretRew4"/>
+					<Label text="Dil Primi"/>
+					<Input class="inputForm" value="" enabled="false" id="inputDilPrimRew4"/>
+					<Label text="Araç Primi"/>
+					<Input class="inputForm" value="" enabled="false" id="inputAracPrimRew4"/>
+					<Label text="Mevsimlik Prim"/>
+					<Input class="inputForm" value="" enabled="false" id="inputMevPrimRew4"/>
+					<Label text="Vekalet Primi"/>
+					<Input class="inputForm" value="" enabled="false" id="inputVekPrimRew4"/>
+					<Label text="Diğer Bilgiler"/>
+					<Input class="inputForm" value="" enabled="false" id="inputDigerRew4"/>
+				</form:content>
+			</form:SimpleForm>
+			<form:SimpleForm title="3. Eğitim Bilgileri" minWidth="1024" editable="false" layout="ResponsiveGridLayout">
+				<form:content>
+					<core:Title/>
+					<Label text="Okul Türü"/>
+					<Input class="inputForm" value="Üniversite" enabled="false" id="okulRew4"/>
+					<Label text="Okul Adı"/>
+					<Input class="inputForm" value="Beykoz Üniversitesi" enabled="false" id="okulAdRew4"/>
+					<Label text="Eğitim Dalı"/>
+					<Input class="inputForm" value="Bilgisayar Mühendisliği" enabled="false" id="egitimRew4"/>
+					<core:Title/>
+				</form:content>
+			</form:SimpleForm>
+			<form:SimpleForm title="4. Yabancı Dil" minWidth="1024" editable="false" layout="ResponsiveGridLayout">
+				<form:content>
+					<core:Title/>
+					<Table id="idLang4" growing="true" growingThreshold="10" inset="false" items="{ path: '/results', sorter: { path: 'Sptxt' } }">
+						<columns>
+							<Column width="12em">
+								<Text text="Yabancı Dil"/>
+							</Column>
+							<Column width="12em">
+								<Text text="Puan"/>
+							</Column>
+							<Column width="12em">
+								<Text text="Tavan"/>
+							</Column>
+							<Column width="12em">
+								<Text text="Yazılı"/>
+							</Column>
+							<Column width="12em">
+								<Text text="Sözlü"/>
+							</Column>
+						</columns>
+						<items>
+							<ColumnListItem>
+								<cells>
+									<Text text="{Sptxt}" id="yabanciDilRew4"/>
+									<Text text="{Puan}" id="puanRew4"/>
+									<Text text="{Tavan}" id="tavanRew4"/>
+									<Text text="{Yazili}" id="yaziliRew4"/>
+									<Text text="{Sozlu}" id="sozluRew4"/>
+								</cells>
+							</ColumnListItem>
+						</items>
+					</Table>
+				</form:content>
+			</form:SimpleForm>
+			<form:SimpleForm title="5. Zihinsel Beceri" minWidth="1024" editable="false" layout="ResponsiveGridLayout">
+				<form:content>
+					<core:Title/>
+					<Table id="idExamZihin4" growing="true" growingThreshold="10" width="100%" inset="false"
+						items="{ path: '/results', sorter: { path: 'SinavTuru' } }">
+						<columns>
+							<Column width="12em">
+								<Text text="Sınav Türü"/>
+							</Column>
+							<Column width="12em">
+								<Text text="Puan"/>
+							</Column>
+							<Column width="12em">
+								<Text text="Tavan"/>
+							</Column>
+						</columns>
+						<items>
+							<ColumnListItem>
+								<cells>
+									<Text text="{SinavTuru}" id="sinavTuruRew4"/>
+									<Text text="{Puan}" id="puanZihinRew4"/>
+									<Text text="{Tavan}" id="tavanZihinRew4"/>
+								</cells>
+							</ColumnListItem>
+						</items>
+					</Table>
+				</form:content>
+			</form:SimpleForm>
+			<form:SimpleForm title="6. PD Sonuçları" minWidth="1024" editable="false" layout="ResponsiveGridLayout">
+				<form:content>
+					<core:Title/>
+					<Table id="idPd4"  growing="true" growingThreshold="10" width="100%" inset="false"
+						items="{ path: '/results', sorter: { path: 'Pdyear' } }">
+						<columns>
+							<Column width="12em">
+								<Text text="Yıl"/>
+							</Column>
+							<Column width="12em">
+								<Text text="Sonuç"/>
+							</Column>
+							<Column width="12em">
+								<Text text="Puan"/>
+							</Column>
+						</columns>
+						<items>
+							<ColumnListItem>
+								<cells>
+									<Text text="{path: 'Pdyear' , formatter: '.vDate'}" id="yilPdRew4"/>
+									<Text text="{Pdsonuc}" id="puanPdRew4"/>
+									<Text text="{Pdpuan}" id="tavanPdRew4"/>
+								</cells>
+							</ColumnListItem>
+						</items>
+					</Table>
+				</form:content>
+			</form:SimpleForm>
+		</content>
+		<footer>
+			<OverflowToolbar>
+				<ToolbarSpacer/>
+				<Button type="Transparent" text="Geri" press="backOnayPage">
+					<layoutData><OverflowToolbarLayoutData moveToOverflow="false"/></layoutData>
+				</Button>
+				<Button type="Emphasized" text="Devam" press="nextOnayPage">
+					<layoutData><OverflowToolbarLayoutData moveToOverflow="false"/></layoutData>
+				</Button>
+			</OverflowToolbar>
+		</footer>
+	</Page>
+</core:FragmentDefinition>

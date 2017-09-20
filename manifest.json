@@ -1,0 +1,276 @@
+{
+	"_version": "1.1.0",
+	"sap.app": {
+		"_version": "1.1.0",
+		"id": "ZHR_144",
+		"type": "application",
+		"i18n": "i18n/i18n.properties",
+		"applicationVersion": {
+			"version": "1.0.0"
+		},
+		"title": "{{appTitle}}",
+		"description": "{{appDescription}}",
+		"sourceTemplate": {
+			"id": "servicecatalog.connectivityComponent",
+			"version": "0.0.0"
+		},
+		"dataSources": {
+			"ZHR_144_SRV_01": {
+				"uri": "/sap/opu/odata/sap/ZHR_144_SRV_01/",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "2.0",
+					"localUri": "localService/metadata.xml"
+				}
+			}
+		}
+	},
+	"sap.ui": {
+		"_version": "1.1.0",
+		"technology": "UI5",
+		"icons": {
+			"icon": "",
+			"favIcon": "",
+			"phone": "",
+			"phone@2": "",
+			"tablet": "",
+			"tablet@2": ""
+		},
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		},
+		"supportedThemes": [
+			"sap_hcb",
+			"sap_belize"
+		]
+	},
+	"sap.ui5": {
+		"_version": "1.1.0",
+		"rootView": {
+			"viewName": "ZHR_144.view.App",
+			"type": "XML"
+		},
+		"routing": {
+			"config": {
+				"routerClass": "sap.m.routing.Router",
+				"viewPath": "ZHR_144.view",
+				"controlId": "rootControl",
+				"controlAggregation": "pages",
+				"viewType": "XML"
+			},
+			"routes": [
+				{
+					"name": "PersonalActivity",
+					"pattern": "",
+					"target": "PersonalActivity"
+				},
+				{
+					"name": "screen1",
+					"pattern": "Screen1",
+					"target": "screen1"
+				},
+				{
+					"name": "screen2",
+					"pattern": "Screen2",
+					"target": "screen2"
+				},
+				{
+					"name": "screen3",
+					"pattern": "Screen3",
+					"target": "screen3"
+				},
+				{
+					"name": "screen4",
+					"pattern": "Screen4",
+					"target": "screen4"
+				},
+				{
+					"name": "screen5",
+					"pattern": "Screen5",
+					"target": "screen5"
+				},
+				{
+					"name": "screen6",
+					"pattern": "Screen6",
+					"target": "screen6"
+				},
+				{
+					"name": "screen1Approve",
+					"pattern": "Screen1Approve",
+					"target": "screen1Approve"
+				},
+				{
+					"name": "screen2Approve",
+					"pattern": "Screen2Approve",
+					"target": "screen2Approve"
+				},
+				{
+					"name": "screen3Approve",
+					"pattern": "Screen3Approve",
+					"target": "screen3Approve"
+				},
+				{
+					"name": "screen4Approve",
+					"pattern": "Screen4Approve",
+					"target": "screen4Approve"
+				},
+				{
+					"name": "screen5Approve",
+					"pattern": "Screen5Approve",
+					"target": "screen5Approve"
+				},
+				{
+					"name": "screen6Approve",
+					"pattern": "Screen6Approve",
+					"target": "screen6Approve"
+				},
+				{
+					"name": "History",
+					"pattern": "History",
+					"target": "History"
+				}
+			],
+			"targets": {
+				"PersonalActivity": {
+					"viewType": "XML",
+					"transition": "slide",
+					"clearAggregation": true,
+					"viewName": "PersonalActivity"
+				},
+				"screen1": {
+					"viewType": "XML",
+					"transition": "slide",
+					"clearAggregation": true,
+					"viewName": "Screen1",
+					"viewLevel": 1
+				},
+				"screen2": {
+					"viewType": "XML",
+					"transition": "slide",
+					"clearAggregation": true,
+					"viewName": "Screen2",
+					"viewLevel": 1
+				},
+				"screen3": {
+					"viewType": "XML",
+					"transition": "slide",
+					"clearAggregation": true,
+					"viewName": "Screen3",
+					"viewLevel": 1
+				},
+				"screen4": {
+					"viewType": "XML",
+					"transition": "slide",
+					"clearAggregation": true,
+					"viewName": "Screen4",
+					"viewLevel": 1
+				},
+				"screen5": {
+					"viewType": "XML",
+					"transition": "slide",
+					"clearAggregation": true,
+					"viewName": "Screen5",
+					"viewLevel": 1
+				},
+				"screen6": {
+					"viewType": "XML",
+					"transition": "slide",
+					"clearAggregation": true,
+					"viewName": "Screen6",
+					"viewLevel": 1
+				},
+				"screen1Approve": {
+					"viewType": "XML",
+					"transition": "slide",
+					"clearAggregation": true,
+					"viewName": "Screen1Approve",
+					"viewLevel": 2
+				},
+				"screen2Approve": {
+					"viewType": "XML",
+					"transition": "slide",
+					"clearAggregation": true,
+					"viewName": "Screen2Approve",
+					"viewLevel": 2
+				},
+				"screen3Approve": {
+					"viewType": "XML",
+					"transition": "slide",
+					"clearAggregation": true,
+					"viewName": "Screen3Approve",
+					"viewLevel": 2
+				},
+				"screen4Approve": {
+					"viewType": "XML",
+					"transition": "slide",
+					"clearAggregation": true,
+					"viewName": "Screen4Approve",
+					"viewLevel": 2
+				},
+				"screen5Approve": {
+					"viewType": "XML",
+					"transition": "slide",
+					"clearAggregation": true,
+					"viewName": "Screen5Approve",
+					"viewLevel": 2
+				},
+				"screen6Approve": {
+					"viewType": "XML",
+					"transition": "slide",
+					"clearAggregation": true,
+					"viewName": "Screen6Approve",
+					"viewLevel": 2
+				},
+				"History": {
+					"viewType": "XML",
+					"transition": "slide",
+					"clearAggregation": true,
+					"viewName": "History",
+					"viewLevel": 2
+				}
+			}
+		},
+		"dependencies": {
+			"minUI5Version": "${sap.ui5.dist.version}",
+			"libs": {
+				"sap.ui.core": {
+					"minVersion": "1.38.0"
+				},
+				"sap.m": {
+					"minVersion": "1.38.0"
+				},
+				"sap.ui.table": {
+					"minVersion": "1.38.0"
+				},
+				"sap.ui.unified": {
+					"minVersion": "1.38.0"
+				}
+			}
+		},
+		"contentDensities": {
+			"compact": true,
+			"cozy": true
+		},
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"settings": {
+					"bundleName": "ZHR_144.i18n.i18n"
+				}
+			}
+		},
+		"resources": {
+			"css": [
+				{
+					"uri": "css/style.css"
+				}
+			]
+		}
+	},
+	"sap.platform.abap": {
+		"uri": "/sap/bc/ui5_ui5/sap/zhr_144",
+		"_version": "1.1.0"
+	}
+}
