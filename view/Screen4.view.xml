@@ -75,7 +75,8 @@
 									</Input>
 									<Label text="Personel Alt Alanı"/>
 									<Input class="inputForm" id="InputPerAltAlan4" placeholder="Personel Alt Alanı" liveChange="additionalInfoValidation" showSuggestion="true"
-										showValueHelp="true" suggestionItems="{/PerAltAlanSet}" type="Text" valueHelpRequest="handleValueHelpPerAltA" valueState="{/perAltAlanState}">
+										showValueHelp="true" suggestionItems="{/PerAltAlanSet}" type="Text" valueHelpRequest="handleValueHelpPerAltA"
+										valueState="{/perAltAlanState}">
 										<suggestionItems>
 											<core:Item key="{Btrtl}" text="{Btext}"/>
 										</suggestionItems>
@@ -151,7 +152,7 @@
 								<headerToolbar>
 									<OverflowToolbar id="otbSubheader">
 										<ToolbarSpacer/>
-										<Button class="addButton"  text="Ekle" type="Emphasized" press="onAddLanguage"/>
+										<Button class="addButton" text="Ekle" type="Emphasized" press="onAddLanguage"/>
 									</OverflowToolbar>
 								</headerToolbar>
 								<columns>
@@ -165,13 +166,19 @@
 										<Text text="Puan"/>
 									</Column>
 									<Column width="12em">
-										<Text text="Tavan"/>
+										<Text text="Sınav Tarihi"/>
 									</Column>
 									<Column width="12em">
-										<Text text="Yazılı"/>
+										<Text text="Yazma"/>
 									</Column>
 									<Column width="12em">
-										<Text text="Sözlü"/>
+										<Text text="Okuma"/>
+									</Column>
+									<Column width="12em">
+										<Text text="Dinleme"/>
+									</Column>
+									<Column width="12em">
+										<Text text="Genel"/>
 									</Column>
 								</columns>
 								<items>
@@ -180,9 +187,11 @@
 											<Text text="{Spras}"/>
 											<Text text="{Sptxt}"/>
 											<Text text="{Puan}"/>
-											<Text text="{Tavan}"/>
-											<Text text="{Yazili}"/>
-											<Text text="{Sozlu}"/>
+											<Text text="{SinavTarihi}"/>
+											<Text text="{Yazma}"/>
+											<Text text="{Okuma}"/>
+											<Text text="{Dinleme}"/>
+											<Text text="{Genel}"/>
 										</cells>
 									</ColumnListItem>
 								</items>
@@ -205,7 +214,7 @@
 										<Text text="Puan"/>
 									</Column>
 									<Column width="12em">
-										<Text text="Tavan"/>
+										<Text text="Sınav Tarihi"/>
 									</Column>
 								</columns>
 								<items>
@@ -213,15 +222,15 @@
 										<cells>
 											<Text text="{SinavTuru}"/>
 											<Text text="{Puan}"/>
-											<Text text="{Tavan}"/>
+											<Text text="{SinavTarihi}"/>
 										</cells>
 									</ColumnListItem>
 								</items>
 							</Table>
 						</WizardStep>
 						<WizardStep id="PricingStep4" activate="pricingActivate" complete="pricingComplete" validated="true" title="PD Sonuçları">
-							<Table growing="true" growingThreshold="10" id="idPDTable4" inset="false" items="{ path: '/results' }"
-								mode="SingleSelectMaster" selectionChange="onPressPD">
+							<Table growing="true" growingThreshold="10" id="idPDTable4" inset="false" items="{ path: '/results' }" mode="SingleSelectMaster"
+								selectionChange="onPressPD">
 								<headerToolbar>
 									<OverflowToolbar>
 										<ToolbarSpacer/>

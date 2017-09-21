@@ -28,11 +28,11 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/core/routing/History", "sap
 			var perFilterDil = "Pernr eq '" + pernrFilter + "'";
 			var oLangModel = new sap.ui.model.json.JSONModel();
 			var langtable = that.getView().byId("idLanguageTableApprove4");
-			
+
 			var perAbFilterZB = "Pernr eq '" + pernrFilter + "'";
 			var oAbModel = new sap.ui.model.json.JSONModel();
 			var zbtable = that.getView().byId("idAbilityTableApprove4");
-			
+
 			var perFilterPD = "Pernr eq '" + pernrFilter + "'";
 			var pdtable = that.getView().byId("idPDTableApprove4");
 			var oPDModel = new sap.ui.model.json.JSONModel();
@@ -45,62 +45,66 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/core/routing/History", "sap
 				});
 
 			that.getView().setModel(oJasonModel, "JasonModel");
+
 			this.getView().byId("onayciList4").setModel(this.getView().getModel("JasonModel"));
 
 			//onaycı goruntuleme ekranına information bilgilerini set etme begin of ycoskun
 
 			var pozisyon, perAlan, perAltAlan, isAlan, isAnahtar, orgBirim, clsGrup, aracPrim, dilPrim, mevPrim, vekPrim;
+
 			var clsAltGrp, skala, ucret, diger, okulTur, okulAd, egitim, adSoyad, dogumTarih, gecerTarih, sirket, tc, sicil;
+			
+					pozisyon = sap.ui.getCore().cPozisyon;
+					perAlan = sap.ui.getCore().cPerAlan;
+					perAltAlan = sap.ui.getCore().cPerAltAlan;
+					isAlan = sap.ui.getCore().cIsAlan;
+					isAnahtar = sap.ui.getCore().cIsAnahtari;
+					orgBirim = sap.ui.getCore().cOrgBirim;
+					clsGrup = sap.ui.getCore().cClsGrup;
+					clsAltGrp = sap.ui.getCore().cClsAltGrp;
+					skala = sap.ui.getCore().cSkala;
+					ucret = sap.ui.getCore().cUcret;
+					diger = sap.ui.getCore().cDiger;
+					okulTur = sap.ui.getCore().cOkulTur;
+					okulAd = sap.ui.getCore().cOkulAd;
+					egitim = sap.ui.getCore().cEgitim;
+					adSoyad = sap.ui.getCore().cAdSoyad;
+					dogumTarih = sap.ui.getCore().cDogumTarih;
+					gecerTarih = sap.ui.getCore().cGecerTarih;
+					aracPrim = sap.ui.getCore().cAracPrim;
+					dilPrim = sap.ui.getCore().cDilPrim;
+					mevPrim = sap.ui.getCore().cMevPrim;
+					vekPrim = sap.ui.getCore().cVekPrim;
+					sirket = sap.ui.getCore().cSirket;
+					tc = sap.ui.getCore().cTC;
+					sicil = sap.ui.getCore().cPernr;
 
-			pozisyon = sap.ui.getCore().cPozisyon;
-			perAlan = sap.ui.getCore().cPerAlan;
-			perAltAlan = sap.ui.getCore().cPerAltAlan;
-			isAlan = sap.ui.getCore().cIsAlan;
-			isAnahtar = sap.ui.getCore().cIsAnahtari;
-			orgBirim = sap.ui.getCore().cOrgBirim;
-			clsGrup = sap.ui.getCore().cClsGrup;
-			clsAltGrp = sap.ui.getCore().cClsAltGrp;
-			skala = sap.ui.getCore().cSkala;
-			ucret = sap.ui.getCore().cUcret;
-			diger = sap.ui.getCore().cDiger;
-			okulTur = sap.ui.getCore().cOkulTur;
-			okulAd = sap.ui.getCore().cOkulAd;
-			egitim = sap.ui.getCore().cEgitim;
-			adSoyad = sap.ui.getCore().cAdSoyad;
-			dogumTarih = sap.ui.getCore().cDogumTarih;
-			gecerTarih = sap.ui.getCore().cGecerTarih;
-			aracPrim = sap.ui.getCore().cAracPrim;
-			dilPrim = sap.ui.getCore().cDilPrim;
-			mevPrim = sap.ui.getCore().cMevPrim;
-			vekPrim = sap.ui.getCore().cVekPrim;
-			sirket = sap.ui.getCore().cSirket;
-			tc = sap.ui.getCore().cTC;
-			sicil = sap.ui.getCore().cPernr;
+					this.getView().byId("adSoyadApprove4").setText(adSoyad);
+					this.getView().byId("dogumTarihApprove4").setText(this.vDate(dogumTarih));
+					this.getView().byId("gecerTarihApprove4").setText(this.vDate(gecerTarih));
+					this.getView().byId("posApprove4").setValue(pozisyon);
+					this.getView().byId("perAlanApprove4").setValue(perAlan);
+					this.getView().byId("perAltAlanApprove4").setValue(perAltAlan);
+					this.getView().byId("isAlanApprove4").setValue(isAlan);
+					this.getView().byId("isAnahApprove4").setValue(isAnahtar);
+					this.getView().byId("orgBrmApprove4").setValue(orgBirim);
+					this.getView().byId("clsGrpApprove4").setValue(clsGrup);
+					this.getView().byId("clsAltGrpApprove4").setValue(clsAltGrp);
+					this.getView().byId("skalaApprove4").setValue(skala);
+					this.getView().byId("ucretApprove4").setValue(ucret);
+					this.getView().byId("digerApprove4").setValue(diger);
+					this.getView().byId("okulTurApprove4").setValue(okulTur);
+					this.getView().byId("okulAdApprove4").setValue(okulAd);
+					this.getView().byId("egitimApprove4").setValue(egitim);
+					this.getView().byId("sirketApprove4").setValue(sirket);
+					this.getView().byId("dilPrimApprove4").setValue(dilPrim);
+					this.getView().byId("aracPrimApprove4").setValue(aracPrim);
+					this.getView().byId("mevPrimApprove4").setValue(mevPrim);
+					this.getView().byId("vekPrimApprove4").setValue(vekPrim);
+					this.getView().byId("tcApprove4").setValue(tc);
+					this.getView().byId("sicilApprove4").setValue(sicil);
 
-			this.getView().byId("adSoyadApprove4").setText(adSoyad);
-			this.getView().byId("dogumTarihApprove4").setText(this.vDate(dogumTarih));
-			this.getView().byId("gecerTarihApprove4").setText(this.vDate(gecerTarih));
-			this.getView().byId("posApprove4").setValue(pozisyon);
-			this.getView().byId("perAlanApprove4").setValue(perAlan);
-			this.getView().byId("perAltAlanApprove4").setValue(perAltAlan);
-			this.getView().byId("isAlanApprove4").setValue(isAlan);
-			this.getView().byId("isAnahApprove4").setValue(isAnahtar);
-			this.getView().byId("orgBrmApprove4").setValue(orgBirim);
-			this.getView().byId("clsGrpApprove4").setValue(clsGrup);
-			this.getView().byId("clsAltGrpApprove4").setValue(clsAltGrp);
-			this.getView().byId("skalaApprove4").setValue(skala);
-			this.getView().byId("ucretApprove4").setValue(ucret);
-			this.getView().byId("digerApprove4").setValue(diger);
-			this.getView().byId("okulTurApprove4").setValue(okulTur);
-			this.getView().byId("okulAdApprove4").setValue(okulAd);
-			this.getView().byId("egitimApprove4").setValue(egitim);
-			this.getView().byId("sirketApprove4").setValue(sirket);
-			this.getView().byId("dilPrimApprove4").setValue(dilPrim);
-			this.getView().byId("aracPrimApprove4").setValue(aracPrim);
-			this.getView().byId("mevPrimApprove4").setValue(mevPrim);
-			this.getView().byId("vekPrimApprove4").setValue(vekPrim);
-			this.getView().byId("tcApprove4").setValue(tc);
-			this.getView().byId("sicilApprove4").setValue(sicil);
+			//end of ycoskun
 
 			//end of ycoskun
 
@@ -175,7 +179,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/core/routing/History", "sap
 
 		},
 		_handleMessageBox: function(sMessage, sMessageBoxType) {
-			debugger;
+
 			var pernrSave = sap.ui.getCore().cPernr;
 			var pronrSave = sap.ui.getCore().cPronr;
 			var appnrSave = sap.ui.getCore().cAppnr;

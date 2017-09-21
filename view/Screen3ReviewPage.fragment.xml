@@ -106,7 +106,10 @@
 				<form:content>
 					<core:Title/>
 					<Table id="idLang" growing="true" growingThreshold="10" inset="false" items="{ path: '/results', sorter: { path: 'Sptxt' } }">
-						<columns>
+							<columns>
+							<Column width="12em">
+								<Text text="Dil Türü"/>
+							</Column>
 							<Column width="12em">
 								<Text text="Yabancı Dil"/>
 							</Column>
@@ -114,23 +117,32 @@
 								<Text text="Puan"/>
 							</Column>
 							<Column width="12em">
-								<Text text="Tavan"/>
+								<Text text="Sınav Tarihi"/>
 							</Column>
 							<Column width="12em">
-								<Text text="Yazılı"/>
+								<Text text="Yazma"/>
 							</Column>
 							<Column width="12em">
-								<Text text="Sözlü"/>
+								<Text text="Okuma"/>
+							</Column>
+							<Column width="12em">
+								<Text text="Dinleme"/>
+							</Column>
+							<Column width="12em">
+								<Text text="Genel"/>
 							</Column>
 						</columns>
 						<items>
 							<ColumnListItem>
 								<cells>
-									<Text text="{Sptxt}" id="yabanciDilRew3"/>
-									<Text text="{Puan}" id="puanRew3"/>
-									<Text text="{Tavan}" id="tavanRew3"/>
-									<Text text="{Yazili}" id="yaziliRew3"/>
-									<Text text="{Sozlu}" id="sozluRew3"/>
+									<Text text="{Spras}"/>
+									<Text text="{Sptxt}"/>
+									<Text text="{Puan}"/>
+									<Text text="{SinavTarihi}"/>
+									<Text text="{Yazma}"/>
+									<Text text="{Okuma}"/>
+									<Text text="{Dinleme}"/>
+									<Text text="{Genel}"/>
 								</cells>
 							</ColumnListItem>
 						</items>
@@ -142,7 +154,7 @@
 					<core:Title/>
 					<Table id="idExamZihin" growing="true" growingThreshold="10" width="100%" inset="false"
 						items="{ path: '/results', sorter: { path: 'SinavTuru' } }">
-						<columns>
+							<columns>
 							<Column width="12em">
 								<Text text="Sınav Türü"/>
 							</Column>
@@ -150,15 +162,15 @@
 								<Text text="Puan"/>
 							</Column>
 							<Column width="12em">
-								<Text text="Tavan"/>
+								<Text text="Sınav Tarihi"/>
 							</Column>
 						</columns>
 						<items>
 							<ColumnListItem>
 								<cells>
-									<Text text="{SinavTuru}" id="sinavTuruRew3"/>
-									<Text text="{Puan}" id="puanZihinRew3"/>
-									<Text text="{Tavan}" id="tavanZihinRew3"/>
+									<Text text="{SinavTuru}"/>
+									<Text text="{Puan}"/>
+									<Text text="{SinavTarihi}"/>
 								</cells>
 							</ColumnListItem>
 						</items>

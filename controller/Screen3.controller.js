@@ -484,7 +484,7 @@ sap.ui.define([
 			var slart = that.getView().byId(entryOkulTur).getValue();
 			var arraySlart = slart.split(" / ");
 			oEntryTerfiPersonel.Slart = arraySlart[0];
-			
+
 			var stell = that.getView().byId(entryisAnahtar3).getValue();
 			var arrayStell = stell.split(" / ");
 			oEntryTerfiPersonel.Stell = arrayStell[0];
@@ -719,35 +719,6 @@ sap.ui.define([
 			oEntry[entryegitim3] = that.getView().byId(entryegitim3).getValue();
 
 			//console.log(oEntry);
-			//begin of ycoskun verilerin globalde tutulması islemleri
-			sap.ui.getCore().cPernr = that.getView().byId(entrysicilNo3).getValue();
-			sap.ui.getCore().cPronr = "03";
-			sap.ui.getCore().cAppnr = "01";
-			sap.ui.getCore().cAdSoyad = that.getView().byId(entryadSoyad3).getValue();
-			sap.ui.getCore().cDogumTarih = that.getView().byId(entrydogumTarih3).getValue();
-			sap.ui.getCore().cGecerTarih = that.getView().byId(entrygecerTarih3).getValue();
-			sap.ui.getCore().cTC = that.getView().byId(entrytc3).getValue();
-			sap.ui.getCore().cPozisyon = that.getView().byId(entryinputPosAd3).getValue();
-			sap.ui.getCore().cPerAlan = that.getView().byId(entryinputPerAlan3).getValue();
-			sap.ui.getCore().cPerAltAlan = that.getView().byId(entryinputPerAltAlan3).getValue();
-			sap.ui.getCore().cIsAlan = that.getView().byId(entryinputIsAlan3).getValue();
-			sap.ui.getCore().cSirket = that.getView().byId(entryinputSirket3).getValue();
-			sap.ui.getCore().cIsAnahtari = that.getView().byId(entryinputIsAnahtar3).getValue();
-			sap.ui.getCore().cOrgBirim = that.getView().byId(entryinputOrgBirim3).getValue();
-			sap.ui.getCore().cClsGrup = that.getView().byId(entryinputClsGrup3).getValue();
-			sap.ui.getCore().cClsAltGrp = that.getView().byId(entryinputClsAltGrup3).getValue();
-			sap.ui.getCore().cSkala = that.getView().byId(entryinputSkalaKod3).getValue();
-			sap.ui.getCore().cUcret = that.getView().byId(entryinputUcret3).getValue();
-			sap.ui.getCore().cDilPrim = that.getView().byId(entryinputDilPrim3).getValue();
-			sap.ui.getCore().cAracPrim = that.getView().byId(entryinputAracPrim3).getValue();
-			sap.ui.getCore().cMevPrim = that.getView().byId(entryinputMevPrim3).getValue();
-			sap.ui.getCore().cVekPrim = that.getView().byId(entryinputVekPrim3).getValue();
-			sap.ui.getCore().cDiger = that.getView().byId(entryinputDiger3).getValue();
-			sap.ui.getCore().cOkulTur = that.getView().byId(entryokul3).getValue();
-			sap.ui.getCore().cOkulAd = that.getView().byId(entryokulAd3).getValue();
-			sap.ui.getCore().cEgitim = that.getView().byId(entryegitim3).getValue();
-
-			//end of ycoskun
 
 			//terfi verilerini güncelleme ycoskun
 
@@ -794,11 +765,11 @@ sap.ui.define([
 			var slart = that.getView().byId(entryokul3).getValue();
 			var arraySlart = slart.split(" / ");
 			oTerfiPersonel.Slart = arraySlart[0];
-			
+
 			var stell = that.getView().byId(entryinputIsAnahtar3).getValue();
 			var arrayStell = stell.split(" / ");
 			oTerfiPersonel.Stell = arrayStell[0];
-			
+
 			var werks = that.getView().byId(entryinputPerAlan3).getValue();
 			var arrayWerks = werks.split(" / ");
 			oTerfiPersonel.Werks = arrayWerks[0];
@@ -870,6 +841,7 @@ sap.ui.define([
 			that.getElement("mevPrimRew3").setValue(oEntry.mevPrim3);
 			that.getElement("vekPrimRew3").setValue(oEntry.vekPrim3);
 			that.getElement("digerRew3").setValue(oEntry.diger3);
+			
 			that.getElement("inputPosAdRew3").setValue(oEntry.InputPosAd3);
 			that.getElement("inputPerAlanRew3").setValue(oEntry.InputPerAlan3);
 			that.getElement("inputPerAltAlanRew3").setValue(oEntry.InputPerAltAlan3);
@@ -889,6 +861,38 @@ sap.ui.define([
 			that.getElement("okulRew3").setValue(oEntry.okulTur3);
 			that.getElement("okulAdRew3").setValue(oEntry.okulAd3);
 			that.getElement("egitimRew3").setValue(oEntry.egitim3);
+
+			//begin of ycoskun verilerin globalde tutulması islemleri
+			sap.ui.getCore().cPernr = that.getView().byId(entrysicilNo3).getValue();
+			sap.ui.getCore().cPronr = "03";
+			sap.ui.getCore().cAppnr = "01";
+			sap.ui.getCore().cAdSoyad = that.getView().byId(entryadSoyad3).getValue();
+			sap.ui.getCore().cDogumTarih = that.getView().byId(entrydogumTarih3).getValue();
+			sap.ui.getCore().cGecerTarih = that.getView().byId(entrygecerTarih3).getValue();
+			sap.ui.getCore().cTC = that.getView().byId(entrytc3).getValue();
+
+			sap.ui.getCore().cPozisyon = oEntry.InputPosAd3;
+			sap.ui.getCore().cPerAlan = oEntry.InputPerAlan3;
+			sap.ui.getCore().cPerAltAlan = oEntry.InputPerAltAlan3;
+			sap.ui.getCore().cIsAlan = oEntry.InputIsAlan3;
+			sap.ui.getCore().cSirket = oEntry.InputSirket3;
+			sap.ui.getCore().cIsAnahtari = oEntry.InputIsAnahtari3;
+			sap.ui.getCore().cOrgBirim = oEntry.InputOrgBirim3;
+			sap.ui.getCore().cClsGrup = oEntry.InputCalisanGrp3;
+			sap.ui.getCore().cClsAltGrp = oEntry.InputCalisanAlt3;
+			sap.ui.getCore().cSkala = oEntry.InputSkala3;
+			sap.ui.getCore().cUcret = oEntry.InputUcret3;
+			sap.ui.getCore().cDilPrim = oEntry.InputDilPrim3;
+			sap.ui.getCore().cAracPrim = oEntry.InputAracPrim3;
+			sap.ui.getCore().cMevPrim = oEntry.InputMevPrim3;
+			sap.ui.getCore().cVekPrim = oEntry.InputVekPrim3;
+			sap.ui.getCore().cDiger = oEntry.InputDiger3;
+
+			sap.ui.getCore().cOkulTur = that.getView().byId(entryokul3).getValue();
+			sap.ui.getCore().cOkulAd = that.getView().byId(entryokulAd3).getValue();
+			sap.ui.getCore().cEgitim = that.getView().byId(entryegitim3).getValue();
+
+			//end of ycoskun
 
 			//begin of ycoskun yabancı dilleri listele 
 			var oThat = this;
@@ -1103,20 +1107,35 @@ sap.ui.define([
 				value: "",
 				enabled: false
 			});
-			var oPuan = new sap.ui.commons.TextField({
+			var oTarih = new sap.ui.commons.DatePicker({
 				value: "",
 				enabled: true
 			});
-			var oTavan = new sap.ui.commons.TextField({
+			var oYazma = new sap.ui.commons.TextField({
 				value: "",
 				enabled: true
 			});
-			var oYazili = new sap.ui.commons.TextField({
+			var oOkuma = new sap.ui.commons.TextField({
 				value: "",
 				enabled: true
 
 			});
-			var oSozlu = new sap.ui.commons.TextField({
+			var oDinleme = new sap.ui.commons.TextField({
+				value: "",
+				enabled: true
+
+			});
+			var oKonusma = new sap.ui.commons.TextField({
+				value: "",
+				enabled: true
+
+			});
+			var oGenel = new sap.ui.commons.TextField({
+				value: "",
+				enabled: true
+
+			});
+			var oPuan = new sap.ui.commons.TextField({
 				value: "",
 				enabled: true
 
@@ -1135,14 +1154,23 @@ sap.ui.define([
 						text: "Puan"
 					}), oPuan,
 					new sap.ui.commons.Label({
-						text: "Tavan"
-					}), oTavan,
+						text: "Sınav Tarihi"
+					}), oTarih,
 					new sap.ui.commons.Label({
-						text: "Yazılı"
-					}), oYazili,
+						text: "Yazma"
+					}), oYazma,
 					new sap.ui.commons.Label({
-						text: "Sözlü"
-					}), oSozlu
+						text: "Okuma"
+					}), oOkuma,
+					new sap.ui.commons.Label({
+						text: "Dinleme"
+					}), oDinleme,
+					new sap.ui.commons.Label({
+						text: "Konuşma"
+					}), oKonusma,
+					new sap.ui.commons.Label({
+						text: "Genel"
+					}), oGenel
 				]
 			});
 
@@ -1156,12 +1184,23 @@ sap.ui.define([
 					press: function() {
 						/* buraya yabancı dil ekleyebilmek için servis eklenecek*/
 						var oEntry = {};
+						var yil, gun, ay;
+						var format = oTarih.getYyyymmdd();
+
+						yil = format.substring(0, 4);
+						ay = format.substring(4, 6);
+						gun = format.substring(6, 8);
+
+						var tarih = yil + ay + gun;
 
 						oEntry.Sptxt = sap.ui.getCore().byId("box_default3").getValue();
 						oEntry.Puan = oPuan.getValue();
-						oEntry.Tavan = oTavan.getValue();
-						oEntry.Yazili = oYazili.getValue();
-						oEntry.Sozlu = oSozlu.getValue();
+						oEntry.SinavTarihi = tarih;
+						oEntry.Yazma = oYazma.getValue();
+						oEntry.Okuma = oOkuma.getValue();
+						oEntry.Dinleme = oDinleme.getValue();
+						oEntry.Konusma = oKonusma.getValue();
+						oEntry.Genel = oGenel.getValue();
 						oEntry.Pernr = pernr;
 						oEntry.Spras = oLanguage.getValue();
 
@@ -1248,8 +1287,7 @@ sap.ui.define([
 				value: "",
 				enabled: true
 			});
-
-			var oTavanExam = new sap.ui.commons.TextField({
+			var oTarih = new sap.ui.commons.DatePicker({
 				value: "",
 				enabled: true
 			});
@@ -1264,10 +1302,9 @@ sap.ui.define([
 						text: "Puan"
 					}), oPuanExam,
 					new sap.ui.commons.Label({
-						text: "Tavan"
-					}), oTavanExam
+						text: "Sınav Tarihi"
+					}), oTarih
 				]
-
 			});
 			var oView = this.getView();
 			oDialogAbility = new sap.m.Dialog({
@@ -1278,14 +1315,20 @@ sap.ui.define([
 					icon: "sap-icon://add",
 					press: function() {
 						/* buraya beceri ekleyebilmek için servis eklenecek*/
-
 						var oEntryBeceri = {};
+						var yil, gun, ay;
+						var format = oTarih.getYyyymmdd();
+
+						yil = format.substring(0, 4);
+						ay = format.substring(4, 6);
+						gun = format.substring(6, 8);
+
+						var tarih = yil + ay + gun;
 
 						oEntryBeceri.SinavTuru = selectAbility;
-						oEntryBeceri.Tavan = oTavanExam.getValue();
+						oEntryBeceri.SinavTarihi = tarih;
 						oEntryBeceri.Puan = oPuanExam.getValue();
 						oEntryBeceri.Pernr = pernr;
-
 						// begin of ycoskun zihinsel beceri kaydet
 						oModel.create("/ZHRTerfiZBSet", oEntryBeceri, {
 							method: "POST",
@@ -1529,9 +1572,11 @@ sap.ui.define([
 			var vDilTur = oSelectedItem.getCells()[0].getText();
 			var vDil = oSelectedItem.getCells()[1].getText();
 			var vPuan = oSelectedItem.getCells()[2].getText();
-			var vTavan = oSelectedItem.getCells()[3].getText();
-			var vYazili = oSelectedItem.getCells()[4].getText();
-			var vSozlu = oSelectedItem.getCells()[5].getText();
+			var vTarih = oSelectedItem.getCells()[3].getText();
+			var vYazma = oSelectedItem.getCells()[4].getText();
+			var vOkuma = oSelectedItem.getCells()[5].getText();
+			var vDinleme = oSelectedItem.getCells()[6].getText();
+			var vGenel = oSelectedItem.getCells()[7].getText();
 
 			var oDilTur = new sap.ui.commons.TextField({
 				value: vDilTur,
@@ -1545,17 +1590,27 @@ sap.ui.define([
 				value: vPuan,
 				enabled: false
 			});
-			var oTavan = new sap.ui.commons.TextField({
-				value: vTavan,
+			var oTarih = new sap.ui.commons.TextField({
+				value: vTarih,
 				enabled: false
 			});
-			var oYazili = new sap.ui.commons.TextField({
-				value: vYazili,
+			var oYazma = new sap.ui.commons.TextField({
+				value: vYazma,
 				enabled: false
 
 			});
-			var oSozlu = new sap.ui.commons.TextField({
-				value: vSozlu,
+			var oOkuma = new sap.ui.commons.TextField({
+				value: vOkuma,
+				enabled: false
+
+			});
+			var oDinleme = new sap.ui.commons.TextField({
+				value: vDinleme,
+				enabled: false
+
+			});
+			var oGenel = new sap.ui.commons.TextField({
+				value: vGenel,
 				enabled: false
 
 			});
@@ -1573,14 +1628,20 @@ sap.ui.define([
 						text: "Puan"
 					}), oPuan,
 					new sap.ui.commons.Label({
-						text: "Tavan"
-					}), oTavan,
+						text: "Sınav Tarihi"
+					}), oTarih,
 					new sap.ui.commons.Label({
-						text: "Yazılı"
-					}), oYazili,
+						text: "Yazma"
+					}), oYazma,
 					new sap.ui.commons.Label({
-						text: "Sözlü"
-					}), oSozlu
+						text: "Okuma"
+					}), oOkuma,
+					new sap.ui.commons.Label({
+						text: "Dinleme"
+					}), oDinleme,
+					new sap.ui.commons.Label({
+						text: "Genel"
+					}), oGenel
 				]
 			});
 
@@ -1597,9 +1658,11 @@ sap.ui.define([
 						oEntryDil.Sptxt = vDil;
 						oEntryDil.Spras = vDilTur;
 						oEntryDil.Puan = vPuan;
-						oEntryDil.Tavan = vTavan;
-						oEntryDil.Yazili = vYazili;
-						oEntryDil.Sozlu = vSozlu;
+						oEntryDil.SinavTarihi = vTarih;
+						oEntryDil.Yazma = vYazma;
+						oEntryDil.Okuma = vOkuma;
+						oEntryDil.Dinleme = vDinleme;
+						oEntryDil.Genel = vGenel;
 						oEntryDil.Pernr = pernr;
 
 						// begin of ycoskun yabancı dilleri silme
@@ -1664,7 +1727,7 @@ sap.ui.define([
 			//secilenin verileri tablodan alma
 			var vSinavTur = oSelectedItem.getCells()[0].getText();
 			var vPuan = oSelectedItem.getCells()[1].getText();
-			var vTavan = oSelectedItem.getCells()[2].getText();
+			var vTarih = oSelectedItem.getCells()[2].getText();
 
 			var oSinavTur = new sap.ui.commons.TextField({
 				value: vSinavTur,
@@ -1674,8 +1737,8 @@ sap.ui.define([
 				value: vPuan,
 				enabled: false
 			});
-			var oTavan = new sap.ui.commons.TextField({
-				value: vTavan,
+			var oTarih = new sap.ui.commons.TextField({
+				value: vTarih,
 				enabled: false
 			});
 
@@ -1689,8 +1752,8 @@ sap.ui.define([
 						text: "Puan"
 					}), oPuan,
 					new sap.ui.commons.Label({
-						text: "Tavan"
-					}), oTavan
+						text: "Sınav Tarihi"
+					}), oTarih
 				]
 			});
 
@@ -1706,7 +1769,7 @@ sap.ui.define([
 
 						oEntryZihin.SinavTuru = vSinavTur;
 						oEntryZihin.Puan = vPuan;
-						oEntryZihin.Tavan = vTavan;
+						oEntryZihin.SinavTarihi = vTarih;
 						oEntryZihin.Pernr = pernr;
 
 						// begin of ycoskun yabancı dilleri silme

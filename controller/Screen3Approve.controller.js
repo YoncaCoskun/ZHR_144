@@ -28,11 +28,11 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/core/routing/History", "sap
 			var perFilterDil = "Pernr eq '" + pernrFilter + "'";
 			var oLangModel = new sap.ui.model.json.JSONModel();
 			var langtable = that.getView().byId("idLanguageTableApprove3");
-			
+
 			var perAbFilterZB = "Pernr eq '" + pernrFilter + "'";
 			var oAbModel = new sap.ui.model.json.JSONModel();
 			var zbtable = that.getView().byId("idAbilityTableApprove3");
-			
+
 			var perFilterPD = "Pernr eq '" + pernrFilter + "'";
 			var pdtable = that.getView().byId("idPDTableApprove3");
 			var oPDModel = new sap.ui.model.json.JSONModel();
@@ -54,55 +54,56 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/core/routing/History", "sap
 
 			var clsAltGrp, skala, ucret, diger, okulTur, okulAd, egitim, adSoyad, dogumTarih, gecerTarih, sirket, tc, sicil;
 
-			pozisyon = sap.ui.getCore().cPozisyon;
-			perAlan = sap.ui.getCore().cPerAlan;
-			perAltAlan = sap.ui.getCore().cPerAltAlan;
-			isAlan = sap.ui.getCore().cIsAlan;
-			isAnahtar = sap.ui.getCore().cIsAnahtari;
-			orgBirim = sap.ui.getCore().cOrgBirim;
-			clsGrup = sap.ui.getCore().cClsGrup;
-			clsAltGrp = sap.ui.getCore().cClsAltGrp;
-			skala = sap.ui.getCore().cSkala;
-			ucret = sap.ui.getCore().cUcret;
-			diger = sap.ui.getCore().cDiger;
-			okulTur = sap.ui.getCore().cOkulTur;
-			okulAd = sap.ui.getCore().cOkulAd;
-			egitim = sap.ui.getCore().cEgitim;
-			adSoyad = sap.ui.getCore().cAdSoyad;
-			dogumTarih = sap.ui.getCore().cDogumTarih;
-			gecerTarih = sap.ui.getCore().cGecerTarih;
-			aracPrim = sap.ui.getCore().cAracPrim;
-			dilPrim = sap.ui.getCore().cDilPrim;
-			mevPrim = sap.ui.getCore().cMevPrim;
-			vekPrim = sap.ui.getCore().cVekPrim;
-			sirket = sap.ui.getCore().cSirket;
-			tc = sap.ui.getCore().cTC;
-			sicil = sap.ui.getCore().cPernr;
+					pozisyon = sap.ui.getCore().cPozisyon;
+					perAlan = sap.ui.getCore().cPerAlan;
+					perAltAlan = sap.ui.getCore().cPerAltAlan;
+					isAlan = sap.ui.getCore().cIsAlan;
+					isAnahtar = sap.ui.getCore().cIsAnahtari;
+					orgBirim = sap.ui.getCore().cOrgBirim;
+					clsGrup = sap.ui.getCore().cClsGrup;
+					clsAltGrp = sap.ui.getCore().cClsAltGrp;
+					skala = sap.ui.getCore().cSkala;
+					ucret = sap.ui.getCore().cUcret;
+					diger = sap.ui.getCore().cDiger;
+					okulTur = sap.ui.getCore().cOkulTur;
+					okulAd = sap.ui.getCore().cOkulAd;
+					egitim = sap.ui.getCore().cEgitim;
+					adSoyad = sap.ui.getCore().cAdSoyad;
+					dogumTarih = sap.ui.getCore().cDogumTarih;
+					gecerTarih = sap.ui.getCore().cGecerTarih;
+					aracPrim = sap.ui.getCore().cAracPrim;
+					dilPrim = sap.ui.getCore().cDilPrim;
+					mevPrim = sap.ui.getCore().cMevPrim;
+					vekPrim = sap.ui.getCore().cVekPrim;
+					sirket = sap.ui.getCore().cSirket;
+					tc = sap.ui.getCore().cTC;
+					sicil = sap.ui.getCore().cPernr;
 
-			this.getView().byId("adSoyadApprove3").setText(adSoyad);
-			this.getView().byId("dogumTarihApprove3").setText(this.vDate(dogumTarih));
-			this.getView().byId("gecerTarihApprove3").setText(this.vDate(gecerTarih));
-			this.getView().byId("posApprove3").setValue(pozisyon);
-			this.getView().byId("perAlanApprove3").setValue(perAlan);
-			this.getView().byId("perAltAlanApprove3").setValue(perAltAlan);
-			this.getView().byId("isAlanApprove3").setValue(isAlan);
-			this.getView().byId("isAnahApprove3").setValue(isAnahtar);
-			this.getView().byId("orgBrmApprove3").setValue(orgBirim);
-			this.getView().byId("clsGrpApprove3").setValue(clsGrup);
-			this.getView().byId("clsAltGrpApprove3").setValue(clsAltGrp);
-			this.getView().byId("skalaApprove3").setValue(skala);
-			this.getView().byId("ucretApprove3").setValue(ucret);
-			this.getView().byId("digerApprove3").setValue(diger);
-			this.getView().byId("okulTurApprove3").setValue(okulTur);
-			this.getView().byId("okulAdApprove3").setValue(okulAd);
-			this.getView().byId("egitimApprove3").setValue(egitim);
-			this.getView().byId("sirketApprove3").setValue(sirket);
-			this.getView().byId("dilPrimApprove3").setValue(dilPrim);
-			this.getView().byId("aracPrimApprove3").setValue(aracPrim);
-			this.getView().byId("mevPrimApprove3").setValue(mevPrim);
-			this.getView().byId("vekPrimApprove3").setValue(vekPrim);
-			this.getView().byId("tcApprove3").setValue(tc);
-			this.getView().byId("sicilApprove3").setValue(sicil);
+					this.getView().byId("adSoyadApprove3").setText(adSoyad);
+					this.getView().byId("dogumTarihApprove3").setText(this.vDate(dogumTarih));
+					this.getView().byId("gecerTarihApprove3").setText(this.vDate(gecerTarih));
+					this.getView().byId("posApprove3").setValue(pozisyon);
+					this.getView().byId("perAlanApprove3").setValue(perAlan);
+					this.getView().byId("perAltAlanApprove3").setValue(perAltAlan);
+					this.getView().byId("isAlanApprove3").setValue(isAlan);
+					this.getView().byId("isAnahApprove3").setValue(isAnahtar);
+					this.getView().byId("orgBrmApprove3").setValue(orgBirim);
+					this.getView().byId("clsGrpApprove3").setValue(clsGrup);
+					this.getView().byId("clsAltGrpApprove3").setValue(clsAltGrp);
+					this.getView().byId("skalaApprove3").setValue(skala);
+					this.getView().byId("ucretApprove3").setValue(ucret);
+					this.getView().byId("digerApprove3").setValue(diger);
+					this.getView().byId("okulTurApprove3").setValue(okulTur);
+					this.getView().byId("okulAdApprove3").setValue(okulAd);
+					this.getView().byId("egitimApprove3").setValue(egitim);
+					this.getView().byId("sirketApprove3").setValue(sirket);
+					this.getView().byId("dilPrimApprove3").setValue(dilPrim);
+					this.getView().byId("aracPrimApprove3").setValue(aracPrim);
+					this.getView().byId("mevPrimApprove3").setValue(mevPrim);
+					this.getView().byId("vekPrimApprove3").setValue(vekPrim);
+					this.getView().byId("tcApprove3").setValue(tc);
+					this.getView().byId("sicilApprove3").setValue(sicil);
+
 
 			//end of ycoskun
 
@@ -231,7 +232,6 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/core/routing/History", "sap
 				return value;
 			}
 		}
-
 
 	});
 

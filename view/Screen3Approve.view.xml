@@ -111,13 +111,19 @@
 																		<Text text="Puan"/>
 																	</Column>
 																	<Column width="12em">
-																		<Text text="Tavan"/>
+																		<Text text="Sınav Tarihi"/>
 																	</Column>
 																	<Column width="12em">
-																		<Text text="Yazılı"/>
+																		<Text text="Yazma"/>
 																	</Column>
 																	<Column width="12em">
-																		<Text text="Sözlü"/>
+																		<Text text="Okuma"/>
+																	</Column>
+																	<Column width="12em">
+																		<Text text="Dinleme"/>
+																	</Column>
+																	<Column width="12em">
+																		<Text text="Genel"/>
 																	</Column>
 																</columns>
 																<items>
@@ -126,9 +132,11 @@
 																			<Text text="{Spras}"/>
 																			<Text text="{Sptxt}"/>
 																			<Text text="{Puan}"/>
-																			<Text text="{Tavan}"/>
-																			<Text text="{Yazili}"/>
-																			<Text text="{Sozlu}"/>
+																			<Text text="{SinavTarihi}"/>
+																			<Text text="{Yazma}"/>
+																			<Text text="{Okuma}"/>
+																			<Text text="{Dinleme}"/>
+																			<Text text="{Genel}"/>
 																		</cells>
 																	</ColumnListItem>
 																</items>
@@ -150,7 +158,7 @@
 																		<Text text="Puan"/>
 																	</Column>
 																	<Column width="12em">
-																		<Text text="Tavan"/>
+																		<Text text="Sınav Tarihi"/>
 																	</Column>
 																</columns>
 																<items>
@@ -158,7 +166,7 @@
 																		<cells>
 																			<Text text="{SinavTuru}"/>
 																			<Text text="{Puan}"/>
-																			<Text text="{Tavan}"/>
+																			<Text text="{SinavTarihi}"/>
 																		</cells>
 																	</ColumnListItem>
 																</items>

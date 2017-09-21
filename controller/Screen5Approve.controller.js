@@ -16,8 +16,6 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/core/routing/History", "sap
 
 			// var sUrl = "#" + this.getOwnerComponent().getRouter().getURL("login");
 
-			// this.byId("link").setHref(sUrl);
-
 			var that = this;
 			var pernrFilter = sap.ui.getCore().cPernr;
 			var pronrFilter = sap.ui.getCore().cPronr;
