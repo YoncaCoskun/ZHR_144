@@ -36,6 +36,10 @@ sap.ui.define([
 	var cMevPrim;
 	var cVekPrim;
 	var cAyrilma;
+	var cCikisTip;
+	var cCikisNeden1;
+	var cCikisNeden2;
+	var cCikisNeden3;
 
 	return UIComponent.extend("ZHR_144.Component", {
 

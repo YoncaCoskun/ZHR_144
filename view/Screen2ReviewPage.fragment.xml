@@ -61,8 +61,14 @@
 			<form:SimpleForm title="3. Gerçek İşten Ayrılma" minWidth="1024" editable="false" layout="ResponsiveGridLayout">
 				<form:content>
 					<core:Title/>
-					<Label text="Gerçek Ayrılma Nedeni"/>
-					<Input class="inputForm" value="" id="ayrilmaGercekKodRew2" enabled="false"/>
+					<Label text="İşten Çıkış Tipi"/>
+					<Input class="inputForm" value="" id="gercekAyrilmaKod2Rew" enabled="false"/>
+					<Label text="Gerçek Ayrılma Nedeni 1"/>
+					<Input class="inputForm" value="" id="gercekNeden1Rew" enabled="false"/>
+					<Label text="Gerçek Ayrılma Nedeni 2"/>
+					<Input class="inputForm" value="" id="gercekNeden2Rew" enabled="false"/>
+					<Label text="Gerçek Ayrılma Nedeni 3"/>
+					<Input class="inputForm" value="" id="gercekNeden3Rew" enabled="false"/>
 					<core:Title/>
 				</form:content>
 			</form:SimpleForm>

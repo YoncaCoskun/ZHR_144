@@ -107,28 +107,28 @@
 															<Table growing="true" growingThreshold="10" id="idLanguageTable" inset="false" items="{ path: '/results', sorter: { path: 'Sptxt' } }"
 																mode="SingleSelectMaster">
 																<columns>
-																	<Column width="12em">
+																	<Column width="6em">
 																		<Text text="Dil Türü"/>
 																	</Column>
-																	<Column width="12em">
+																	<Column width="6em">
 																		<Text text="Yabancı Dil"/>
 																	</Column>
-																	<Column width="12em">
+																	<Column width="6em">
 																		<Text text="Puan"/>
 																	</Column>
-																	<Column width="12em">
+																	<Column width="8em">
 																		<Text text="Sınav Tarihi"/>
 																	</Column>
-																	<Column width="12em">
+																	<Column width="6em">
 																		<Text text="Yazma"/>
 																	</Column>
-																	<Column width="12em">
+																	<Column width="6em">
 																		<Text text="Okuma"/>
 																	</Column>
-																	<Column width="12em">
+																	<Column width="6em">
 																		<Text text="Dinleme"/>
 																	</Column>
-																	<Column width="12em">
+																	<Column width="6em">
 																		<Text text="Genel"/>
 																	</Column>
 																</columns>
@@ -172,7 +172,7 @@
 																		<cells>
 																			<Text text="{SinavTuru}"/>
 																			<Text text="{Puan}"/>
-																			<Text text="{SinavTarihi}"/>
+																			<Text text="{path: 'SinavTarihi' , formatter: '.vDatePdyear'}"/>
 																		</cells>
 																	</ColumnListItem>
 																</items>
@@ -214,7 +214,7 @@
 											<IconTabFilter id="IconTabBarFilterPRApprover" icon="sap-icon://hr-approval" iconColor="Default" count="" key="contentNotes">
 												<List id="listOnayci" showSeparators="None" inset="true" items="{onayciModel>/results}">
 													<StandardListItem id="fOnayciList" title="{onayciModel>OnayciAdi} {onayciModel>OnayciSoyadi}" description="{onayciModel>Decnm}"
-														info="{path: 'onayciModel>Decdt',formatter: '.vDatePdyear'}" icon="{path: 'onayciModel>Statu',formatter: '.statusIcon'}"
+														info="{path: 'onayciModel>Decdt',formatter: '.setOnayDate'}" icon="{path: 'onayciModel>Statu',formatter: '.statusIcon'}"
 														infoState="{path:'onayciModel>Statu', formatter: '.status'}"/>
 												</List>
 											</IconTabFilter>

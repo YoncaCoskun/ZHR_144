@@ -10,6 +10,8 @@ sap.ui.define([
 	"use strict";
 
 	var oModel = new sap.ui.model.odata.ODataModel("/sap/opu/odata/sap/ZHR_144_SRV_01");
+	var osJsonIstenCikisTipi = new sap.ui.model.json.JSONModel();
+	var osJsonCikisNedeni = new sap.ui.model.json.JSONModel();
 	var osJsonAyrilma = new sap.ui.model.json.JSONModel();
 
 	var WizardController = Controller.extend("ZHR_144.controller.Screen2", {
@@ -40,6 +42,24 @@ sap.ui.define([
 
 				function(oData) {
 					osJsonAyrilma.setData(oData);
+				},
+				function() {
+
+				});
+
+			oModel.read("/CikisTipiSet", null, null, true,
+
+				function(oData) {
+					osJsonIstenCikisTipi.setData(oData);
+				},
+				function() {
+
+				});
+
+			oModel.read("/CikisNedenSet", null, null, true,
+
+				function(oData) {
+					osJsonCikisNedeni.setData(oData);
 				},
 				function() {
 
@@ -207,6 +227,9 @@ sap.ui.define([
 			var entryvekPrim2 = "vekPrim2";
 			var entrydiger2 = "diger2";
 			var entryayrilmaKod2 = "ayrilmaKod2";
+			var entryCikisNedeni1 = "gercekNeden1";
+			var entryCikisNedeni2 = "gercekNeden2";
+			var entryCikisNedeni3 = "gercekNeden3";
 			var entryayrilmaGercekKod2 = "gercekAyrilmaKod2";
 
 			oEntry[entryfisKonu2] = that.getView().byId(entryfisKonu2).getValue();
@@ -234,6 +257,10 @@ sap.ui.define([
 			oEntry[entryayrilmaKod2] = that.getView().byId(entryayrilmaKod2).getValue();
 			oEntry[entryayrilmaGercekKod2] = that.getView().byId(entryayrilmaGercekKod2).getValue();
 
+			oEntry[entryCikisNedeni1] = that.getView().byId(entryCikisNedeni1).getValue();
+			oEntry[entryCikisNedeni2] = that.getView().byId(entryCikisNedeni2).getValue();
+			oEntry[entryCikisNedeni3] = that.getView().byId(entryCikisNedeni3).getValue();
+
 			//begin of ycoskun verilerin globalde tutulması islemleri
 			sap.ui.getCore().cPernr = that.getView().byId(entrySicilNo2).getValue();
 			sap.ui.getCore().cPronr = "02";
@@ -259,6 +286,10 @@ sap.ui.define([
 			sap.ui.getCore().cVekPrim = that.getView().byId(entryvekPrim2).getValue();
 			sap.ui.getCore().cDiger = that.getView().byId(entrydiger2).getValue();
 			sap.ui.getCore().cAyrilma = that.getView().byId(entryayrilmaKod2).getValue();
+			sap.ui.getCore().cCikisTip = that.getView().byId(entryayrilmaGercekKod2).getValue();
+			sap.ui.getCore().cCikisNeden1 = that.getView().byId(entryCikisNedeni1).getValue();
+			sap.ui.getCore().cCikisNeden2 = that.getView().byId(entryCikisNedeni2).getValue();
+			sap.ui.getCore().cCikisNeden3 = that.getView().byId(entryCikisNedeni3).getValue();
 
 			//end of ycoskun
 
@@ -289,7 +320,11 @@ sap.ui.define([
 			that.getElement("vekPrimRew2").setValue(oEntry.vekPrim2);
 			that.getElement("digerRew2").setValue(oEntry.diger2);
 			that.getElement("ayrilmaKodRew2").setValue(oEntry.ayrilmaKod2);
-			that.getElement("ayrilmaGercekKodRew2").setValue(oEntry.gercekAyrilmaKod2);
+			that.getElement("gercekAyrilmaKod2Rew").setValue(oEntry.gercekAyrilmaKod2);
+			
+			that.getElement("gercekNeden1Rew").setValue(oEntry.gercekNeden1);
+			that.getElement("gercekNeden2Rew").setValue(oEntry.gercekNeden2);
+			that.getElement("gercekNeden3Rew").setValue(oEntry.gercekNeden3);
 			//	that.getElement("ayrilmaAciklaRew2").setValue(oEntry.ayrilmaAcikla2);
 
 			this._oNavContainer.to(this._oWizardReviewPage);
@@ -460,6 +495,12 @@ sap.ui.define([
 			var entryucret2 = "ucret2";
 			var entrydiger2 = "diger2";
 			var entryayrilmaKod2 = "ayrilmaKod2";
+			
+			var entryCikisTipiKod2 = "gercekAyrilmaKod2";
+			var entryCikisNeden1 = "gercekNeden1";
+			var entryCikisNeden2 = "gercekNeden2";
+			var entryCikisNeden3 = "gercekNeden3";
+			
 			var entryDilPrim2 = "dilPrim2";
 			var entryAracPrim2 = "aracPrim2";
 			var entryMevPrim2 = "mevPrim2";
@@ -558,6 +599,23 @@ sap.ui.define([
 			var massg = that.getView().byId(entryayrilmaKod2).getValue();
 			var arrayMassg = massg.split(" / ");
 			oPersonelIstenCikis.Massg = arrayMassg[0];
+			
+			var cikis_tipi = that.getView().byId(entryCikisTipiKod2).getValue();
+			var arrayCikisTipi = cikis_tipi.split(" / ");
+			oPersonelIstenCikis.CikisTipi = arrayCikisTipi[0];
+			
+			var cikis_neden1 = that.getView().byId(entryCikisNeden1).getValue();
+			var arrayCikisNeden1 = cikis_neden1.split(" / ");
+			oPersonelIstenCikis.CikisNeden1 = arrayCikisNeden1[0];
+			
+			var cikis_neden2 = that.getView().byId(entryCikisNeden2).getValue();
+			var arrayCikisNeden2 = cikis_neden2.split(" / ");
+			oPersonelIstenCikis.CikisNeden2 = arrayCikisNeden2[0];
+			
+			var cikis_neden3 = that.getView().byId(entryCikisNeden3).getValue();
+			var arrayCikisNeden3 = cikis_neden3.split(" / ");
+			oPersonelIstenCikis.CikisNeden3 = arrayCikisNeden3[0];
+			
 			//end of ycoskun
 			oPersonelIstenCikis.Dilpr = that.getView().byId(entryDilPrim2).getValue();
 			oPersonelIstenCikis.Arcpr = that.getView().byId(entryAracPrim2).getValue();
@@ -638,6 +696,168 @@ sap.ui.define([
 				this._valueHelpSelectDialogAyrilma.setModel(osJsonAyrilma);
 			}
 			this._valueHelpSelectDialogAyrilma.open();
+		},
+		handleValueHelpAyrilmaTip: function() {
+			var that = this;
+			var handleClose = function(oEvent) {
+				var oSelectedItem = oEvent.getParameter("selectedItem");
+				if (oSelectedItem) {
+					that.getView().byId("gercekAyrilmaKod2").setValue(oSelectedItem.getDescription() + " / " + oSelectedItem.getTitle());
+					that.additionalInfoValidation();
+				}
+			};
+			if (!this._valueHelpSelectDialogAyrilmaTip) {
+				this._valueHelpSelectDialogAyrilmaTip = new sap.m.SelectDialog("valueHelpSelectDialogAyrilmaTip", {
+					title: "İşten Çıkış Tipi",
+					items: {
+						path: "/results",
+						sorter: "ZztermintypTxt",
+						template: new sap.m.StandardListItem({
+							title: "{ZztermintypTxt}",
+							description: "{ZzterminTyp}",
+							active: true
+						})
+					},
+					search: function(oEvent) {
+						var sValue = oEvent.getParameter("value");
+						var oFilter = new sap.ui.model.Filter(
+							"ZztermintypTxt",
+							sap.ui.model.FilterOperator.Contains, sValue
+						);
+						oEvent.getSource().getBinding("items").filter([oFilter]);
+					},
+					confirm: handleClose
+				});
+
+				this._valueHelpSelectDialogAyrilmaTip.setModel(osJsonIstenCikisTipi);
+
+			} else {
+				this._valueHelpSelectDialogAyrilmaTip.setModel(osJsonIstenCikisTipi);
+			}
+			this._valueHelpSelectDialogAyrilmaTip.open();
+		},
+		handleValueHelpNeden1: function() {
+
+			var that = this;
+			var handleClose = function(oEvent) {
+				var oSelectedItem = oEvent.getParameter("selectedItem");
+				if (oSelectedItem) {
+					that.getView().byId("gercekNeden1").setValue(oSelectedItem.getDescription() + " / " + oSelectedItem.getTitle());
+					that.additionalInfoValidation();
+				}
+			};
+			if (!this._valueHelpSelectDialogAyrilmaNeden1) {
+				this._valueHelpSelectDialogAyrilmaNeden1 = new sap.m.SelectDialog("valueHelpSelectDialogAyrilmaNeden1", {
+					title: "Gerçek Ayrılma Nedeni",
+					items: {
+						path: "/results",
+						sorter: "ZztermincodeTxt",
+						template: new sap.m.StandardListItem({
+							title: "{ZztermincodeTxt}",
+							description: "{ZzterminCode}",
+							active: true
+						})
+					},
+					search: function(oEvent) {
+						var sValue = oEvent.getParameter("value");
+						var oFilter = new sap.ui.model.Filter(
+							"ZztermincodeTxt",
+							sap.ui.model.FilterOperator.Contains, sValue
+						);
+						oEvent.getSource().getBinding("items").filter([oFilter]);
+					},
+					confirm: handleClose
+				});
+
+				this._valueHelpSelectDialogAyrilmaNeden1.setModel(osJsonCikisNedeni);
+
+			} else {
+				this._valueHelpSelectDialogAyrilmaNeden1.setModel(osJsonCikisNedeni);
+			}
+			this._valueHelpSelectDialogAyrilmaNeden1.open();
+
+		},
+		handleValueHelpNeden2: function() {
+
+			var that = this;
+			var handleClose = function(oEvent) {
+				var oSelectedItem = oEvent.getParameter("selectedItem");
+				if (oSelectedItem) {
+					that.getView().byId("gercekNeden2").setValue(oSelectedItem.getDescription() + " / " + oSelectedItem.getTitle());
+					that.additionalInfoValidation();
+				}
+			};
+			if (!this._valueHelpSelectDialogAyrilmaNeden2) {
+				this._valueHelpSelectDialogAyrilmaNeden2 = new sap.m.SelectDialog("valueHelpSelectDialogAyrilmaNeden2", {
+					title: "Gerçek Ayrılma Nedeni",
+					items: {
+						path: "/results",
+						sorter: "ZztermincodeTxt",
+						template: new sap.m.StandardListItem({
+							title: "{ZztermincodeTxt}",
+							description: "{ZzterminCode}",
+							active: true
+						})
+					},
+					search: function(oEvent) {
+						var sValue = oEvent.getParameter("value");
+						var oFilter = new sap.ui.model.Filter(
+							"ZztermincodeTxt",
+							sap.ui.model.FilterOperator.Contains, sValue
+						);
+						oEvent.getSource().getBinding("items").filter([oFilter]);
+					},
+					confirm: handleClose
+				});
+
+				this._valueHelpSelectDialogAyrilmaNeden2.setModel(osJsonCikisNedeni);
+
+			} else {
+				this._valueHelpSelectDialogAyrilmaNeden2.setModel(osJsonCikisNedeni);
+			}
+			this._valueHelpSelectDialogAyrilmaNeden2.open();
+
+		},
+		handleValueHelpNeden3: function() {
+
+			var that = this;
+			var handleClose = function(oEvent) {
+				var oSelectedItem = oEvent.getParameter("selectedItem");
+				if (oSelectedItem) {
+					that.getView().byId("gercekNeden3").setValue(oSelectedItem.getDescription() + " / " + oSelectedItem.getTitle());
+					that.additionalInfoValidation();
+				}
+			};
+			if (!this._valueHelpSelectDialogAyrilmaNeden3) {
+				this._valueHelpSelectDialogAyrilmaNeden3 = new sap.m.SelectDialog("valueHelpSelectDialogAyrilmaNeden3", {
+					title: "Gerçek Ayrılma Nedeni",
+					items: {
+						path: "/results",
+						sorter: "ZztermincodeTxt",
+						template: new sap.m.StandardListItem({
+							title: "{ZztermincodeTxt}",
+							description: "{ZzterminCode}",
+							active: true
+						})
+					},
+					search: function(oEvent) {
+						var sValue = oEvent.getParameter("value");
+						var oFilter = new sap.ui.model.Filter(
+							"ZztermincodeTxt",
+							sap.ui.model.FilterOperator.Contains, sValue
+						);
+						oEvent.getSource().getBinding("items").filter([oFilter]);
+					},
+					confirm: handleClose
+				});
+
+				this._valueHelpSelectDialogAyrilmaNeden3.setModel(osJsonCikisNedeni);
+
+			} else {
+				this._valueHelpSelectDialogAyrilmaNeden3.setModel(osJsonCikisNedeni);
+			}
+			this._valueHelpSelectDialogAyrilmaNeden3.open();
+
 		}
 
 	});

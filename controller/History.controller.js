@@ -379,7 +379,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/core/routing/History", "sap
 							vekPrim = oData.Vklpr;
 							sirket = oData.Bukrs;
 							tc = oData.Tckno;
-							sicil = firstPronr;
+							sicil = firstPernr;
 							fisKonu = "Terfi";
 
 							that.getView().byId("fisApprove").setText(fisKonu);
@@ -514,7 +514,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/core/routing/History", "sap
 							vekPrim = oData.Vklpr;
 							sirket = oData.Bukrs;
 							tc = oData.Tckno;
-							sicil = firstPronr;
+							sicil = firstPernr;
 							fisKonu = "Nakil";
 
 							that.getView().byId("fisApprove").setText(fisKonu);
@@ -644,7 +644,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/core/routing/History", "sap
 							vekPrim = oData.Vklpr;
 							sirket = oData.Bukrs;
 							tc = oData.Tckno;
-							sicil = firstPronr;
+							sicil = firstPernr;
 
 							fisKonu = "Görev Değişikliği";
 
@@ -775,7 +775,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/core/routing/History", "sap
 							vekPrim = oData.Vklpr;
 							sirket = oData.Bukrs;
 							tc = oData.Tckno;
-							sicil = firstPronr;
+							sicil = firstPernr;
 							fisKonu = "Ücret Değişikliği";
 
 							that.getView().byId("fisApprove").setText(fisKonu);
@@ -1910,6 +1910,13 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/core/routing/History", "sap
 				tarih = gun + "." + ay + "." + yil;
 			}
 			return tarih;
+		},
+		setOnayDate:function(value){
+					var oDateFormat = sap.ui.core.format.DateFormat.getDateTimeInstance({
+						pattern: "dd.MM.yyyy"
+					});
+					var tarih = oDateFormat.format(new Date(value));
+					return tarih;
 		}
 	});
 
