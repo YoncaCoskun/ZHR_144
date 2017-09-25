@@ -49,7 +49,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/core/routing/History", "sap
 		onAfterRendering: function() {
 			var that = this;
 			var pozisyon, perAlan, perAltAlan, isAlan, isAnahtar, orgBirim, clsGrup, aracPrim, dilPrim, mevPrim, vekPrim, fisKonu;
-			var clsAltGrp, skala, ucret, diger, okulTur, okulAd, egitim, adSoyad, dogumTarih, gecerTarih, sirket, tc, sicil;
+			var clsAltGrp, skala, ucret, diger, okulTur, okulAd, egitim, adSoyad, dogumTarih, gecerTarih, sirket, tc, sicil, ayrilma;
 
 			var oLangModel = new sap.ui.model.json.JSONModel();
 			var perFilter = "Pernr eq '" + firstPernr + "'";
@@ -76,8 +76,8 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/core/routing/History", "sap
 				if (firstPronr === "01") {
 					oModel.read("/ZHRTalepPersonelBilgiSet('" + firstPernr + "')", null, null, true,
 						function(oData) {
-							pozisyon = oData.Plans;
-							perAlan = oData.Werks;
+							//pozisyon = oData.Plans;
+							/*perAlan = oData.Werks;
 							perAltAlan = oData.Btrtl;
 							isAlan = oData.Gsber;
 							isAnahtar = oData.Stell;
@@ -90,6 +90,32 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/core/routing/History", "sap
 							okulTur = oData.Slart;
 							okulAd = oData.Insti;
 							egitim = oData.Fach1;
+							adSoyad = oData.Ename;
+							dogumTarih = oData.Gbdat;
+							gecerTarih = oData.Begda;
+							aracPrim = "";
+							dilPrim = "";
+							mevPrim = "";
+							vekPrim = "";
+							sirket = "";
+							tc = "";
+							sicil = "";
+							fisKonu = "İşe Alım";*/
+
+							pozisyon = oData.Stext;
+							perAlan = oData.Pbtxt;
+							perAltAlan = oData.Btext;
+							isAlan = oData.Gtext;
+							isAnahtar = oData.StellTxt;
+							orgBirim = oData.OrgehTxt;
+							clsGrup = oData.Psgtext;
+							clsAltGrp = oData.Psktext;
+							skala = oData.Trfgr;
+							ucret = oData.Bet01;
+							diger = oData.Diger;
+							okulTur = oData.SlartTxt;
+							okulAd = oData.Insti;
+							egitim = oData.Ftext;
 							adSoyad = oData.Ename;
 							dogumTarih = oData.Gbdat;
 							gecerTarih = oData.Begda;
@@ -127,6 +153,31 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/core/routing/History", "sap
 							that.getView().byId("vekPrimApprove").setValue(vekPrim);
 							that.getView().byId("tcApprove").setValue(tc);
 							that.getView().byId("sicilApprove").setValue(sicil);
+
+							//begin of ycoskun visible false olacaklar 
+							that.getView().byId("labelSicil").setVisible(false);
+							that.getView().byId("sicilApprove").setVisible(false);
+							that.getView().byId("labelDil").setVisible(false);
+							that.getView().byId("dilPrimApprove").setVisible(false);
+							that.getView().byId("labelArac").setVisible(false);
+							that.getView().byId("aracPrimApprove").setVisible(false);
+							that.getView().byId("labelMev").setVisible(false);
+							that.getView().byId("mevPrimApprove").setVisible(false);
+							that.getView().byId("labelVek").setVisible(false);
+							that.getView().byId("vekPrimApprove").setVisible(false);
+							that.getView().byId("labelTC").setVisible(false);
+							that.getView().byId("tcApprove").setVisible(false);
+							that.getView().byId("labelSirket").setVisible(false);
+							that.getView().byId("sirketApprove").setVisible(false);
+
+							that.getView().byId("labelOkulTur").setVisible(true);
+							that.getView().byId("okulTurApprove").setVisible(true);
+							that.getView().byId("labelOkulAd").setVisible(true);
+							that.getView().byId("okulAdApprove").setVisible(true);
+							that.getView().byId("labelEgitim").setVisible(true);
+							that.getView().byId("egitimApprove").setVisible(true);
+							that.getView().byId("labelAyrilma").setVisible(false);
+							that.getView().byId("ayrilmaApprove").setVisible(false);
 
 							that.getView().byId("iconTabTable").setVisible(true);
 							that.getView().byId("idPDTable3").setVisible(false);
@@ -179,14 +230,40 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/core/routing/History", "sap
 				} else if (firstPronr === "02") {
 					oModel.read("/ZHRIstenCikisSet('" + firstPernr + "')", null, null, true,
 						function(oData) {
-							pozisyon = oData.Plans;
-							perAlan = oData.Werks;
-							perAltAlan = oData.Btrtl;
-							isAlan = oData.Gsber;
-							isAnahtar = oData.Stell;
-							orgBirim = oData.Orgeh;
-							clsGrup = oData.Persg;
-							clsAltGrp = oData.Persk;
+							/*		pozisyon = oData.Plans;
+									perAlan = oData.Werks;
+									perAltAlan = oData.Btrtl;
+									isAlan = oData.Gsber;
+									isAnahtar = oData.Stell;
+									orgBirim = oData.Orgeh;
+									clsGrup = oData.Persg;
+									clsAltGrp = oData.Persk;
+									skala = oData.Trfgr;
+									ucret = oData.Ucret;
+									diger = oData.Diger;
+									okulTur = "";
+									okulAd = "";
+									egitim = "";
+									adSoyad = oData.Ename;
+									dogumTarih = oData.Gbdat;
+									gecerTarih = oData.Begda;
+									aracPrim = oData.Arcpr;
+									dilPrim = oData.Dilpr;
+									mevPrim = oData.Mvspr;
+									vekPrim = oData.Vklpr;
+									sirket = oData.Bukrs;
+									tc = oData.Tckno;
+									sicil = selectPernr;
+									fisKonu = "İşten Çıkış";*/
+
+							pozisyon = oData.Stext;
+							perAlan = oData.Pbtxt;
+							perAltAlan = oData.Btext;
+							isAlan = oData.Gtext;
+							isAnahtar = oData.StellTxt;
+							orgBirim = oData.OrgehTxt;
+							clsGrup = oData.Psgtext;
+							clsAltGrp = oData.Psktext;
 							skala = oData.Trfgr;
 							ucret = oData.Ucret;
 							diger = oData.Diger;
@@ -202,8 +279,9 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/core/routing/History", "sap
 							vekPrim = oData.Vklpr;
 							sirket = oData.Bukrs;
 							tc = oData.Tckno;
-							sicil = selectPernr;
+							sicil = firstPernr;
 							fisKonu = "İşten Çıkış";
+							ayrilma = oData.Mgtxt;
 
 							that.getView().byId("fisApprove").setText(fisKonu);
 							that.getView().byId("adSoyadApprove").setText(adSoyad);
@@ -230,6 +308,32 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/core/routing/History", "sap
 							that.getView().byId("vekPrimApprove").setValue(vekPrim);
 							that.getView().byId("tcApprove").setValue(tc);
 							that.getView().byId("sicilApprove").setValue(sicil);
+							that.getView().byId("ayrilmaApprove").setValue(ayrilma);
+
+							//begin of ycoskun visible yapma
+							that.getView().byId("labelSicil").setVisible(true);
+							that.getView().byId("sicilApprove").setVisible(true);
+							that.getView().byId("labelDil").setVisible(true);
+							that.getView().byId("dilPrimApprove").setVisible(true);
+							that.getView().byId("labelArac").setVisible(true);
+							that.getView().byId("aracPrimApprove").setVisible(true);
+							that.getView().byId("labelMev").setVisible(true);
+							that.getView().byId("mevPrimApprove").setVisible(true);
+							that.getView().byId("labelVek").setVisible(true);
+							that.getView().byId("vekPrimApprove").setVisible(true);
+							that.getView().byId("labelTC").setVisible(true);
+							that.getView().byId("tcApprove").setVisible(true);
+							that.getView().byId("labelSirket").setVisible(true);
+							that.getView().byId("sirketApprove").setVisible(true);
+							that.getView().byId("labelAyrilma").setVisible(true);
+							that.getView().byId("ayrilmaApprove").setVisible(true);
+
+							that.getView().byId("labelOkulTur").setVisible(false);
+							that.getView().byId("okulTurApprove").setVisible(false);
+							that.getView().byId("labelOkulAd").setVisible(false);
+							that.getView().byId("okulAdApprove").setVisible(false);
+							that.getView().byId("labelEgitim").setVisible(false);
+							that.getView().byId("egitimApprove").setVisible(false);
 
 							that.getView().byId("iconTabTable").setVisible(false);
 							that.getView().byId("idPDTable3").setVisible(false);
@@ -252,20 +356,20 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/core/routing/History", "sap
 				} else if (firstPronr === "03") {
 					oModel.read("/ZHRTerfiSet('" + firstPernr + "')", null, null, true,
 						function(oData) {
-							pozisyon = oData.Plans;
-							perAlan = oData.Werks;
-							perAltAlan = oData.Btrtl;
-							isAlan = oData.Gsber;
-							isAnahtar = oData.Stell;
-							orgBirim = oData.Orgeh;
-							clsGrup = oData.Persg;
-							clsAltGrp = oData.Persk;
+							pozisyon = oData.Stext;
+							perAlan = oData.Pbtxt;
+							perAltAlan = oData.Btext;
+							isAlan = oData.Gtext;
+							isAnahtar = oData.StellTxt;
+							orgBirim = oData.OrgehTxt;
+							clsGrup = oData.Psgtext;
+							clsAltGrp = oData.Psktext;
 							skala = oData.Trfgr;
 							ucret = oData.Ucret;
 							diger = oData.Diger;
-							okulTur = oData.Slart;
+							okulTur = oData.SlartTxt;
 							okulAd = oData.Insti;
-							egitim = oData.Fach1;
+							egitim = oData.Ftext;
 							adSoyad = oData.Ename;
 							dogumTarih = oData.Gbdat;
 							gecerTarih = oData.Begda;
@@ -275,7 +379,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/core/routing/History", "sap
 							vekPrim = oData.Vklpr;
 							sirket = oData.Bukrs;
 							tc = oData.Tckno;
-							sicil = selectPernr;
+							sicil = firstPronr;
 							fisKonu = "Terfi";
 
 							that.getView().byId("fisApprove").setText(fisKonu);
@@ -303,6 +407,31 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/core/routing/History", "sap
 							that.getView().byId("vekPrimApprove").setValue(vekPrim);
 							that.getView().byId("tcApprove").setValue(tc);
 							that.getView().byId("sicilApprove").setValue(sicil);
+
+							//begin of ycoskun visible yapma
+							that.getView().byId("labelSicil").setVisible(true);
+							that.getView().byId("sicilApprove").setVisible(true);
+							that.getView().byId("labelDil").setVisible(true);
+							that.getView().byId("dilPrimApprove").setVisible(true);
+							that.getView().byId("labelArac").setVisible(true);
+							that.getView().byId("aracPrimApprove").setVisible(true);
+							that.getView().byId("labelMev").setVisible(true);
+							that.getView().byId("mevPrimApprove").setVisible(true);
+							that.getView().byId("labelVek").setVisible(true);
+							that.getView().byId("vekPrimApprove").setVisible(true);
+							that.getView().byId("labelTC").setVisible(true);
+							that.getView().byId("tcApprove").setVisible(true);
+							that.getView().byId("labelSirket").setVisible(true);
+							that.getView().byId("sirketApprove").setVisible(true);
+
+							that.getView().byId("labelOkulTur").setVisible(true);
+							that.getView().byId("okulTurApprove").setVisible(true);
+							that.getView().byId("labelOkulAd").setVisible(true);
+							that.getView().byId("okulAdApprove").setVisible(true);
+							that.getView().byId("labelEgitim").setVisible(true);
+							that.getView().byId("egitimApprove").setVisible(true);
+							that.getView().byId("labelAyrilma").setVisible(false);
+							that.getView().byId("ayrilmaApprove").setVisible(false);
 
 							that.getView().byId("iconTabTable").setVisible(true);
 							that.getView().byId("idPDTable3").setVisible(true);
@@ -362,20 +491,20 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/core/routing/History", "sap
 				} else if (firstPronr === "04") {
 					oModel.read("/ZHRTerfiSet('" + firstPernr + "')", null, null, true,
 						function(oData) {
-							pozisyon = oData.Plans;
-							perAlan = oData.Werks;
-							perAltAlan = oData.Btrtl;
-							isAlan = oData.Gsber;
-							isAnahtar = oData.Stell;
-							orgBirim = oData.Orgeh;
-							clsGrup = oData.Persg;
-							clsAltGrp = oData.Persk;
+							pozisyon = oData.Stext;
+							perAlan = oData.Pbtxt;
+							perAltAlan = oData.Btext;
+							isAlan = oData.Gtext;
+							isAnahtar = oData.StellTxt;
+							orgBirim = oData.OrgehTxt;
+							clsGrup = oData.Psgtext;
+							clsAltGrp = oData.Psktext;
 							skala = oData.Trfgr;
 							ucret = oData.Ucret;
 							diger = oData.Diger;
-							okulTur = oData.Slart;
+							okulTur = oData.SlartTxt;
 							okulAd = oData.Insti;
-							egitim = oData.Fach1;
+							egitim = oData.Ftext;
 							adSoyad = oData.Ename;
 							dogumTarih = oData.Gbdat;
 							gecerTarih = oData.Begda;
@@ -385,7 +514,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/core/routing/History", "sap
 							vekPrim = oData.Vklpr;
 							sirket = oData.Bukrs;
 							tc = oData.Tckno;
-							sicil = selectPernr;
+							sicil = firstPronr;
 							fisKonu = "Nakil";
 
 							that.getView().byId("fisApprove").setText(fisKonu);
@@ -413,6 +542,29 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/core/routing/History", "sap
 							that.getView().byId("vekPrimApprove").setValue(vekPrim);
 							that.getView().byId("tcApprove").setValue(tc);
 							that.getView().byId("sicilApprove").setValue(sicil);
+
+							//begin of ycoskun visible yapma
+							that.getView().byId("labelSicil").setVisible(true);
+							that.getView().byId("sicilApprove").setVisible(true);
+							that.getView().byId("labelDil").setVisible(true);
+							that.getView().byId("dilPrimApprove").setVisible(true);
+							that.getView().byId("labelArac").setVisible(true);
+							that.getView().byId("aracPrimApprove").setVisible(true);
+							that.getView().byId("labelMev").setVisible(true);
+							that.getView().byId("mevPrimApprove").setVisible(true);
+							that.getView().byId("labelVek").setVisible(true);
+							that.getView().byId("vekPrimApprove").setVisible(true);
+							that.getView().byId("labelTC").setVisible(true);
+							that.getView().byId("tcApprove").setVisible(true);
+							that.getView().byId("labelSirket").setVisible(true);
+							that.getView().byId("sirketApprove").setVisible(true);
+
+							that.getView().byId("labelOkulTur").setVisible(true);
+							that.getView().byId("okulTurApprove").setVisible(true);
+							that.getView().byId("labelOkulAd").setVisible(true);
+							that.getView().byId("okulAdApprove").setVisible(true);
+							that.getView().byId("labelEgitim").setVisible(true);
+							that.getView().byId("egitimApprove").setVisible(true);
 
 							that.getView().byId("iconTabTable").setVisible(true);
 							that.getView().byId("idPDTable3").setVisible(true);
@@ -469,20 +621,20 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/core/routing/History", "sap
 				} else if (firstPronr === "05") {
 					oModel.read("/ZHRTerfiSet('" + firstPernr + "')", null, null, true,
 						function(oData) {
-							pozisyon = oData.Plans;
-							perAlan = oData.Werks;
-							perAltAlan = oData.Btrtl;
-							isAlan = oData.Gsber;
-							isAnahtar = oData.Stell;
-							orgBirim = oData.Orgeh;
-							clsGrup = oData.Persg;
-							clsAltGrp = oData.Persk;
+							pozisyon = oData.Stext;
+							perAlan = oData.Pbtxt;
+							perAltAlan = oData.Btext;
+							isAlan = oData.Gtext;
+							isAnahtar = oData.StellTxt;
+							orgBirim = oData.OrgehTxt;
+							clsGrup = oData.Psgtext;
+							clsAltGrp = oData.Psktext;
 							skala = oData.Trfgr;
 							ucret = oData.Ucret;
 							diger = oData.Diger;
-							okulTur = oData.Slart;
+							okulTur = oData.SlartTxt;
 							okulAd = oData.Insti;
-							egitim = oData.Fach1;
+							egitim = oData.Ftext;
 							adSoyad = oData.Ename;
 							dogumTarih = oData.Gbdat;
 							gecerTarih = oData.Begda;
@@ -492,7 +644,8 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/core/routing/History", "sap
 							vekPrim = oData.Vklpr;
 							sirket = oData.Bukrs;
 							tc = oData.Tckno;
-							sicil = selectPernr;
+							sicil = firstPronr;
+
 							fisKonu = "Görev Değişikliği";
 
 							that.getView().byId("fisApprove").setText(fisKonu);
@@ -520,6 +673,29 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/core/routing/History", "sap
 							that.getView().byId("vekPrimApprove").setValue(vekPrim);
 							that.getView().byId("tcApprove").setValue(tc);
 							that.getView().byId("sicilApprove").setValue(sicil);
+
+							//begin of ycoskun visible yapma
+							that.getView().byId("labelSicil").setVisible(true);
+							that.getView().byId("sicilApprove").setVisible(true);
+							that.getView().byId("labelDil").setVisible(true);
+							that.getView().byId("dilPrimApprove").setVisible(true);
+							that.getView().byId("labelArac").setVisible(true);
+							that.getView().byId("aracPrimApprove").setVisible(true);
+							that.getView().byId("labelMev").setVisible(true);
+							that.getView().byId("mevPrimApprove").setVisible(true);
+							that.getView().byId("labelVek").setVisible(true);
+							that.getView().byId("vekPrimApprove").setVisible(true);
+							that.getView().byId("labelTC").setVisible(true);
+							that.getView().byId("tcApprove").setVisible(true);
+							that.getView().byId("labelSirket").setVisible(true);
+							that.getView().byId("sirketApprove").setVisible(true);
+
+							that.getView().byId("labelOkulTur").setVisible(true);
+							that.getView().byId("okulTurApprove").setVisible(true);
+							that.getView().byId("labelOkulAd").setVisible(true);
+							that.getView().byId("okulAdApprove").setVisible(true);
+							that.getView().byId("labelEgitim").setVisible(true);
+							that.getView().byId("egitimApprove").setVisible(true);
 
 							that.getView().byId("iconTabTable").setVisible(true);
 							that.getView().byId("idPDTable3").setVisible(true);
@@ -576,20 +752,20 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/core/routing/History", "sap
 				} else if (firstPronr === "06") {
 					oModel.read("/ZHRTerfiSet('" + firstPernr + "')", null, null, true,
 						function(oData) {
-							pozisyon = oData.Plans;
-							perAlan = oData.Werks;
-							perAltAlan = oData.Btrtl;
-							isAlan = oData.Gsber;
-							isAnahtar = oData.Stell;
-							orgBirim = oData.Orgeh;
-							clsGrup = oData.Persg;
-							clsAltGrp = oData.Persk;
+							pozisyon = oData.Stext;
+							perAlan = oData.Pbtxt;
+							perAltAlan = oData.Btext;
+							isAlan = oData.Gtext;
+							isAnahtar = oData.StellTxt;
+							orgBirim = oData.OrgehTxt;
+							clsGrup = oData.Psgtext;
+							clsAltGrp = oData.Psktext;
 							skala = oData.Trfgr;
 							ucret = oData.Ucret;
 							diger = oData.Diger;
-							okulTur = oData.Slart;
+							okulTur = oData.SlartTxt;
 							okulAd = oData.Insti;
-							egitim = oData.Fach1;
+							egitim = oData.Ftext;
 							adSoyad = oData.Ename;
 							dogumTarih = oData.Gbdat;
 							gecerTarih = oData.Begda;
@@ -599,7 +775,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/core/routing/History", "sap
 							vekPrim = oData.Vklpr;
 							sirket = oData.Bukrs;
 							tc = oData.Tckno;
-							sicil = selectPernr;
+							sicil = firstPronr;
 							fisKonu = "Ücret Değişikliği";
 
 							that.getView().byId("fisApprove").setText(fisKonu);
@@ -627,6 +803,29 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/core/routing/History", "sap
 							that.getView().byId("vekPrimApprove").setValue(vekPrim);
 							that.getView().byId("tcApprove").setValue(tc);
 							that.getView().byId("sicilApprove").setValue(sicil);
+
+							//begin of ycoskun visible yapma
+							that.getView().byId("labelSicil").setVisible(true);
+							that.getView().byId("sicilApprove").setVisible(true);
+							that.getView().byId("labelDil").setVisible(true);
+							that.getView().byId("dilPrimApprove").setVisible(true);
+							that.getView().byId("labelArac").setVisible(true);
+							that.getView().byId("aracPrimApprove").setVisible(true);
+							that.getView().byId("labelMev").setVisible(true);
+							that.getView().byId("mevPrimApprove").setVisible(true);
+							that.getView().byId("labelVek").setVisible(true);
+							that.getView().byId("vekPrimApprove").setVisible(true);
+							that.getView().byId("labelTC").setVisible(true);
+							that.getView().byId("tcApprove").setVisible(true);
+							that.getView().byId("labelSirket").setVisible(true);
+							that.getView().byId("sirketApprove").setVisible(true);
+
+							that.getView().byId("labelOkulTur").setVisible(true);
+							that.getView().byId("okulTurApprove").setVisible(true);
+							that.getView().byId("labelOkulAd").setVisible(true);
+							that.getView().byId("okulAdApprove").setVisible(true);
+							that.getView().byId("labelEgitim").setVisible(true);
+							that.getView().byId("egitimApprove").setVisible(true);
 
 							that.getView().byId("iconTabTable").setVisible(true);
 							that.getView().byId("idPDTable3").setVisible(true);
@@ -703,7 +902,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/core/routing/History", "sap
 
 			//işe alım için tıklanan personelin information alanına bilgilerin set edilmesi		
 			var pozisyon, perAlan, perAltAlan, isAlan, isAnahtar, orgBirim, clsGrup, aracPrim, dilPrim, mevPrim, vekPrim, fisKonu;
-			var clsAltGrp, skala, ucret, diger, okulTur, okulAd, egitim, adSoyad, dogumTarih, gecerTarih, sirket, tc, sicil;
+			var clsAltGrp, skala, ucret, diger, okulTur, okulAd, egitim, adSoyad, dogumTarih, gecerTarih, sirket, tc, sicil, ayrilma;
 			var oJPerModel = new sap.ui.model.json.JSONModel();
 			var oLangModel = new sap.ui.model.json.JSONModel();
 			var perFilter = "Pernr eq '" + selectPernr + "'";
@@ -722,20 +921,45 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/core/routing/History", "sap
 				oModel.read("/ZHRTalepPersonelBilgiSet('" + selectPernr + "')", null, null, true,
 					function(oData) {
 						oJPerModel.setData(oData);
-						pozisyon = oData.Plans;
-						perAlan = oData.Werks;
-						perAltAlan = oData.Btrtl;
-						isAlan = oData.Gsber;
-						isAnahtar = oData.Stell;
-						orgBirim = oData.Orgeh;
-						clsGrup = oData.Persg;
-						clsAltGrp = oData.Persk;
+						/*	pozisyon = oData.Plans;
+							perAlan = oData.Werks;
+							perAltAlan = oData.Btrtl;
+							isAlan = oData.Gsber;
+							isAnahtar = oData.Stell;
+							orgBirim = oData.Orgeh;
+							clsGrup = oData.Persg;
+							clsAltGrp = oData.Persk;
+							skala = oData.Trfgr;
+							ucret = oData.Bet01;
+							diger = oData.Diger;
+							okulTur = oData.Slart;
+							okulAd = oData.Insti;
+							egitim = oData.Fach1;
+							adSoyad = oData.Ename;
+							dogumTarih = oData.Gbdat;
+							gecerTarih = oData.Begda;
+							aracPrim = "";
+							dilPrim = "";
+							mevPrim = "";
+							vekPrim = "";
+							sirket = "";
+							tc = "";
+							sicil = "";
+							fisKonu = "İşe Alım";*/
+						pozisyon = oData.Stext;
+						perAlan = oData.Pbtxt;
+						perAltAlan = oData.Btext;
+						isAlan = oData.Gtext;
+						isAnahtar = oData.StellTxt;
+						orgBirim = oData.OrgehTxt;
+						clsGrup = oData.Psgtext;
+						clsAltGrp = oData.Psktext;
 						skala = oData.Trfgr;
 						ucret = oData.Bet01;
 						diger = oData.Diger;
-						okulTur = oData.Slart;
+						okulTur = oData.SlartTxt;
 						okulAd = oData.Insti;
-						egitim = oData.Fach1;
+						egitim = oData.Ftext;
 						adSoyad = oData.Ename;
 						dogumTarih = oData.Gbdat;
 						gecerTarih = oData.Begda;
@@ -773,6 +997,31 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/core/routing/History", "sap
 						that.getView().byId("vekPrimApprove").setValue(vekPrim);
 						that.getView().byId("tcApprove").setValue(tc);
 						that.getView().byId("sicilApprove").setValue(sicil);
+
+						//begin of ycoskun visible false olacaklar 
+						that.getView().byId("labelSicil").setVisible(false);
+						that.getView().byId("sicilApprove").setVisible(false);
+						that.getView().byId("labelDil").setVisible(false);
+						that.getView().byId("dilPrimApprove").setVisible(false);
+						that.getView().byId("labelArac").setVisible(false);
+						that.getView().byId("aracPrimApprove").setVisible(false);
+						that.getView().byId("labelMev").setVisible(false);
+						that.getView().byId("mevPrimApprove").setVisible(false);
+						that.getView().byId("labelVek").setVisible(false);
+						that.getView().byId("vekPrimApprove").setVisible(false);
+						that.getView().byId("labelTC").setVisible(false);
+						that.getView().byId("tcApprove").setVisible(false);
+						that.getView().byId("labelSirket").setVisible(false);
+						that.getView().byId("sirketApprove").setVisible(false);
+						that.getView().byId("labelAyrilma").setVisible(false);
+						that.getView().byId("ayrilmaApprove").setVisible(false);
+
+						that.getView().byId("labelOkulTur").setVisible(true);
+						that.getView().byId("okulTurApprove").setVisible(true);
+						that.getView().byId("labelOkulAd").setVisible(true);
+						that.getView().byId("okulAdApprove").setVisible(true);
+						that.getView().byId("labelEgitim").setVisible(true);
+						that.getView().byId("egitimApprove").setVisible(true);
 
 						that.getView().byId("iconTabTable").setVisible(true);
 						that.getView().byId("idPDTable3").setVisible(false);
@@ -824,7 +1073,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/core/routing/History", "sap
 				oModel.read("/ZHRIstenCikisSet('" + selectPernr + "')", null, null, true,
 					function(oData) {
 						oJPerModel.setData(oData);
-						pozisyon = oData.Plans;
+						/*pozisyon = oData.Plans;
 						perAlan = oData.Werks;
 						perAltAlan = oData.Btrtl;
 						isAlan = oData.Gsber;
@@ -848,7 +1097,34 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/core/routing/History", "sap
 						sirket = oData.Bukrs;
 						tc = oData.Tckno;
 						sicil = selectPernr;
+						fisKonu = "İşten Çıkış";*/
+
+						pozisyon = oData.Stext;
+						perAlan = oData.Pbtxt;
+						perAltAlan = oData.Btext;
+						isAlan = oData.Gtext;
+						isAnahtar = oData.StellTxt;
+						orgBirim = oData.OrgehTxt;
+						clsGrup = oData.Psgtext;
+						clsAltGrp = oData.Psktext;
+						skala = oData.Trfgr;
+						ucret = oData.Ucret;
+						diger = oData.Diger;
+						okulTur = "";
+						okulAd = "";
+						egitim = "";
+						adSoyad = oData.Ename;
+						dogumTarih = oData.Gbdat;
+						gecerTarih = oData.Begda;
+						aracPrim = oData.Arcpr;
+						dilPrim = oData.Dilpr;
+						mevPrim = oData.Mvspr;
+						vekPrim = oData.Vklpr;
+						sirket = oData.Bukrs;
+						tc = oData.Tckno;
+						sicil = selectPernr;
 						fisKonu = "İşten Çıkış";
+						ayrilma = oData.Mgtxt;
 
 						that.getView().byId("fisApprove").setText(fisKonu);
 						that.getView().byId("adSoyadApprove").setText(adSoyad);
@@ -876,6 +1152,31 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/core/routing/History", "sap
 						that.getView().byId("tcApprove").setValue(tc);
 						that.getView().byId("sicilApprove").setValue(sicil);
 
+						//begin of ycoskun visible yapma
+						that.getView().byId("labelSicil").setVisible(true);
+						that.getView().byId("sicilApprove").setVisible(true);
+						that.getView().byId("labelDil").setVisible(true);
+						that.getView().byId("dilPrimApprove").setVisible(true);
+						that.getView().byId("labelArac").setVisible(true);
+						that.getView().byId("aracPrimApprove").setVisible(true);
+						that.getView().byId("labelMev").setVisible(true);
+						that.getView().byId("mevPrimApprove").setVisible(true);
+						that.getView().byId("labelVek").setVisible(true);
+						that.getView().byId("vekPrimApprove").setVisible(true);
+						that.getView().byId("labelTC").setVisible(true);
+						that.getView().byId("tcApprove").setVisible(true);
+						that.getView().byId("labelSirket").setVisible(true);
+						that.getView().byId("sirketApprove").setVisible(true);
+						that.getView().byId("labelAyrilma").setVisible(true);
+						that.getView().byId("ayrilmaApprove").setVisible(true);
+
+						that.getView().byId("labelOkulTur").setVisible(false);
+						that.getView().byId("okulTurApprove").setVisible(false);
+						that.getView().byId("labelOkulAd").setVisible(false);
+						that.getView().byId("okulAdApprove").setVisible(false);
+						that.getView().byId("labelEgitim").setVisible(false);
+						that.getView().byId("egitimApprove").setVisible(false);
+
 						that.getView().byId("iconTabTable").setVisible(false);
 						that.getView().byId("idPDTable3").setVisible(false);
 						that.getView().byId("formPD").setVisible(false);
@@ -897,20 +1198,20 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/core/routing/History", "sap
 				oModel.read("/ZHRTerfiSet('" + selectPernr + "')", null, null, true,
 					function(oData) {
 						oJPerModel.setData(oData);
-						pozisyon = oData.Plans;
-						perAlan = oData.Werks;
-						perAltAlan = oData.Btrtl;
-						isAlan = oData.Gsber;
-						isAnahtar = oData.Stell;
-						orgBirim = oData.Orgeh;
-						clsGrup = oData.Persg;
-						clsAltGrp = oData.Persk;
+						pozisyon = oData.Stext;
+						perAlan = oData.Pbtxt;
+						perAltAlan = oData.Btext;
+						isAlan = oData.Gtext;
+						isAnahtar = oData.StellTxt;
+						orgBirim = oData.OrgehTxt;
+						clsGrup = oData.Psgtext;
+						clsAltGrp = oData.Psktext;
 						skala = oData.Trfgr;
 						ucret = oData.Ucret;
 						diger = oData.Diger;
-						okulTur = oData.Slart;
+						okulTur = oData.SlartTxt;
 						okulAd = oData.Insti;
-						egitim = oData.Fach1;
+						egitim = oData.Ftext;
 						adSoyad = oData.Ename;
 						dogumTarih = oData.Gbdat;
 						gecerTarih = oData.Begda;
@@ -948,6 +1249,31 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/core/routing/History", "sap
 						that.getView().byId("vekPrimApprove").setValue(vekPrim);
 						that.getView().byId("tcApprove").setValue(tc);
 						that.getView().byId("sicilApprove").setValue(selectPernr);
+
+						//begin of ycoskun visible yapma
+						that.getView().byId("labelSicil").setVisible(true);
+						that.getView().byId("sicilApprove").setVisible(true);
+						that.getView().byId("labelDil").setVisible(true);
+						that.getView().byId("dilPrimApprove").setVisible(true);
+						that.getView().byId("labelArac").setVisible(true);
+						that.getView().byId("aracPrimApprove").setVisible(true);
+						that.getView().byId("labelMev").setVisible(true);
+						that.getView().byId("mevPrimApprove").setVisible(true);
+						that.getView().byId("labelVek").setVisible(true);
+						that.getView().byId("vekPrimApprove").setVisible(true);
+						that.getView().byId("labelTC").setVisible(true);
+						that.getView().byId("tcApprove").setVisible(true);
+						that.getView().byId("labelSirket").setVisible(true);
+						that.getView().byId("sirketApprove").setVisible(true);
+
+						that.getView().byId("labelOkulTur").setVisible(true);
+						that.getView().byId("okulTurApprove").setVisible(true);
+						that.getView().byId("labelOkulAd").setVisible(true);
+						that.getView().byId("okulAdApprove").setVisible(true);
+						that.getView().byId("labelEgitim").setVisible(true);
+						that.getView().byId("egitimApprove").setVisible(true);
+						that.getView().byId("labelAyrilma").setVisible(false);
+						that.getView().byId("ayrilmaApprove").setVisible(false);
 
 						that.getView().byId("iconTabTable").setVisible(true);
 						that.getView().byId("idPDTable3").setVisible(true);
@@ -1006,20 +1332,20 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/core/routing/History", "sap
 				oModel.read("/ZHRTerfiSet('" + selectPernr + "')", null, null, true,
 					function(oData) {
 						oJPerModel.setData(oData);
-						pozisyon = oData.Plans;
-						perAlan = oData.Werks;
-						perAltAlan = oData.Btrtl;
-						isAlan = oData.Gsber;
-						isAnahtar = oData.Stell;
-						orgBirim = oData.Orgeh;
-						clsGrup = oData.Persg;
-						clsAltGrp = oData.Persk;
+						pozisyon = oData.Stext;
+						perAlan = oData.Pbtxt;
+						perAltAlan = oData.Btext;
+						isAlan = oData.Gtext;
+						isAnahtar = oData.StellTxt;
+						orgBirim = oData.OrgehTxt;
+						clsGrup = oData.Psgtext;
+						clsAltGrp = oData.Psktext;
 						skala = oData.Trfgr;
 						ucret = oData.Ucret;
 						diger = oData.Diger;
-						okulTur = oData.Slart;
+						okulTur = oData.SlartTxt;
 						okulAd = oData.Insti;
-						egitim = oData.Fach1;
+						egitim = oData.Ftext;
 						adSoyad = oData.Ename;
 						dogumTarih = oData.Gbdat;
 						gecerTarih = oData.Begda;
@@ -1057,6 +1383,31 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/core/routing/History", "sap
 						that.getView().byId("vekPrimApprove").setValue(vekPrim);
 						that.getView().byId("tcApprove").setValue(tc);
 						that.getView().byId("sicilApprove").setValue(selectPernr);
+
+						//begin of ycoskun visible yapma
+						that.getView().byId("labelSicil").setVisible(true);
+						that.getView().byId("sicilApprove").setVisible(true);
+						that.getView().byId("labelDil").setVisible(true);
+						that.getView().byId("dilPrimApprove").setVisible(true);
+						that.getView().byId("labelArac").setVisible(true);
+						that.getView().byId("aracPrimApprove").setVisible(true);
+						that.getView().byId("labelMev").setVisible(true);
+						that.getView().byId("mevPrimApprove").setVisible(true);
+						that.getView().byId("labelVek").setVisible(true);
+						that.getView().byId("vekPrimApprove").setVisible(true);
+						that.getView().byId("labelTC").setVisible(true);
+						that.getView().byId("tcApprove").setVisible(true);
+						that.getView().byId("labelSirket").setVisible(true);
+						that.getView().byId("sirketApprove").setVisible(true);
+						that.getView().byId("labelAyrilma").setVisible(false);
+						that.getView().byId("ayrilmaApprove").setVisible(false);
+
+						that.getView().byId("labelOkulTur").setVisible(true);
+						that.getView().byId("okulTurApprove").setVisible(true);
+						that.getView().byId("labelOkulAd").setVisible(true);
+						that.getView().byId("okulAdApprove").setVisible(true);
+						that.getView().byId("labelEgitim").setVisible(true);
+						that.getView().byId("egitimApprove").setVisible(true);
 
 						that.getView().byId("iconTabTable").setVisible(true);
 						that.getView().byId("idPDTable3").setVisible(true);
@@ -1115,20 +1466,20 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/core/routing/History", "sap
 				oModel.read("/ZHRTerfiSet('" + selectPernr + "')", null, null, true,
 					function(oData) {
 						oJPerModel.setData(oData);
-						pozisyon = oData.Plans;
-						perAlan = oData.Werks;
-						perAltAlan = oData.Btrtl;
-						isAlan = oData.Gsber;
-						isAnahtar = oData.Stell;
-						orgBirim = oData.Orgeh;
-						clsGrup = oData.Persg;
-						clsAltGrp = oData.Persk;
+						pozisyon = oData.Stext;
+						perAlan = oData.Pbtxt;
+						perAltAlan = oData.Btext;
+						isAlan = oData.Gtext;
+						isAnahtar = oData.StellTxt;
+						orgBirim = oData.OrgehTxt;
+						clsGrup = oData.Psgtext;
+						clsAltGrp = oData.Psktext;
 						skala = oData.Trfgr;
 						ucret = oData.Ucret;
 						diger = oData.Diger;
-						okulTur = oData.Slart;
+						okulTur = oData.SlartTxt;
 						okulAd = oData.Insti;
-						egitim = oData.Fach1;
+						egitim = oData.Ftext;
 						adSoyad = oData.Ename;
 						dogumTarih = oData.Gbdat;
 						gecerTarih = oData.Begda;
@@ -1166,6 +1517,31 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/core/routing/History", "sap
 						that.getView().byId("vekPrimApprove").setValue(vekPrim);
 						that.getView().byId("tcApprove").setValue(tc);
 						that.getView().byId("sicilApprove").setValue(selectPernr);
+
+						//begin of ycoskun visible yapma
+						that.getView().byId("labelSicil").setVisible(true);
+						that.getView().byId("sicilApprove").setVisible(true);
+						that.getView().byId("labelDil").setVisible(true);
+						that.getView().byId("dilPrimApprove").setVisible(true);
+						that.getView().byId("labelArac").setVisible(true);
+						that.getView().byId("aracPrimApprove").setVisible(true);
+						that.getView().byId("labelMev").setVisible(true);
+						that.getView().byId("mevPrimApprove").setVisible(true);
+						that.getView().byId("labelVek").setVisible(true);
+						that.getView().byId("vekPrimApprove").setVisible(true);
+						that.getView().byId("labelTC").setVisible(true);
+						that.getView().byId("tcApprove").setVisible(true);
+						that.getView().byId("labelSirket").setVisible(true);
+						that.getView().byId("sirketApprove").setVisible(true);
+						that.getView().byId("labelAyrilma").setVisible(false);
+						that.getView().byId("ayrilmaApprove").setVisible(false);
+
+						that.getView().byId("labelOkulTur").setVisible(true);
+						that.getView().byId("okulTurApprove").setVisible(true);
+						that.getView().byId("labelOkulAd").setVisible(true);
+						that.getView().byId("okulAdApprove").setVisible(true);
+						that.getView().byId("labelEgitim").setVisible(true);
+						that.getView().byId("egitimApprove").setVisible(true);
 
 						that.getView().byId("iconTabTable").setVisible(true);
 						that.getView().byId("idPDTable3").setVisible(true);
@@ -1224,20 +1600,20 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/core/routing/History", "sap
 				oModel.read("/ZHRTerfiSet('" + selectPernr + "')", null, null, true,
 					function(oData) {
 						oJPerModel.setData(oData);
-						pozisyon = oData.Plans;
-						perAlan = oData.Werks;
-						perAltAlan = oData.Btrtl;
-						isAlan = oData.Gsber;
-						isAnahtar = oData.Stell;
-						orgBirim = oData.Orgeh;
-						clsGrup = oData.Persg;
-						clsAltGrp = oData.Persk;
+						pozisyon = oData.Stext;
+						perAlan = oData.Pbtxt;
+						perAltAlan = oData.Btext;
+						isAlan = oData.Gtext;
+						isAnahtar = oData.StellTxt;
+						orgBirim = oData.OrgehTxt;
+						clsGrup = oData.Psgtext;
+						clsAltGrp = oData.Psktext;
 						skala = oData.Trfgr;
 						ucret = oData.Ucret;
 						diger = oData.Diger;
-						okulTur = oData.Slart;
+						okulTur = oData.SlartTxt;
 						okulAd = oData.Insti;
-						egitim = oData.Fach1;
+						egitim = oData.Ftext;
 						adSoyad = oData.Ename;
 						dogumTarih = oData.Gbdat;
 						gecerTarih = oData.Begda;
@@ -1275,6 +1651,31 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/core/routing/History", "sap
 						that.getView().byId("vekPrimApprove").setValue(vekPrim);
 						that.getView().byId("tcApprove").setValue(tc);
 						that.getView().byId("sicilApprove").setValue(selectPernr);
+
+						//begin of ycoskun visible yapma
+						that.getView().byId("labelSicil").setVisible(true);
+						that.getView().byId("sicilApprove").setVisible(true);
+						that.getView().byId("labelDil").setVisible(true);
+						that.getView().byId("dilPrimApprove").setVisible(true);
+						that.getView().byId("labelArac").setVisible(true);
+						that.getView().byId("aracPrimApprove").setVisible(true);
+						that.getView().byId("labelMev").setVisible(true);
+						that.getView().byId("mevPrimApprove").setVisible(true);
+						that.getView().byId("labelVek").setVisible(true);
+						that.getView().byId("vekPrimApprove").setVisible(true);
+						that.getView().byId("labelTC").setVisible(true);
+						that.getView().byId("tcApprove").setVisible(true);
+						that.getView().byId("labelSirket").setVisible(true);
+						that.getView().byId("sirketApprove").setVisible(true);
+						that.getView().byId("labelAyrilma").setVisible(false);
+						that.getView().byId("ayrilmaApprove").setVisible(false);
+
+						that.getView().byId("labelOkulTur").setVisible(true);
+						that.getView().byId("okulTurApprove").setVisible(true);
+						that.getView().byId("labelOkulAd").setVisible(true);
+						that.getView().byId("okulAdApprove").setVisible(true);
+						that.getView().byId("labelEgitim").setVisible(true);
+						that.getView().byId("egitimApprove").setVisible(true);
 
 						that.getView().byId("iconTabTable").setVisible(true);
 						that.getView().byId("idPDTable3").setVisible(true);

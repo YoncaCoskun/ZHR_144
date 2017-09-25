@@ -43,9 +43,9 @@
 														labelSpanM="4" labelSpanXL="4" layout="ResponsiveGridLayout" maxContainerCols="3" title="Özet Bilgi">
 														<form:content>
 															<core:Title/>
-															<Label text="Sicil No"/>
+															<Label text="Sicil No" id="labelSicil"/>
 															<Input class="inputForm" value="" editable="false" id="sicilApprove"/>
-															<Label text="TC Kimlik"/>
+															<Label text="TC Kimlik" id="labelTC"/>
 															<Input class="inputForm" value="" editable="false" id="tcApprove"/>
 															<Label text="Pozisyon"/>
 															<Input class="inputForm" value="" editable="false" id="posApprove"/>
@@ -53,7 +53,7 @@
 															<Input class="inputForm" value="" editable="false" id="perAlanApprove"/>
 															<Label text="Personel Alt Alanı"/>
 															<Input class="inputForm" value="" editable="false" id="perAltAlanApprove"/>
-															<Label text="Şirket"/>
+															<Label text="Şirket" id="labelSirket"/>
 															<Input class="inputForm" value="" editable="false" id="sirketApprove"/>
 															<Label text="İş Alanı"/>
 															<Input class="inputForm" value="" editable="false" id="isAlanApprove"/>
@@ -72,20 +72,22 @@
 															<Input class="inputForm" value="" editable="false" id="ucretApprove"/>
 															<Label text="Diğer Bilgiler"/>
 															<Input class="inputForm" value="" editable="false" id="digerApprove"/>
-															<Label text="Okul Türü"/>
+															<Label text="Okul Türü" id="labelOkulTur"/>
 															<Input class="inputForm" value="" editable="false" id="okulTurApprove"/>
-															<Label text="Okul Adı"/>
+															<Label text="Okul Adı" id="labelOkulAd"/>
 															<Input class="inputForm" value="" editable="false" id="okulAdApprove"/>
-															<Label text="Eğitim Dalı"/>
+															<Label text="Eğitim Dalı" id="labelEgitim"/>
 															<Input class="inputForm" value="" editable="false" id="egitimApprove"/>
-															<Label text="Dil Primi"/>
+															<Label text="Dil Primi" id="labelDil"/>
 															<Input class="inputForm" value="" editable="false" id="dilPrimApprove"/>
-															<Label text="Araç Primi"/>
+															<Label text="Araç Primi" id="labelArac"/>
 															<Input class="inputForm" value="" editable="false" id="aracPrimApprove"/>
-															<Label text="Mevsimlik Prim"/>
+															<Label text="Mevsimlik Prim" id="labelMev"/>
 															<Input class="inputForm" value="" editable="false" id="mevPrimApprove"/>
-															<Label text="Vekalet Primi"/>
+															<Label text="Vekalet Primi" id="labelVek"/>
 															<Input class="inputForm" value="" editable="false" id="vekPrimApprove"/>
+															<Label text="Ayrılma Nedeni" id="labelAyrilma" visible ="false"/>
+															<Input class="inputForm" value="" editable="false" id="ayrilmaApprove" visible="false"/>
 														</form:content>
 													</form:SimpleForm>
 												</VBox>
@@ -115,13 +117,19 @@
 																		<Text text="Puan"/>
 																	</Column>
 																	<Column width="12em">
-																		<Text text="Tavan"/>
+																		<Text text="Sınav Tarihi"/>
 																	</Column>
 																	<Column width="12em">
-																		<Text text="Yazılı"/>
+																		<Text text="Yazma"/>
 																	</Column>
 																	<Column width="12em">
-																		<Text text="Sözlü"/>
+																		<Text text="Okuma"/>
+																	</Column>
+																	<Column width="12em">
+																		<Text text="Dinleme"/>
+																	</Column>
+																	<Column width="12em">
+																		<Text text="Genel"/>
 																	</Column>
 																</columns>
 																<items>
@@ -130,9 +138,11 @@
 																			<Text text="{Spras}"/>
 																			<Text text="{Sptxt}"/>
 																			<Text text="{Puan}"/>
-																			<Text text="{Tavan}"/>
-																			<Text text="{Yazili}"/>
-																			<Text text="{Sozlu}"/>
+																			<Text text="{SinavTarihi}"/>
+																			<Text text="{Yazma}"/>
+																			<Text text="{Okuma}"/>
+																			<Text text="{Dinleme}"/>
+																			<Text text="{Genel}"/>
 																		</cells>
 																	</ColumnListItem>
 																</items>
@@ -154,7 +164,7 @@
 																		<Text text="Puan"/>
 																	</Column>
 																	<Column width="12em">
-																		<Text text="Tavan"/>
+																		<Text text="Sınav Tarihi"/>
 																	</Column>
 																</columns>
 																<items>
@@ -162,7 +172,7 @@
 																		<cells>
 																			<Text text="{SinavTuru}"/>
 																			<Text text="{Puan}"/>
-																			<Text text="{Tavan}"/>
+																			<Text text="{SinavTarihi}"/>
 																		</cells>
 																	</ColumnListItem>
 																</items>
@@ -172,7 +182,7 @@
 												</VBox>
 												<VBox>
 													<form:SimpleForm columnsXL="3" emptySpanM="0" columnsM="2" columnsL="2" editable="true" emptySpanL="0" emptySpanXL="0" labelSpanL="4"
-														labelSpanM="4" labelSpanXL="4" layout="ResponsiveGridLayout" maxContainerCols="3" title="PD Sonuçları"  id="formPD">
+														labelSpanM="4" labelSpanXL="4" layout="ResponsiveGridLayout" maxContainerCols="3" title="PD Sonuçları" id="formPD">
 														<form:content>
 															<Table growing="true" growingThreshold="10" id="idPDTable3" inset="false" items="{ path: '/results', sorter: { path: 'Pdyear' } }"
 																mode="SingleSelectMaster">
