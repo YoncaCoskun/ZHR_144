@@ -14,10 +14,6 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/core/routing/History", "sap
 
 		onInit: function() {
 
-			// var sUrl = "#" + this.getOwnerComponent().getRouter().getURL("login");
-
-			// this.byId("link").setHref(sUrl);
-
 			var that = this;
 			var pernrFilter = sap.ui.getCore().cPernr;
 			var pronrFilter = sap.ui.getCore().cPronr;
@@ -181,10 +177,8 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/core/routing/History", "sap
 			oModel.read("/ZHRAttachDisplaySet", null, ["$filter=" + perAttachFilter], false,
 				function(oData) {
 					attachModel.setData(oData);
-					//	console.log(oData);
 				});
 			that.getView().setModel(attachModel, "attachModel");
-
 			//end of ycoskun
 
 		},
@@ -227,8 +221,6 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/core/routing/History", "sap
 			oEntryWF.Pernr = pernrSave;
 			oEntryWF.Pronr = pronrSave;
 			oEntryWF.Appnr = appnrSave;
-
-			var that = this;
 
 			MessageBox[sMessageBoxType](sMessage, {
 				actions: [MessageBox.Action.YES, MessageBox.Action.NO],

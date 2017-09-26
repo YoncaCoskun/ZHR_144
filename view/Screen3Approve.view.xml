@@ -12,7 +12,6 @@
 								<items>
 									<ObjectListItem title="{OnayciAdi} {OnayciSoyadi}" type="Active" press="onListItemPress" number="{Onayci}" numberUnit="">
 										<firstStatus>
-											<!--<ObjectStatus text="{Status}" state="{ path: 'Status', formatter: 'sap.m.sample.ObjectListItem.Formatter.status' }"/>-->
 											<ObjectStatus title="" text="Bekleniyor" state="Warning"/>
 										</firstStatus>
 										<attributes>
@@ -34,9 +33,6 @@
 									<ObjectAttribute title="Doğum Tarihi" text="" id="dogumTarihApprove3"/>
 									<ObjectAttribute title="Geçerlilik Tarihi" text="" id="gecerTarihApprove3"/>
 								</attributes>
-								<!--	<statuses>
-									<ObjectStatus title="Approval" text="Pending" state="Warning"/>
-								</statuses>-->
 								<headerContainer>
 									<IconTabBar id="itb2" selectedKey="key3" upperCase="true">
 										<items>

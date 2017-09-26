@@ -76,32 +76,6 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/core/routing/History", "sap
 				if (firstPronr === "01") {
 					oModel.read("/ZHRTalepPersonelBilgiSet('" + firstPernr + "')", null, null, true,
 						function(oData) {
-							//pozisyon = oData.Plans;
-							/*perAlan = oData.Werks;
-							perAltAlan = oData.Btrtl;
-							isAlan = oData.Gsber;
-							isAnahtar = oData.Stell;
-							orgBirim = oData.Orgeh;
-							clsGrup = oData.Persg;
-							clsAltGrp = oData.Persk;
-							skala = oData.Trfgr;
-							ucret = oData.Bet01;
-							diger = oData.Diger;
-							okulTur = oData.Slart;
-							okulAd = oData.Insti;
-							egitim = oData.Fach1;
-							adSoyad = oData.Ename;
-							dogumTarih = oData.Gbdat;
-							gecerTarih = oData.Begda;
-							aracPrim = "";
-							dilPrim = "";
-							mevPrim = "";
-							vekPrim = "";
-							sirket = "";
-							tc = "";
-							sicil = "";
-							fisKonu = "İşe Alım";*/
-
 							pozisyon = oData.Stext;
 							perAlan = oData.Pbtxt;
 							perAltAlan = oData.Btext;
@@ -217,11 +191,9 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/core/routing/History", "sap
 					//end of ycoskun
 
 					//işe alım personelinin onaycılarının getirilmesi
-
 					oModel.read("/ZHROnayciStatuSet", null, ["$filter=" + filterOnayci], false,
 						function(oData) {
 							onayciModel.setData(oData);
-							//	console.log(oData);
 						});
 					that.getView().setModel(onayciModel, "onayciModel");
 
@@ -230,32 +202,6 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/core/routing/History", "sap
 				} else if (firstPronr === "02") {
 					oModel.read("/ZHRIstenCikisSet('" + firstPernr + "')", null, null, true,
 						function(oData) {
-							/*		pozisyon = oData.Plans;
-									perAlan = oData.Werks;
-									perAltAlan = oData.Btrtl;
-									isAlan = oData.Gsber;
-									isAnahtar = oData.Stell;
-									orgBirim = oData.Orgeh;
-									clsGrup = oData.Persg;
-									clsAltGrp = oData.Persk;
-									skala = oData.Trfgr;
-									ucret = oData.Ucret;
-									diger = oData.Diger;
-									okulTur = "";
-									okulAd = "";
-									egitim = "";
-									adSoyad = oData.Ename;
-									dogumTarih = oData.Gbdat;
-									gecerTarih = oData.Begda;
-									aracPrim = oData.Arcpr;
-									dilPrim = oData.Dilpr;
-									mevPrim = oData.Mvspr;
-									vekPrim = oData.Vklpr;
-									sirket = oData.Bukrs;
-									tc = oData.Tckno;
-									sicil = selectPernr;
-									fisKonu = "İşten Çıkış";*/
-
 							pozisyon = oData.Stext;
 							perAlan = oData.Pbtxt;
 							perAltAlan = oData.Btext;
@@ -1911,12 +1857,12 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/core/routing/History", "sap
 			}
 			return tarih;
 		},
-		setOnayDate:function(value){
-					var oDateFormat = sap.ui.core.format.DateFormat.getDateTimeInstance({
-						pattern: "dd.MM.yyyy"
-					});
-					var tarih = oDateFormat.format(new Date(value));
-					return tarih;
+		setOnayDate: function(value) {
+			var oDateFormat = sap.ui.core.format.DateFormat.getDateTimeInstance({
+				pattern: "dd.MM.yyyy"
+			});
+			var tarih = oDateFormat.format(new Date(value));
+			return tarih;
 		}
 	});
 

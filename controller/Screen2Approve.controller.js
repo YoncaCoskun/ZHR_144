@@ -14,10 +14,6 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/core/routing/History", "sap
 
 		onInit: function() {
 
-			// var sUrl = "#" + this.getOwnerComponent().getRouter().getURL("login");
-
-			// this.byId("link").setHref(sUrl);
-
 			var that = this;
 			var pernrFilter = sap.ui.getCore().cPernr;
 			var pronrFilter = sap.ui.getCore().cPronr;
@@ -39,17 +35,8 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/core/routing/History", "sap
 			//onaycı goruntuleme ekranına information bilgilerini set etme begin of ycoskun
 
 			var pozisyon, perAlan, perAltAlan, isAlan, isAnahtar, orgBirim, clsGrup, aracPrim, dilPrim, mevPrim, vekPrim;
-
 			var clsAltGrp, skala, ucret, diger, okulTur, okulAd, egitim, adSoyad, dogumTarih, gecerTarih, sirket, tc, sicil;
 
-			//pozisyon = sap.ui.getCore().cPozisyon;
-			//perAlan = sap.ui.getCore().cPerAlan;
-			//perAltAlan = sap.ui.getCore().cPerAltAlan;
-			//isAlan = sap.ui.getCore().cIsAlan;
-			//isAnahtar = sap.ui.getCore().cIsAnahtari;
-			//orgBirim = sap.ui.getCore().cOrgBirim;
-			//clsGrup = sap.ui.getCore().cClsGrup;
-			//clsAltGrp = sap.ui.getCore().cClsAltGrp;
 			skala = sap.ui.getCore().cSkala;
 			ucret = sap.ui.getCore().cUcret;
 			diger = sap.ui.getCore().cDiger;
@@ -148,21 +135,16 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/core/routing/History", "sap
 					if (oAction === MessageBox.Action.YES) {
 						//that.getOwnerComponent().getRouter().navTo("PersonalActivity");
 						//window.location.reload();
-						//window.open("/sap/bc/ui5_ui5/ui2/ushell/shells/abap/FioriLaunchpad.html", "_self");
-						//window.open("/ui2/ushell/shells/abap/FioriLaunchpad.html", "_self");
 						setTimeout(function() {
 							window.open("/sap/bc/ui5_ui5/ui2/ushell/shells/abap/FioriLaunchpad.html", "_self");
 						}, 1000);
-
 					}
 				}
 			});
-
 		},
 
 		handleWizardCancel: function() {
 			this._handleMessageBoxOpen("Çıkmak istediğine emin misin?", "warning");
-
 		},
 
 		saveInf: function() {

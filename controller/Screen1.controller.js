@@ -25,7 +25,7 @@ sap.ui.define([
 	var osJsonDil = new sap.ui.model.json.JSONModel();
 	var osJsonSinavTur = new sap.ui.model.json.JSONModel();
 	var osJsonPos = new sap.ui.model.json.JSONModel();
-	//var oLang = new sap.m.ComboBox('box_default');
+
 	var vSlart;
 	var vWerks;
 	var oLang;
@@ -71,7 +71,7 @@ sap.ui.define([
 			this._setEmptyValue("/productDescription");
 			this._setEmptyValue("/productPrice");
 
-			//var osModel = new sap.ui.model.odata.ODataModel("/sap/opu/odata/sap/ZHR_144_SRV_01");
+		
 			oModel.setSizeLimit(99999);
 			oModel.read("/CalisanGrSet", null, null, true,
 
@@ -600,14 +600,10 @@ sap.ui.define([
 
 		},
 		optionalStepActivation: function() {
-			/*MessageToast.show(
-				'This event is fired on activate of Step3.'
-			);*/
+		
 		},
 		optionalStepCompletion: function() {
-			/*	MessageToast.show(
-					'This event is fired on complete of Step3. You can use it to gather the information, and lock the input data.'
-				);*/
+	
 		},
 		listLanguage: function() {
 
@@ -677,19 +673,10 @@ sap.ui.define([
 			oEntryPersonel.Gbdat = dogumTarih;
 			oEntryPersonel.Begda = gecerTarih;
 			oEntryPersonel.Plans = that.getView().byId(entryPosAd1).getValue();
-			//oEntryPersonel.Gsber = that.getView().byId(entryisAlan1).getValue();
 			oEntryPersonel.Stell = that.getView().byId(entryisAnahtar1).getValue();
 			oEntryPersonel.Orgeh = that.getView().byId(entryorgBirim1).getValue();
-			//oEntryPersonel.Persg = that.getView().byId(entryclsGrup1).getValue();
-			//oEntryPersonel.Persk = that.getView().byId(entryclsAltGrup1).getValue();
-			//oEntryPersonel.Trfgr = that.getView().byId(entryskalaKod1).getValue();
 			oEntryPersonel.Bet01 = that.getView().byId(entryucret1).getValue();
 			oEntryPersonel.Diger = that.getView().byId(entrydiger1).getValue();
-			//oEntryPersonel.Slart = that.getView().byId(entryokul1).getValue();
-			//oEntryPersonel.Insti = that.getView().byId(entryokulAd1).getValue();
-			//	oEntryPersonel.Fach1 = that.getView().byId(entryegitim1).getValue();
-			//oEntryPersonel.Werks = that.getView().byId(entryperAlan1).getValue();
-			//oEntryPersonel.Btrtl = that.getView().byId(entryperAltAlan1).getValue();
 
 			//split edip kodu backende yollama begin of ycoskun
 			var werks = that.getView().byId(entryperAlan1).getValue();
@@ -737,7 +724,6 @@ sap.ui.define([
 			oEntryPersonel.Pernr = vPernr;
 
 			// onaycılar ekranına genel bilgilerin getirilmesi için bilgilerin global olarak doldurulması begin of ycoskun
-
 			sap.ui.getCore().cAdSoyad = that.getView().byId(entryadSoyad1).getValue();
 			sap.ui.getCore().cDogumTarih = that.getView().byId(entrydogumTarih1).getValue();
 			sap.ui.getCore().cGecerTarih = that.getView().byId(entrygecerTarih1).getValue();
@@ -755,18 +741,13 @@ sap.ui.define([
 			sap.ui.getCore().cOkulTur = arraySlart[0];
 			sap.ui.getCore().cOkulAd = arrayInsti[0];
 			sap.ui.getCore().cEgitim = arrayFach1[0];
-
 			//end of ycoskun
 
 			oModel.create("/ZHRPersonelBilgiSet", oEntryPersonel, {
 				method: "POST",
 				success: function(oData, oThat) {
 					console.log("SUCCESS");
-					console.log(oData);
-
 					vPernr = oData.Pernr;
-					// var pernrId = oThat.getView().byId("idPernr");
-					// pernrId.setText(vPernr);
 				},
 				error: function(oData) {
 					console.log("ERROR");
@@ -774,8 +755,6 @@ sap.ui.define([
 				}
 			});
 			oModel.refresh(true);
-
-			//	that.oParent.close();
 			//end of ycoskun
 			console.log(vPernr);
 
@@ -787,7 +766,6 @@ sap.ui.define([
 			oModel.read("/ZHRIseAlimYDSet", null, ["$filter=" + perFilter], true,
 				function(oData) {
 					oLangModel.setData(oData);
-					//	console.log(oData);
 				});
 			oThat.getView().setModel(oLangModel, "LangModel");
 			var langtable = oThat.getView().byId("idLanguageTable");
@@ -812,7 +790,6 @@ sap.ui.define([
 			oThat.getView().setModel(oAbModel, "oAbModel");
 			var langtable = oThat.getView().byId("idAbilityTable");
 			langtable.setModel(this.getView().getModel("oAbModel"));
-
 			//end of ycoskun
 
 			this._wizard.validateStep(this.getView().byId("PricingStep"));
@@ -914,13 +891,6 @@ sap.ui.define([
 			this.model.setProperty("/calisanAltGrbState", "Error");
 			this.model.setProperty("/skalaState", "Error");
 			this.model.setProperty("/isAlanState", "Error");
-			//this.model.setProperty("/productWeightState", "Error");
-			/*this.model.setProperty("/posAdState", "Error");
-			this.model.setProperty("/perAlanState", "Error");
-			this.model.setProperty("/perAltAlanState", "Error");
-			this.model.setProperty("/isAlanState", "Error");
-		
-			this.model.setProperty("/calisanAltGrbState", "Error");*/
 			clearContent(this._wizard.getSteps());
 		},
 		onAddLanguage: function() {
@@ -1050,7 +1020,6 @@ sap.ui.define([
 						oEntry.Spras = oLanguage.getValue();
 
 						// begin of ycoskun yabancı dilleri kaydet
-
 						oModel.create("/ZHRIseAlimYDSet", oEntry, {
 							method: "POST",
 							success: function() {
@@ -1071,7 +1040,6 @@ sap.ui.define([
 						oModel.read("/ZHRIseAlimYDSet", null, ["$filter=" + perFilter], true,
 							function(oData) {
 								oLangModel.setData(oData);
-								//	console.log(oData);
 							});
 						oView.setModel(oLangModel, "LangModel");
 						var langtable = oView.byId("idLanguageTable");
@@ -1094,7 +1062,6 @@ sap.ui.define([
 						oModel.read("/ZHRIseAlimYDSet", null, ["$filter=" + perFilter], true,
 							function(oData) {
 								oLangModel.setData(oData);
-								//	console.log(oData);
 							});
 						oView.setModel(oLangModel, "LangModel");
 						var langtable = oView.byId("idLanguageTable");
@@ -1129,15 +1096,11 @@ sap.ui.define([
 				},
 				selectionChange: function(oEvent) {
 					selectAbility = oEvent.oSource.getSelectedKey();
-					//	sap.ui.getCore().byId("oLanguage").setValue(selectLang);
 
 				}
 			});
 			sap.ui.getCore().byId("idAbility").setModel(osJsonSinavTur);
-			/*	var oExam = new sap.ui.commons.TextField({
-					value: "",
-					enabled: true
-				});*/
+			
 			var oPuanExam = new sap.ui.commons.TextField({
 				value: "",
 				enabled: true
@@ -1169,7 +1132,6 @@ sap.ui.define([
 					icon: "sap-icon://add",
 					press: function() {
 						/* buraya beceri ekleyebilmek için servis eklenecek*/
-
 						var oEntryBeceri = {};
 						var yil, gun, ay;
 						var format = oTarih.getYyyymmdd();
@@ -1186,7 +1148,6 @@ sap.ui.define([
 						oEntryBeceri.Pernr = pernr;
 
 						// begin of ycoskun zihinsel beceri kaydet
-
 						oModel.create("/ZHRIseAlimZBSet", oEntryBeceri, {
 							method: "POST",
 							success: function() {
@@ -1212,8 +1173,8 @@ sap.ui.define([
 						oView.setModel(oAbilityModel, "oAbilityModel");
 						var abtable = oView.byId("idAbilityTable");
 						abtable.setModel(oView.getModel("oAbilityModel"));
-
 						//end of ycoskun
+						
 						this.oParent.close();
 						oDialogAbility.destroy();
 
@@ -1244,9 +1205,6 @@ sap.ui.define([
 			var oFileUploader = sap.ui.getCore().byId("fileupload");
 			var file = jQuery.sap.domById(oFileUploader.getId() + "-fu").files[0];
 			var form = this.getView().byId("simpleFormAttaches");
-			console.log(form);
-
-			console.log(file);
 
 			try {
 				if (file) {
@@ -1265,9 +1223,9 @@ sap.ui.define([
 					};
 					var oHeaders;
 					var sUrl = "/sap/opu/odata/sap/ZHR_144_SRV_01/";
-					var oModel = new sap.ui.model.odata.ODataModel(sUrl, true);
+					var omModel = new sap.ui.model.odata.ODataModel(sUrl, true);
 					var pernr = vPernr;
-					this.getView().setModel(oModel);
+					this.getView().setModel(omModel);
 					OData.request(f, function(data, oSuccess) {
 						var oToken = oSuccess.headers['x-csrf-token'];
 						oHeaders = {
@@ -1316,13 +1274,10 @@ sap.ui.define([
 			} catch (oException) {
 				jQuery.sap.log.error("File upload failed: \n" + oException.message);
 			}
-			//console.log(attachFiles);
-
 			//end of ycoskun
 		},
 		onAttachAdd: function() {
 			var oAttachAddDialog = this.getDialogAttach();
-
 			oAttachAddDialog.open();
 
 		},
@@ -1420,7 +1375,6 @@ sap.ui.define([
 			oModel.read("/ZHRIseAlimYDSet", null, ["$filter=" + perFilter], true,
 				function(oData) {
 					oLangModel.setData(oData);
-					//	console.log(oData);
 				});
 			oThat.getView().setModel(oLangModel, "LangModel");
 			var langtable = sap.ui.getCore().byId("idDil");
@@ -1438,7 +1392,6 @@ sap.ui.define([
 			oThat.getView().setModel(oAbModel, "oAbModel");
 			var zihintable = sap.ui.getCore().byId("idZihinsel");
 			zihintable.setModel(this.getView().getModel("oAbModel"));
-
 			//end of ycoskun
 
 			//begin of ycoskun Son kontrol Personel Verilerini atma
@@ -1487,20 +1440,11 @@ sap.ui.define([
 			oPersonel.Gbdat = dogumTarih;
 			oPersonel.Begda = gecerTarih;
 			oPersonel.Plans = that.getView().byId(entryPosAd1).getValue();
-			//oPersonel.Gsber = that.getView().byId(entryisAlan1).getValue();
 			oPersonel.Stell = that.getView().byId(entryisAnahtar1).getValue();
 			oPersonel.Orgeh = that.getView().byId(entryorgBirim1).getValue();
-			//oPersonel.Persg = that.getView().byId(entryclsGrup1).getValue();
-			//oPersonel.Persk = that.getView().byId(entryclsAltGrup1).getValue();
-			//oPersonel.Trfgr = that.getView().byId(entryskalaKod1).getValue();
 			oPersonel.Bet01 = that.getView().byId(entryucret1).getValue();
 			oPersonel.Diger = that.getView().byId(entrydiger1).getValue();
-			//oPersonel.Slart = that.getView().byId(entryokul1).getValue();
-			//oPersonel.Insti = that.getView().byId(entryokulAd1).getValue();
-			//oPersonel.Fach1 = that.getView().byId(entryegitim1).getValue();
-			//oPersonel.Werks = that.getView().byId(entryperAlan1).getValue();
-			//oPersonel.Btrtl = that.getView().byId(entryperAltAlan1).getValue();
-
+			
 			//split edip kodu backende yollama begin of ycoskun
 			var werks = that.getView().byId(entryperAlan1).getValue();
 			var arrayWerks = werks.split(" / ");
@@ -1600,7 +1544,6 @@ sap.ui.define([
 				});
 				formAttach.addContent(oButton);
 			}
-
 			//end of ycoskun eklenen dosyaları görüntüleme
 
 			this._oNavContainer.to(this._oWizardReviewPage);
@@ -1836,17 +1779,6 @@ sap.ui.define([
 						oModel.refresh(true);
 						// end of ycoskun
 
-						//begin of ycoskun yabancı dilleri listele 
-						/*			var oLangModel = new sap.ui.model.json.JSONModel();
-									var perFilter = "Pernr eq '" + pernr + "'";
-
-									oModel.read("/ZHRYabanciDilSet", null, ["$filter=" + perFilter], true,
-										function(oData) {
-											oLangModel.setData(oData);
-										});
-									oView.setModel(oLangModel, "LangModel");
-									var langtable = oView.byId("idLanguageTable");
-									langtable.setModel(oView.getModel("LangModel"));*/
 						var oZihinModel = new sap.ui.model.json.JSONModel();
 						var perFilter = "Pernr eq '" + pernr + "'";
 
@@ -1858,6 +1790,7 @@ sap.ui.define([
 						var zihintable = oView.byId("idAbilityTable");
 						zihintable.setModel(oView.getModel("oZihinModel"));
 						//end of ycoskun
+						
 						this.oParent.close();
 
 					}

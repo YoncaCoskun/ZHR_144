@@ -36,7 +36,6 @@ sap.ui.define([
 			this._oNavContainer.addPage(this._oWizardReviewPage);
 			this.model = new sap.ui.model.json.JSONModel();
 			this.model.setData({
-				//	isAlanState: "Error"
 			});
 
 			this.getView().setModel(this.model);
@@ -51,43 +50,43 @@ sap.ui.define([
 			osModel.setSizeLimit(99999);
 			osModel.read("/PerAlanSet", null, null, true,
 
-				function(oData, response) {
+				function(oData) {
 					osJsonPerAlan.setData(oData);
 				},
-				function(oEvent) {
+				function() {
 
 				});
 			osModel.read("/IsAlaniSet", null, null, true,
 
-				function(oData, response) {
+				function(oData) {
 					osJsonIsAlan.setData(oData);
 				},
-				function(oEvent) {
+				function() {
 
 				});
 			osModel.read("/CalisanGrSet", null, null, true,
 
-				function(oData, response) {
+				function(oData) {
 					osJson.setData(oData);
 				},
-				function(oEvent) {
+				function() {
 
 				});
 
 			osModel.read("/CalisanAltGrSet", null, null, true,
 
-				function(oData, response) {
+				function(oData) {
 					osJsonClsALtGrb.setData(oData);
 				},
-				function(oEvent) {
+				function() {
 
 				});
 			osModel.read("/SkalaKoduSet", null, null, true,
 
-				function(oData, response) {
+				function(oData) {
 					osJsonSkala.setData(oData);
 				},
-				function(oEvent) {
+				function() {
 
 				});
 			oModel.read("/YabanciDilSet", null, null, true,
@@ -186,7 +185,6 @@ sap.ui.define([
 				this._valueHelpSelectDialogSkala.setModel(osJsonSkala);
 			}
 			this._valueHelpSelectDialogSkala.open();
-
 		},
 		handleValueHelpClsAlt: function() {
 			var that = this;
@@ -226,7 +224,6 @@ sap.ui.define([
 				this._valueHelpSelectDialogClsAltGrb.setModel(osJsonClsALtGrb);
 			}
 			this._valueHelpSelectDialogClsAltGrb.open();
-
 		},
 		handleValueHelp: function(oEvent) {
 			var that = this;
@@ -266,7 +263,6 @@ sap.ui.define([
 				this._valueHelpSelectDialog.setModel(osJson);
 			}
 			this._valueHelpSelectDialog.open();
-
 		},
 		handleValueHelpPerA: function() {
 			var that = this;
@@ -306,14 +302,12 @@ sap.ui.define([
 					},
 					confirm: handleClose
 				});
-
 				this._valueHelpSelectDialogPerAlan.setModel(osJsonPerAlan);
 
 			} else {
 				this._valueHelpSelectDialogPerAlan.setModel(osJsonPerAlan);
 			}
 			this._valueHelpSelectDialogPerAlan.open();
-
 		},
 		handleValueHelpPerAltA: function() {
 			var that = this;
@@ -353,32 +347,21 @@ sap.ui.define([
 				this._valueHelpSelectDialogPerAltAlan.setModel(osJsonPerAltAlan);
 			}
 			this._valueHelpSelectDialogPerAltAlan.open();
-
 		},
-
 		handlePressMenu: function() {
-
 			var oSplitApp = this.getView().byId("SplitAppDemo");
-
 			oSplitApp.setMode(sap.m.SplitAppMode.ShowHideMode);
-
 		},
-
 		setProductType: function(evt) {
-
 			var productType = evt.getSource().getTitle();
 			this.model.setProperty("/productType", productType);
 			this.getView().byId("ProductStepChosenType").setText("Chosen product type: " + productType);
 			this._wizard.validateStep(this.getView().byId("ProductTypeStep4"));
-
 		},
-
 		setProductTypeFromSegmented: function(evt) {
-
 			var productType = evt.mParameters.button.getText();
 			this.model.setProperty("/productType", productType);
 			this._wizard.validateStep(this.getView().byId("ProductTypeStep4"));
-
 		},
 
 		additionalInfoValidation: function() {
@@ -392,21 +375,13 @@ sap.ui.define([
 				this._wizard.invalidateStep(this.getView().byId("YeniStep4"));
 			} else {
 				this._wizard.validateStep(this.getView().byId("YeniStep4"));
-
 			}
-
 		},
 
 		optionalStepActivation: function() {
-
-			//MessageToast.show('This event is fired on activate of Step3.');
 		},
 
 		optionalStepCompletion: function() {
-			/*	MessageToast.show(
-					'This event is fired on complete of Step3. You can use it to gather the information, and lock the input data.'
-				);*/
-
 		},
 
 		stepLanguage: function() {
@@ -449,16 +424,10 @@ sap.ui.define([
 			oEntryTerfiPersonel.Begda = that.getView().byId(entrygecerTarih4).getValue();
 			oEntryTerfiPersonel.Plans = that.getView().byId(entryPosAd4).getValue();
 			oEntryTerfiPersonel.Bukrs = that.getView().byId(entrySirket4).getValue();
-			//oEntryTerfiPersonel.Gsber = that.getView().byId(entryisAlan3).getValue();
 			oEntryTerfiPersonel.Stell = that.getView().byId(entryisAnahtar4).getValue();
 			oEntryTerfiPersonel.Orgeh = that.getView().byId(entryorgBirim4).getValue();
-			//oEntryTerfiPersonel.Persg = that.getView().byId(entryclsGrup3).getValue();
-			//oEntryTerfiPersonel.Persk = that.getView().byId(entryclsAltGrup3).getValue();
-			//oEntryTerfiPersonel.Trfgr = that.getView().byId(entryskalaKod3).getValue();
 			oEntryTerfiPersonel.Bet01 = that.getView().byId(entryucret4).getValue();
 			oEntryTerfiPersonel.Diger = that.getView().byId(entryDiger4).getValue();
-			//oEntryTerfiPersonel.Werks = that.getView().byId(entryPerAlan3).getValue();
-			//oEntryTerfiPersonel.Btrtl = that.getView().byId(entryPerAltAlan3).getValue();
 			oEntryTerfiPersonel.Dilpr = that.getView().byId(entryDilPrim4).getValue();
 			oEntryTerfiPersonel.Arcpr = that.getView().byId(entryAracPrim4).getValue();
 			oEntryTerfiPersonel.Mvspr = that.getView().byId(entryMevPrim4).getValue();
@@ -498,18 +467,13 @@ sap.ui.define([
 				method: "POST",
 				success: function(oData, oThat) {
 					console.log("SUCCESS");
-					console.log(oData);
-
 				},
 
 				error: function(oData) {
 					console.log("ERROR");
-					console.log(oData);
-
 				}
 
 			});
-
 			oModel.refresh(true);
 
 			//end of ycoskun
@@ -528,7 +492,6 @@ sap.ui.define([
 			oThat.getView().setModel(olangModel, "LangModel");
 			var langtable = oThat.getView().byId("idLanguageTable4");
 			langtable.setModel(this.getView().getModel("LangModel"));
-
 			//end of ycoskun
 
 			this._wizard.validateStep(this.getView().byId("idBeceri4"));
@@ -574,34 +537,22 @@ sap.ui.define([
 			pdtable.setModel(this.getView().getModel("PDModel"));
 
 			this.model.setProperty("/navApiEnabled", true);
-
 		},
 
 		pricingComplete: function() {
 			this.model.setProperty("/navApiEnabled", false);
-
 		},
 
 		scrollFrom4to2: function() {
-
 			this._wizard.goToStep(this.getView().byId("ProductInfoStep4"));
-
 		},
-
 		goFrom4to3: function() {
-
 			if (this._wizard.getProgressStep() === this.getView().byId("PricingStep4"))
-
 				this._wizard.previousStep();
-
 		},
-
 		goFrom4to5: function() {
-
 			if (this._wizard.getProgressStep() === this.getView().byId("PricingStep4"))
-
 				this._wizard.nextStep();
-
 		},
 
 		wizardCompletedHandler: function() {
@@ -710,16 +661,10 @@ sap.ui.define([
 			oTerfiPersonel.Begda = that.getView().byId(entrygecerTarih4).getValue();
 			oTerfiPersonel.Plans = that.getView().byId(entryinputPosAd4).getValue();
 			oTerfiPersonel.Bukrs = that.getView().byId(entryinputSirket4).getValue();
-			//oTerfiPersonel.Gsber = that.getView().byId(entryinputIsAlan3).getValue();
 			oTerfiPersonel.Stell = that.getView().byId(entryinputIsAnahtar4).getValue();
 			oTerfiPersonel.Orgeh = that.getView().byId(entryinputOrgBirim4).getValue();
-			//oTerfiPersonel.Persg = that.getView().byId(entryinputClsGrup3).getValue();
-			//oTerfiPersonel.Persk = that.getView().byId(entryinputClsAltGrup3).getValue();
-			//oTerfiPersonel.Trfgr = that.getView().byId(entryinputSkalaKod3).getValue();
 			oTerfiPersonel.Bet01 = that.getView().byId(entryinputUcret4).getValue();
 			oTerfiPersonel.Diger = that.getView().byId(entryinputDiger4).getValue();
-			//oTerfiPersonel.Werks = that.getView().byId(entryinputPerAlan3).getValue();
-			//oTerfiPersonel.Btrtl = that.getView().byId(entryinputPerAltAlan3).getValue();
 			oTerfiPersonel.Dilpr = that.getView().byId(entryinputDilPrim4).getValue();
 			oTerfiPersonel.Arcpr = that.getView().byId(entryinputAracPrim4).getValue();
 			oTerfiPersonel.Mvspr = that.getView().byId(entryinputMevPrim4).getValue();
@@ -759,23 +704,15 @@ sap.ui.define([
 				method: "POST",
 				success: function(oData, oThat) {
 					console.log("SUCCESS Personel");
-					console.log(oData);
-
 				},
 
 				error: function(oData) {
 					console.log("ERROR");
-					console.log(oData);
-
 				}
 
 			});
 
 			oModel.refresh(true);
-
-			//end of ycoskun
-
-			//end of ycoskun
 
 			that.getElement("fisKonuRew4").setValue(oEntry.fisKonu4);
 			that.getElement("sicilNoRew4").setValue(oEntry.sicilNo4);
@@ -878,7 +815,6 @@ sap.ui.define([
 			oThat.getView().setModel(oAbModel, "oAbModel");
 			var zihintable = sap.ui.getCore().byId("idExamZihin4");
 			zihintable.setModel(this.getView().getModel("oAbModel"));
-
 			//end of ycoskun
 
 			//begin of ycoskun pd sonucları listele 
@@ -902,134 +838,77 @@ sap.ui.define([
 			return sap.ui.getCore().byId(id);
 		},
 		backToWizardContent: function() {
-
 			this._oNavContainer.backToPage(this._oWizardContentPage.getId());
-
 		},
-
 		editStepOne: function() {
-
 			this._handleNavigationToStep(0);
-
 		},
-
 		editStepTwo: function() {
-
 			this._handleNavigationToStep(1);
-
 		},
-
 		editStepThree: function() {
-
 			this._handleNavigationToStep(2);
-
 		},
-
 		editStepFour: function() {
-
 			this._handleNavigationToStep(3);
-
 		},
-
 		_handleNavigationToStep: function(iStepNumber) {
 
 			var that = this;
-
 			function fnAfterNavigate() {
-
 				that._wizard.goToStep(that._wizard.getSteps()[iStepNumber]);
-
 				that._oNavContainer.detachAfterNavigate(fnAfterNavigate);
-
 			}
-
 			this._oNavContainer.attachAfterNavigate(fnAfterNavigate);
-
 			this.backToWizardContent();
-
 		},
-
 		_handleMessageBoxOpen: function(sMessage, sMessageBoxType) {
 
 			var that = this;
 
 			MessageBox[sMessageBoxType](sMessage, {
-
 				actions: [MessageBox.Action.YES, MessageBox.Action.NO],
-
 				onClose: function(oAction) {
-
 					if (oAction === MessageBox.Action.YES) {
-
 						that._handleNavigationToStep(0);
-
 						that._wizard.discardProgress(that._wizard.getSteps()[0]);
-
 					}
-
 				}
-
 			});
-
 		},
-
 		backOnayPage: function() {
-
 			var that = this;
 			that._handleNavigationToStep(0);
 			that._wizard.discardProgress(that._wizard.getSteps()[0]);
 
 		},
-
 		_setEmptyValue: function(sPath) {
-
 			this.model.setProperty(sPath, "n/a");
-
 		},
-
 		handleWizardCancel: function() {
-
 			this._handleMessageBoxOpen("Are you sure you want to cancel your report?", "warning");
-
 		},
-
 		handleWizardSubmit: function() {
-
 			this._handleMessageBoxOpen("Are you sure you want to submit your report?", "confirm");
-
 		},
-
 		productWeighStateFormatter: function(val) {
-
 			return isNaN(val) ? "Error" : "None";
-
 		},
-
 		discardProgress: function() {
-
 			this._wizard.discardProgress(this.getView().byId("ProductTypeStep4"));
-
 			var clearContent = function(content) {
-
 				for (var i = 0; i < content.length; i++) {
-
 					if (content[i].setValue) {
 						content[i].setValue("");
-
 					}
 					if (content[i].getContent) {
 						clearContent(content[i].getContent());
-
 					}
-
 				}
-
 			};
-			//this.model.setProperty("/isAlanState", "Error");
 			clearContent(this._wizard.getSteps());
 
 		},
-
 		onAddLanguage: function() {
 			var pernr = vPernr;
 
@@ -1051,7 +930,6 @@ sap.ui.define([
 				selectionChange: function(oEvent) {
 					selectLang = oEvent.oSource.getSelectedKey();
 					sap.ui.getCore().byId("oLanguage4").setValue(selectLang);
-
 				}
 			});
 			sap.ui.getCore().byId("box_default4").setModel(osJsonYabanciDil);
@@ -1157,7 +1035,6 @@ sap.ui.define([
 						oEntry.Spras = oLanguage.getValue();
 
 						// begin of ycoskun yabancı dilleri kaydet
-
 						oModel.create("/ZHRTerfiYDSet", oEntry, {
 							method: "POST",
 							success: function() {
@@ -1186,6 +1063,7 @@ sap.ui.define([
 						var langtable = oView.byId("idLanguageTable4");
 						langtable.setModel(oView.getModel("LangModel"));
 						//end of ycoskun
+						
 						this.oParent.close();
 						oDialog.destroy();
 
@@ -1205,7 +1083,6 @@ sap.ui.define([
 			});
 			oDialog.open();
 		},
-
 		onAddAbility: function() {
 			var pernr = vPernr;
 			var oDialogAbility;
@@ -1225,16 +1102,10 @@ sap.ui.define([
 				},
 				selectionChange: function(oEvent) {
 					selectAbility = oEvent.oSource.getSelectedKey();
-					//	sap.ui.getCore().byId("oLanguage").setValue(selectLang);
-
 				}
 			});
 			sap.ui.getCore().byId("idAbility4").setModel(osJsonSinavTur);
-			/*	var oExam = new sap.ui.commons.TextField({
-					value: "",
-					enabled: true
-				});*/
-
+			
 			var oPuanExam = new sap.ui.commons.TextField({
 				value: "",
 				enabled: true
@@ -1268,7 +1139,6 @@ sap.ui.define([
 					icon: "sap-icon://add",
 					press: function() {
 						/* buraya beceri ekleyebilmek için servis eklenecek*/
-
 						var oEntryBeceri = {};
 						var yil, gun, ay;
 						var format = oTarih.getYyyymmdd();
@@ -1310,15 +1180,12 @@ sap.ui.define([
 						oView.setModel(oAbilityModel, "oAbilityModel");
 						var abtable = oView.byId("idAbilityTable4");
 						abtable.setModel(oView.getModel("oAbilityModel"));
-
 						//end of ycoskun
+						
 						this.oParent.close();
 						oDialogAbility.destroy();
-
 					}
-
 				}),
-
 				leftButton: new sap.m.Button({
 					text: "Kapat",
 					type: sap.m.ButtonType.Emphasized,
@@ -1405,19 +1272,16 @@ sap.ui.define([
 						oModel.read("/ZHRTerfiPDSet", null, ["$filter=" + perFilter], true,
 							function(oData) {
 								oPDModel.setData(oData);
-								//	console.log(oData);
 							});
 						oView.setModel(oPDModel, "PDModel");
 						var pdtable = oView.byId("idPDTable4");
 						pdtable.setModel(oView.getModel("PDModel"));
 						//end of ycoskun
+						
 						this.oParent.close();
 						oDialogPD.destroy();
-
 					}
-
 				}),
-
 				leftButton: new sap.m.Button({
 					text: "Kapat",
 					type: sap.m.ButtonType.Emphasized,
@@ -1427,35 +1291,24 @@ sap.ui.define([
 						oDialogPD.destroy();
 					}
 				}),
-
 				content: [oFormPD]
-
 			});
-
 			oDialogPD.open();
-
 		},
-
 		nextOnayPage: function() {
-
 			this.getOwnerComponent().getRouter().navTo("screen4Approve");
-
 		},
-
 		onBackScreen: function() {
-
 			this.getOwnerComponent().getRouter().navTo("PersonalActivity");
 			window.location.reload();
 
 		},
-
 		handleSicilNoSearch: function() {
 
 			//begin of ycoskun sicilno girip tıklayınca verileri getirme
 
 			var oThat = this;
 			var sicilNo = oThat.getView().byId("sicilNo4").getValue();
-
 			var Terfi = {};
 
 			oModel.read("/ZHRTerfiSet('" + sicilNo + "')", null, null, false,
@@ -1627,8 +1480,6 @@ sap.ui.define([
 							filters: null,
 							urlParameters: null,
 							success: function() {
-								/*	var Message = "Yabancı Dil Silindi.";
-									sap.m.MessageToast.show(Message);*/
 
 							},
 							error: function() {
@@ -1652,6 +1503,7 @@ sap.ui.define([
 						var langtable = oView.byId("idLanguageTable4");
 						langtable.setModel(oView.getModel("LangModel"));
 						//end of ycoskun
+						
 						this.oParent.close();
 
 					}
@@ -1734,8 +1586,6 @@ sap.ui.define([
 							filters: null,
 							urlParameters: null,
 							success: function() {
-								/*	var Message = "Zihinsel Beceri Silindi.";
-									sap.m.MessageToast.show(Message);*/
 
 							},
 							error: function() {
@@ -1877,6 +1727,7 @@ sap.ui.define([
 						var pdtable = oView.byId("idPDTable4");
 						pdtable.setModel(oView.getModel("oPDModel"));
 						//end of ycoskun
+						
 						this.oParent.close();
 
 					}

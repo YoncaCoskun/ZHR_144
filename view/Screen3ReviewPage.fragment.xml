@@ -215,11 +215,6 @@
 				<Button type="Emphasized" text="Devam" press="nextOnayPage">
 					<layoutData><OverflowToolbarLayoutData moveToOverflow="false"/></layoutData>
 				</Button>
-				<!--				<Button type="Transparent" text="Çıkış" press="handleWizardCancel">
-
-					<layoutData><OverflowToolbarLayoutData moveToOverflow="false"/></layoutData>
-
-				</Button>-->
 			</OverflowToolbar>
 		</footer>
 	</Page>

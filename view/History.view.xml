@@ -31,9 +31,6 @@
 									<ObjectAttribute title="Doğum Tarihi" text="" id="dogumTarihApprove"/>
 									<ObjectAttribute title="Geçerlilik Tarihi" text="" id="gecerTarihApprove"/>
 								</attributes>
-								<!--	<statuses>
-									<ObjectStatus title="Approval" text="Pending" state="Warning"/>
-								</statuses>-->
 								<headerContainer>
 									<IconTabBar id="iconTabInf" selectedKey="key3" upperCase="true" class="sapUiResponsiveContentPadding">
 										<items>
@@ -86,7 +83,7 @@
 															<Input class="inputForm" value="" editable="false" id="mevPrimApprove"/>
 															<Label text="Vekalet Primi" id="labelVek"/>
 															<Input class="inputForm" value="" editable="false" id="vekPrimApprove"/>
-															<Label text="Ayrılma Nedeni" id="labelAyrilma" visible ="false"/>
+															<Label text="Ayrılma Nedeni" id="labelAyrilma" visible="false"/>
 															<Input class="inputForm" value="" editable="false" id="ayrilmaApprove" visible="false"/>
 														</form:content>
 													</form:SimpleForm>
@@ -226,11 +223,6 @@
 								<Button type="Transparent" text="Geri" press="onBack">
 									<layoutData><OverflowToolbarLayoutData moveToOverflow="false"/></layoutData>
 								</Button>
-								<!--<Button type="Transparent" text="Çıkış" press="onCancel">
-
-									<layoutData><OverflowToolbarLayoutData moveToOverflow="false"/></layoutData>
-
-								</Button>-->
 							</semantic:customFooterContent>
 						</semantic:DetailPage>
 					</detailPages>

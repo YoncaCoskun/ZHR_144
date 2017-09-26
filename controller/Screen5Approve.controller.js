@@ -14,8 +14,6 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/core/routing/History", "sap
 
 		onInit: function() {
 
-			// var sUrl = "#" + this.getOwnerComponent().getRouter().getURL("login");
-
 			var that = this;
 			var pernrFilter = sap.ui.getCore().cPernr;
 			var pronrFilter = sap.ui.getCore().cPronr;
@@ -46,7 +44,6 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/core/routing/History", "sap
 			this.getView().byId("onayciList5").setModel(this.getView().getModel("JasonModel"));
 
 			//onaycı goruntuleme ekranına information bilgilerini set etme begin of ycoskun
-
 			var pozisyon, perAlan, perAltAlan, isAlan, isAnahtar, orgBirim, clsGrup, aracPrim, dilPrim, mevPrim, vekPrim;
 			var clsAltGrp, skala, ucret, diger, okulTur, okulAd, egitim, adSoyad, dogumTarih, gecerTarih, sirket, tc, sicil;
 
@@ -103,7 +100,6 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/core/routing/History", "sap
 			//end of ycoskun
 
 			//begin of ycoskun terfi yabancı dilleri getiR
-
 			oModel.read("/ZHRTerfiYDSet", null, ["$filter=" + perFilterDil], true,
 				function(oData) {
 					oLangModel.setData(oData);
@@ -111,8 +107,8 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/core/routing/History", "sap
 				});
 			that.getView().setModel(oLangModel, "LangModel");
 			langtable.setModel(that.getView().getModel("LangModel"));
-
 			//end of ycoskun
+			
 			//begin of ycoskun  zihinsel beceri bilgileri getir
 			oModel.read("/ZHRTerfiZBSet", null, ["$filter=" + perAbFilterZB], true,
 				function(oData) {
@@ -121,7 +117,6 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/core/routing/History", "sap
 				});
 			that.getView().setModel(oAbModel, "oAbModel");
 			zbtable.setModel(that.getView().getModel("oAbModel"));
-
 			//end of ycoskun
 
 			//Personelinin pd sonuc  bilgilerini getirme
@@ -136,21 +131,16 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/core/routing/History", "sap
 		},
 
 		onBack: function() {
-
 			this.getOwnerComponent().getRouter().navTo("screen5");
-
 		},
 
 		_handleMessageBoxOpen: function(sMessage, sMessageBoxType) {
-
 			var that = this;
 
 			MessageBox[sMessageBoxType](sMessage, {
 				actions: [MessageBox.Action.YES, MessageBox.Action.NO],
 				onClose: function(oAction) {
 					if (oAction === MessageBox.Action.YES) {
-						//that.getOwnerComponent().getRouter().navTo("PersonalActivity");
-						//window.location.reload();
 						setTimeout(function() {
 							window.open("/sap/bc/ui5_ui5/ui2/ushell/shells/abap/FioriLaunchpad.html", "_self");
 						}, 1000);
@@ -163,14 +153,10 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/core/routing/History", "sap
 
 		handleWizardCancel: function() {
 			this._handleMessageBoxOpen("Çıkmak istediğine emin misin?", "warning");
-
 		},
-
 		saveInf: function() {
-
 			var oThat = this;
 			oThat._handleMessageBox("Formu kaydetmek istediğinize emin misiniz?", "information");
-
 		},
 		_handleMessageBox: function(sMessage, sMessageBoxType) {
 			var pernrSave = sap.ui.getCore().cPernr;
@@ -199,15 +185,12 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/core/routing/History", "sap
 							},
 							error: function(oData) {
 								sap.m.MessageToast.show("Bağlantı Hatası");
-
 							}
-
 						});
 
 						oModel.refresh(true);
 						that.getOwnerComponent().getRouter().navTo("PersonalActivity");
 						window.location.reload();
-
 					}
 				}
 			});
