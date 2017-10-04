@@ -1,0 +1,17 @@
+<mvc:View controllerName="ZHR_144.controller.Position" xmlns="sap.ui.table" xmlns:mvc="sap.ui.core.mvc" xmlns:m="sap.m"
+	xmlns:u="sap.ui.unified" xmlns:core="sap.ui.core" height="100%">
+	<m:Page showHeader="false" enableScrolling="false">
+		<m:content>
+			<TreeTable id="TreeTableBasic" rows="{path:'/catalog/clothing', parameters: {arrayNames:['categories']}}" selectionMode="SingleToggle"
+				enableSelectAll="false" ariaLabelledBy="title">
+				<columns>
+					<Column width="30rem">
+						<template>
+							<m:Text text="{name} {text}" wrapping="false"/>
+						</template>
+					</Column>
+				</columns>
+			</TreeTable>
+		</m:content>
+		</m:Page>
+	</mvc:View>

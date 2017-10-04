@@ -1,32 +1,7 @@
-<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout" xmlns="sap.m" xmlns="sap.ui.table">
-	 <TreeTable
-                    id="TreeTableBasic"
-                    selectionMode="MultiToggle"
-                    enableSelectAll="false"
-                    ariaLabelledBy="title">
-                <columns>
-                    <Column width="13rem">
-                        <Label text="Categories"/>
-                        <template>
-                            <Text text="" wrapping="false" />
-                        </template>
-                    </Column>
-                    <Column width="9rem">
-                        <Label text="Price"/>
-                        <template>
-                            <Currency value="" currency=""/>
-                        </template>
-                    </Column>
-                    <Column width="11rem">
-                        <Label text="Size"/>
-                        <template>
-                            <Select
-                                    selectedKey=""
-                                    forceSelection="false">
-                                <core:Item key="" text=""/>
-                            </Select>
-                        </template>
-                    </Column>
-                </columns>
-            </TreeTable>
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout" xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc">
+	<Dialog title="Pozisyon" contentHeight="40%" contentWidth="50%">
+		<content>
+			<mvc:XMLView viewName="ZHR_144.view.Position"/>
+		</content>
+	</Dialog>
 </core:FragmentDefinition>
