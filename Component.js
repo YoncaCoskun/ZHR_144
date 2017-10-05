@@ -41,6 +41,7 @@ sap.ui.define([
 	var cCikisNeden2;
 	var cCikisNeden3;
 
+	var cPosition;
 	return UIComponent.extend("ZHR_144.Component", {
 
 		metadata: {

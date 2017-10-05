@@ -2,8 +2,9 @@
 	xmlns:u="sap.ui.unified" xmlns:core="sap.ui.core" height="100%">
 	<m:Page showHeader="false" enableScrolling="false">
 		<m:content>
-			<TreeTable id="TreeTableBasic" rows="{path:'/catalog/clothing', parameters: {arrayNames:['categories']}}" selectionMode="SingleToggle"
-				enableSelectAll="false" ariaLabelledBy="title">
+			<TreeTable id="TreeTableBasic" rows="{path:'/catalog/clothing', parameters: {arrayNames:['categories']}}" selectionMode="Single"
+				selectionBehavior="RowOnly" expandFirstLevel="false" rowSelectionChange="selectionChanged" columnHeaderVisible="false"
+				visibleRowCountMode="Auto" editable="false" firstVisibleRow="0" showNoData="false">
 				<columns>
 					<Column width="30rem">
 						<template>
@@ -13,5 +14,5 @@
 				</columns>
 			</TreeTable>
 		</m:content>
-		</m:Page>
-	</mvc:View>
+	</m:Page>
+</mvc:View>

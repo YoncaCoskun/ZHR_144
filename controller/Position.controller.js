@@ -151,7 +151,8 @@ sap.ui.define([
 													categoryLevel3.push({
 														name: oData.results[c].Objid,
 														categories: categoryLevel4,
-														text: oData.results[c].Stext
+														text: oData.results[c].Stext,
+														DrillState: "expanded"
 													});
 												}
 											}
@@ -207,15 +208,27 @@ sap.ui.define([
 			that.getView().byId("TreeTableBasic").setModel(oJsonModel);
 		},
 		onCollapseAll: function() {
-			var oTreeTable = this.getView().byId("TreeTableBasic");
+			var oView = this.getView();
+			var oTreeTable = oView.byId("TreeTableBasic");
 			oTreeTable.collapseAll();
 		},
-
 		onExpandFirstLevel: function() {
-			var oTreeTable = this.getView().byId("TreeTableBasic");
+			var oView = this.getView();
+			var oTreeTable = oView.byId("TreeTableBasic");
 			oTreeTable.expandToLevel(1);
-		}
+		},
+		selectionChanged: function(oEvent) {
+			var oView = this.getView();
+			var oTreeTable = oView.byId("TreeTableBasic");
+			var sPath = oEvent.getParameter("rowContext").getPath();
+			var model = oTreeTable.getModel();
+			var dataSelect = model.getProperty(sPath);
+			var position = dataSelect.name;
+			var posText = dataSelect.text;
 
+			sap.ui.getCore().cPosition = position + "/" + posText;
+
+		}
 	});
 
 	return WizardController;

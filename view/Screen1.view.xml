@@ -28,7 +28,7 @@
 								<form:content>
 									<core:Title/>
 									<Label required="true" text="Pozisyon"/>
-									<Input class="inputForm" id="PosAd1" value="90001462" placeholder="Pozisyon" liveChange="additionalInfoValidation" showSuggestion="true"
+									<Input class="inputForm" id="PosAd1" value="" placeholder="Pozisyon" liveChange="additionalInfoValidation" showSuggestion="true"
 										showValueHelp="true" suggestionItems="{/PozisyonSet}" type="Text" valueHelpRequest="handleValueHelpPoz" valueState="{/pozState}">
 										<suggestionItems>
 											<core:Item key="{Level}" text="{Stext}"/>
@@ -57,9 +57,9 @@
 										</suggestionItems>
 									</Input>
 									<Label text="İş Anahtarı"/>
-									<Input class="inputForm" id="isAnah1" value="30000039"/>
+									<Input class="inputForm" id="isAnah1" value=""/>
 									<Label text="Org. Birimi"/>
-									<Input class="inputForm" id="orgBir1" value="90001435"/>
+									<Input class="inputForm" id="orgBir1" value=""/>
 									<core:Title/>
 									<Label required="true" text="Çalışan Grb."/>
 									<Input class="inputForm" id="cls1" placeholder="Çalışan Grb." liveChange="additionalInfoValidation" showSuggestion="true"
