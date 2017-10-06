@@ -65,7 +65,12 @@
 									<Input class="inputForm" value="" enabled="false" id="diger5"/>
 									<core:Title text="Yeni"/>
 									<Label text="Pozisyon"/>
-									<Input class="inputForm" value="" id="InputPosAd5"/>
+									<Input class="inputForm" id="InputPosAd5" value="" placeholder="Pozisyon" liveChange="additionalInfoValidation" showSuggestion="true"
+										showValueHelp="true" suggestionItems="{/PozisyonSet}" type="Text" valueHelpRequest="handleValueHelpPoz" valueState="{/pozState}">
+										<suggestionItems>
+											<core:Item key="{Level}" text="{Stext}"/>
+										</suggestionItems>
+									</Input>
 									<Label text="Personel Alanı"/>
 									<Input class="inputForm" id="InputPerAlan5" placeholder="Personel Alanı" liveChange="additionalInfoValidation" showSuggestion="true"
 										showValueHelp="true" suggestionItems="{/PerAlanSet}" type="Text" valueHelpRequest="handleValueHelpPerA" valueState="{/perAlanState}">

@@ -35,8 +35,7 @@ sap.ui.define([
 			this._oWizardReviewPage = sap.ui.xmlfragment("ZHR_144.view.Screen5ReviewPage", this);
 			this._oNavContainer.addPage(this._oWizardReviewPage);
 			this.model = new sap.ui.model.json.JSONModel();
-			this.model.setData({
-			});
+			this.model.setData({});
 
 			this.getView().setModel(this.model);
 			this.model.setProperty("/productType", "Mobile");
@@ -383,11 +382,9 @@ sap.ui.define([
 
 		},
 
-		optionalStepActivation: function() {
-		},
+		optionalStepActivation: function() {},
 
-		optionalStepCompletion: function() {
-		},
+		optionalStepCompletion: function() {},
 		stepLanguage: function() {
 			//begin of ycoskun  Personel Verilerini erp tabloya atma 
 
@@ -888,7 +885,26 @@ sap.ui.define([
 				}
 			});
 		},
+		handleValueHelpPoz: function() {
+			var onAddMessageDialogPress = this.getDialogMessage();
+			this.bIsReseted = false;
 
+			onAddMessageDialogPress.open();
+		},
+		getDialogMessage: function() {
+			this.oMessageDialog = sap.ui.xmlfragment("ZHR_144.view.Screen1Position", this);
+			this.getView().addDependent(this.oMessageDialog);
+
+			// 			var oModel = new JSONModel(jQuery.sap.getModulePath("zn11_expense/mockserver", "/Products.json"));
+			// 			this.getView().setModel(oModel);
+
+			return this.oMessageDialog;
+		},
+		onExit: function() {
+			if (this.oMessageDialog) {
+				this.oMessageDialog.destroy();
+			}
+		},
 		backOnayPage: function() {
 			var that = this;
 			that._handleNavigationToStep(0);
@@ -1079,7 +1095,7 @@ sap.ui.define([
 						var langtable = oView.byId("idLanguageTable5");
 						langtable.setModel(oView.getModel("LangModel"));
 						//end of ycoskun
-						
+
 						this.oParent.close();
 						oDialog.destroy();
 
@@ -1199,7 +1215,7 @@ sap.ui.define([
 						var abtable = oView.byId("idAbilityTable5");
 						abtable.setModel(oView.getModel("oAbilityModel"));
 						//end of ycoskun
-						
+
 						this.oParent.close();
 						oDialogAbility.destroy();
 
@@ -1295,7 +1311,7 @@ sap.ui.define([
 						var pdtable = oView.byId("idPDTable5");
 						pdtable.setModel(oView.getModel("PDModel"));
 						//end of ycoskun
-						
+
 						this.oParent.close();
 						oDialogPD.destroy();
 					}
@@ -1520,7 +1536,7 @@ sap.ui.define([
 						var langtable = oView.byId("idLanguageTable5");
 						langtable.setModel(oView.getModel("LangModel"));
 						//end of ycoskun
-						
+
 						this.oParent.close();
 
 					}
@@ -1591,7 +1607,6 @@ sap.ui.define([
 						/* buraya yabancı dil ekleyebilmek için servis eklenecek*/
 						var oEntryZihin = {};
 
-						
 						oEntryZihin.SinavTuru = vSinavTur;
 						oEntryZihin.Puan = vPuan;
 						oEntryZihin.Tavan = vTarih;
@@ -1748,7 +1763,7 @@ sap.ui.define([
 						var pdtable = oView.byId("idPDTable5");
 						pdtable.setModel(oView.getModel("oPDModel"));
 						//end of ycoskun
-						
+
 						this.oParent.close();
 
 					}
@@ -1778,6 +1793,34 @@ sap.ui.define([
 			} else {
 				return value;
 			}
+		},
+		onSelect: function() {
+			var that = this;
+			var osJsonStelOrg = new sap.ui.model.json.JSONModel();
+			var vStell, vOrg;
+			var vPosition = sap.ui.getCore().cPosition;
+			var arrayPos = vPosition.split("/");
+			var vPos = arrayPos[0];
+			that.getView().byId("InputPosAd5").setValue(sap.ui.getCore().cPosition);
+			that.oMessageDialog.close();
+			that.oMessageDialog.destroy();
+
+			oModel.read("/StelOrgGetirSet('" + vPos + "')", null, null, false,
+				function(oData) {
+					osJsonStelOrg.setData(oData);
+					vStell = oData.Stell;
+					vOrg = oData.Orgeh;
+
+					that.getView().byId("InputIsAnahtari5").setValue(vStell);
+					that.getView().byId("InputOrgBirim5").setValue(vOrg);
+
+				});
+
+		},
+		onClose: function() {
+			var that = this;
+			that.oMessageDialog.close();
+			that.oMessageDialog.destroy();
 		}
 	});
 

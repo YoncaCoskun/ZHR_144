@@ -300,7 +300,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/core/routing/History", "sap
 					//end of ycoskun
 
 				} else if (firstPronr === "03") {
-					oModel.read("/ZHRTerfiSet('" + firstPernr + "')", null, null, true,
+					oModel.read("/ZHRGuncelTerfiSet('" + firstPernr + "')", null, null, true,
 						function(oData) {
 							pozisyon = oData.Stext;
 							perAlan = oData.Pbtxt;
@@ -435,7 +435,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/core/routing/History", "sap
 
 					//end of ycoskun
 				} else if (firstPronr === "04") {
-					oModel.read("/ZHRTerfiSet('" + firstPernr + "')", null, null, true,
+					oModel.read("/ZHRGuncelTerfiSet('" + firstPernr + "')", null, null, true,
 						function(oData) {
 							pozisyon = oData.Stext;
 							perAlan = oData.Pbtxt;
@@ -565,7 +565,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/core/routing/History", "sap
 
 					//end of ycoskun
 				} else if (firstPronr === "05") {
-					oModel.read("/ZHRTerfiSet('" + firstPernr + "')", null, null, true,
+					oModel.read("/ZHRGuncelTerfiSet('" + firstPernr + "')", null, null, true,
 						function(oData) {
 							pozisyon = oData.Stext;
 							perAlan = oData.Pbtxt;
@@ -696,7 +696,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/core/routing/History", "sap
 
 					//end of ycoskun
 				} else if (firstPronr === "06") {
-					oModel.read("/ZHRTerfiSet('" + firstPernr + "')", null, null, true,
+					oModel.read("/ZHRGuncelTerfiSet('" + firstPernr + "')", null, null, true,
 						function(oData) {
 							pozisyon = oData.Stext;
 							perAlan = oData.Pbtxt;
@@ -1141,7 +1141,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/core/routing/History", "sap
 
 				//end of ycoskun
 			} else if (selectPronr === "03") {
-				oModel.read("/ZHRTerfiSet('" + selectPernr + "')", null, null, true,
+				oModel.read("/ZHRGuncelTerfiSet('" + selectPernr + "')", null, null, true,
 					function(oData) {
 						oJPerModel.setData(oData);
 						pozisyon = oData.Stext;
@@ -1275,7 +1275,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/core/routing/History", "sap
 
 				//end of ycoskun
 			} else if (selectPronr === "04") {
-				oModel.read("/ZHRTerfiSet('" + selectPernr + "')", null, null, true,
+				oModel.read("/ZHRGuncelTerfiSet('" + selectPernr + "')", null, null, true,
 					function(oData) {
 						oJPerModel.setData(oData);
 						pozisyon = oData.Stext;
@@ -1409,7 +1409,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/core/routing/History", "sap
 
 				//end of ycoskun
 			} else if (selectPronr === "05") {
-				oModel.read("/ZHRTerfiSet('" + selectPernr + "')", null, null, true,
+				oModel.read("/ZHRGuncelTerfiSet('" + selectPernr + "')", null, null, true,
 					function(oData) {
 						oJPerModel.setData(oData);
 						pozisyon = oData.Stext;
@@ -1543,7 +1543,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/core/routing/History", "sap
 
 				//end of ycoskun
 			} else if (selectPronr === "06") {
-				oModel.read("/ZHRTerfiSet('" + selectPernr + "')", null, null, true,
+				oModel.read("/ZHRGuncelTerfiSet('" + selectPernr + "')", null, null, true,
 					function(oData) {
 						oJPerModel.setData(oData);
 						pozisyon = oData.Stext;

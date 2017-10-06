@@ -268,6 +268,26 @@ sap.ui.define([
 			this._valueHelpSelectDialog.open();
 
 		},
+		handleValueHelpPoz: function() {
+			var onAddMessageDialogPress = this.getDialogMessage();
+			this.bIsReseted = false;
+
+			onAddMessageDialogPress.open();
+		},
+		getDialogMessage: function() {
+			this.oMessageDialog = sap.ui.xmlfragment("ZHR_144.view.Screen1Position", this);
+			this.getView().addDependent(this.oMessageDialog);
+
+			// 			var oModel = new JSONModel(jQuery.sap.getModulePath("zn11_expense/mockserver", "/Products.json"));
+			// 			this.getView().setModel(oModel);
+
+			return this.oMessageDialog;
+		},
+		onExit: function() {
+			if (this.oMessageDialog) {
+				this.oMessageDialog.destroy();
+			}
+		},
 		handleValueHelpPerA: function() {
 			var that = this;
 			var handleClose = function(oEvent) {
@@ -390,11 +410,9 @@ sap.ui.define([
 			}
 		},
 
-		optionalStepActivation: function() {
-		},
+		optionalStepActivation: function() {},
 
-		optionalStepCompletion: function() {
-		},
+		optionalStepCompletion: function() {},
 
 		stepLanguage: function() {
 			//begin of ycoskun  Personel Verilerini erp tabloya atma 
@@ -782,7 +800,7 @@ sap.ui.define([
 			that.getElement("mevPrimRew3").setValue(oEntry.mevPrim3);
 			that.getElement("vekPrimRew3").setValue(oEntry.vekPrim3);
 			that.getElement("digerRew3").setValue(oEntry.diger3);
-			
+
 			that.getElement("inputPosAdRew3").setValue(oEntry.InputPosAd3);
 			that.getElement("inputPerAlanRew3").setValue(oEntry.InputPerAlan3);
 			that.getElement("inputPerAltAlanRew3").setValue(oEntry.InputPerAltAlan3);
@@ -1120,7 +1138,7 @@ sap.ui.define([
 						var langtable = oView.byId("idLanguageTable3");
 						langtable.setModel(oView.getModel("LangModel"));
 						//end of ycoskun
-						
+
 						this.oParent.close();
 						oDialog.destroy();
 
@@ -1815,6 +1833,34 @@ sap.ui.define([
 			} else {
 				return value;
 			}
+		},
+		onSelect: function() {
+			var that = this;
+			var osJsonStelOrg = new sap.ui.model.json.JSONModel();
+			var vStell, vOrg;
+			var vPosition = sap.ui.getCore().cPosition;
+			var arrayPos = vPosition.split("/");
+			var vPos = arrayPos[0];
+			that.getView().byId("InputPosAd3").setValue(sap.ui.getCore().cPosition);
+			that.oMessageDialog.close();
+			that.oMessageDialog.destroy();
+
+			oModel.read("/StelOrgGetirSet('" + vPos + "')", null, null, false,
+				function(oData) {
+					osJsonStelOrg.setData(oData);
+					vStell = oData.Stell;
+					vOrg = oData.Orgeh;
+
+					that.getView().byId("InputIsAnahtari3").setValue(vStell);
+					that.getView().byId("InputOrgBirim3").setValue(vOrg);
+
+				});
+
+		},
+		onClose: function() {
+			var that = this;
+			that.oMessageDialog.close();
+			that.oMessageDialog.destroy();
 		}
 	});
 

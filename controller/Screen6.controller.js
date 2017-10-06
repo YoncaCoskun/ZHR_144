@@ -35,8 +35,7 @@ sap.ui.define([
 			this._oWizardReviewPage = sap.ui.xmlfragment("ZHR_144.view.Screen6ReviewPage", this);
 			this._oNavContainer.addPage(this._oWizardReviewPage);
 			this.model = new sap.ui.model.json.JSONModel();
-			this.model.setData({
-			});
+			this.model.setData({});
 
 			this.getView().setModel(this.model);
 			this.model.setProperty("/productType", "Mobile");
@@ -376,11 +375,9 @@ sap.ui.define([
 			}
 		},
 
-		optionalStepActivation: function() {
-		},
+		optionalStepActivation: function() {},
 
-		optionalStepCompletion: function() {
-		},
+		optionalStepCompletion: function() {},
 
 		stepLanguage: function() {
 			//begin of ycoskun  Personel Verilerini erp tabloya atma 
@@ -713,7 +710,6 @@ sap.ui.define([
 			});
 			oModel.refresh(true);
 
-
 			that.getElement("fisKonuRew6").setValue(oEntry.fisKonu6);
 			that.getElement("sicilNoRew6").setValue(oEntry.sicilNo6);
 			that.getElement("adSoyadRew6").setValue(oEntry.adSoyad6);
@@ -853,6 +849,7 @@ sap.ui.define([
 		},
 		_handleNavigationToStep: function(iStepNumber) {
 			var that = this;
+
 			function fnAfterNavigate() {
 				that._wizard.goToStep(that._wizard.getSteps()[iStepNumber]);
 				that._oNavContainer.detachAfterNavigate(fnAfterNavigate);
@@ -1063,7 +1060,7 @@ sap.ui.define([
 						var langtable = oView.byId("idLanguageTable6");
 						langtable.setModel(oView.getModel("LangModel"));
 						//end of ycoskun
-						
+
 						this.oParent.close();
 						oDialog.destroy();
 
@@ -1082,6 +1079,26 @@ sap.ui.define([
 				content: [oForm]
 			});
 			oDialog.open();
+		},
+		handleValueHelpPoz: function() {
+			var onAddMessageDialogPress = this.getDialogMessage();
+			this.bIsReseted = false;
+
+			onAddMessageDialogPress.open();
+		},
+		getDialogMessage: function() {
+			this.oMessageDialog = sap.ui.xmlfragment("ZHR_144.view.Screen1Position", this);
+			this.getView().addDependent(this.oMessageDialog);
+
+			// 			var oModel = new JSONModel(jQuery.sap.getModulePath("zn11_expense/mockserver", "/Products.json"));
+			// 			this.getView().setModel(oModel);
+
+			return this.oMessageDialog;
+		},
+		onExit: function() {
+			if (this.oMessageDialog) {
+				this.oMessageDialog.destroy();
+			}
 		},
 		onAddAbility: function() {
 			var pernr = vPernr;
@@ -1181,7 +1198,7 @@ sap.ui.define([
 						var abtable = oView.byId("idAbilityTable6");
 						abtable.setModel(oView.getModel("oAbilityModel"));
 						//end of ycoskun
-						
+
 						this.oParent.close();
 						oDialogAbility.destroy();
 					}
@@ -1273,7 +1290,7 @@ sap.ui.define([
 						var pdtable = oView.byId("idPDTable6");
 						pdtable.setModel(oView.getModel("PDModel"));
 						//end of ycoskun
-						
+
 						this.oParent.close();
 						oDialogPD.destroy();
 					}
@@ -1469,8 +1486,7 @@ sap.ui.define([
 							async: false,
 							filters: null,
 							urlParameters: null,
-							success: function() {
-							},
+							success: function() {},
 							error: function() {
 								var Message = "Bağlantı Hatası!";
 								sap.m.MessageToast.show(Message);
@@ -1492,7 +1508,7 @@ sap.ui.define([
 						var langtable = oView.byId("idLanguageTable6");
 						langtable.setModel(oView.getModel("LangModel"));
 						//end of ycoskun
-						
+
 						this.oParent.close();
 
 					}
@@ -1567,15 +1583,14 @@ sap.ui.define([
 						oEntryZihin.Puan = vPuan;
 						oEntryZihin.Tavan = vTarih;
 						oEntryZihin.Pernr = pernr;
-						
+
 						// begin of ycoskun yabancı dilleri silme
 						var sReadURL = "/ZHRTerfiZBSet(Pernr='" + oEntryZihin.Pernr + "',SinavTuru='" + oEntryZihin.SinavTuru + "')";
 						var mParameters = {
 							async: false,
 							filters: null,
 							urlParameters: null,
-							success: function() {
-							},
+							success: function() {},
 							error: function() {
 								var Message = "Bağlantı Hatası!";
 								sap.m.MessageToast.show(Message);
@@ -1596,7 +1611,7 @@ sap.ui.define([
 						var zihintable = oView.byId("idAbilityTable6");
 						zihintable.setModel(oView.getModel("oZihinModel"));
 						//end of ycoskun
-						
+
 						this.oParent.close();
 
 					}
@@ -1745,6 +1760,34 @@ sap.ui.define([
 			} else {
 				return value;
 			}
+		},
+		onSelect: function() {
+			var that = this;
+			var osJsonStelOrg = new sap.ui.model.json.JSONModel();
+			var vStell, vOrg;
+			var vPosition = sap.ui.getCore().cPosition;
+			var arrayPos = vPosition.split("/");
+			var vPos = arrayPos[0];
+			that.getView().byId("InputPosAd6").setValue(sap.ui.getCore().cPosition);
+			that.oMessageDialog.close();
+			that.oMessageDialog.destroy();
+
+			oModel.read("/StelOrgGetirSet('" + vPos + "')", null, null, false,
+				function(oData) {
+					osJsonStelOrg.setData(oData);
+					vStell = oData.Stell;
+					vOrg = oData.Orgeh;
+
+					that.getView().byId("InputIsAnahtari6").setValue(vStell);
+					that.getView().byId("InputOrgBirim6").setValue(vOrg);
+
+				});
+
+		},
+		onClose: function() {
+			var that = this;
+			that.oMessageDialog.close();
+			that.oMessageDialog.destroy();
 		}
 	});
 
