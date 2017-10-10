@@ -281,8 +281,8 @@ sap.ui.define([
 			that.getElement("isAlanRew2").setValue(oEntry.isAlan2);
 			that.getElement("isAnahRew2").setValue(oEntry.isAnahtari2);
 			that.getElement("orgBirRew2").setValue(oEntry.orgBirim2);
-			that.getElement("clsRew2").setValue(oEntry.clsGrp2);
-			that.getElement("clsAltRew2").setValue(oEntry.clsAlt2);
+			that.getElement("clsRew2").setValue(oEntry.calisanGrp2);
+			that.getElement("clsAltRew2").setValue(oEntry.calisanAlt2);
 			that.getElement("skalaRew2").setValue(oEntry.skala2);
 			that.getElement("ucretRew2").setValue(oEntry.ucret2);
 			that.getElement("dilPrimRew2").setValue(oEntry.dilPrim2);
