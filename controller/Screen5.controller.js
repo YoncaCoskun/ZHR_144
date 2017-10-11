@@ -438,6 +438,26 @@ sap.ui.define([
 			oEntryTerfiPersonel.Fach1 = that.getView().byId(entryEgitim).getValue();
 
 			//split edip kodu backende yollama begin of ycoskun
+			var plans = that.getView().byId(entryPosAd5).getValue();
+			var arrayPlans = plans.split(" / ");
+			oEntryTerfiPersonel.Plans = arrayPlans[0];
+
+			var fach1 = that.getView().byId(entryEgitim).getValue();
+			var arrayFach1 = fach1.split(" / ");
+			oEntryTerfiPersonel.Fach1 = arrayFach1[0];
+
+			var orgeh = that.getView().byId(entryorgBirim5).getValue();
+			var arrayOrgeh = orgeh.split(" / ");
+			oEntryTerfiPersonel.Orgeh = arrayOrgeh[0];
+
+			var slart = that.getView().byId(entryOkulTur).getValue();
+			var arraySlart = slart.split(" / ");
+			oEntryTerfiPersonel.Slart = arraySlart[0];
+
+			var stell = that.getView().byId(entryisAnahtar5).getValue();
+			var arrayStell = stell.split(" / ");
+			oEntryTerfiPersonel.Stell = arrayStell[0];
+
 			var werks = that.getView().byId(entryPerAlan5).getValue();
 			var arrayWerks = werks.split(" / ");
 			oEntryTerfiPersonel.Werks = arrayWerks[0];
@@ -678,6 +698,26 @@ sap.ui.define([
 			oTerfiPersonel.Fach1 = that.getView().byId(entryegitim5).getValue();
 
 			//split edip kodu backende yollama begin of ycoskun
+			var plans = that.getView().byId(entryinputPosAd5).getValue();
+			var arrayPlans = plans.split(" / ");
+			oTerfiPersonel.Plans = arrayPlans[0];
+
+			var fach1 = that.getView().byId(entryegitim5).getValue();
+			var arrayFach1 = fach1.split(" / ");
+			oTerfiPersonel.Fach1 = arrayFach1[0];
+
+			var orgeh = that.getView().byId(entryinputOrgBirim5).getValue();
+			var arrayOrgeh = orgeh.split(" / ");
+			oTerfiPersonel.Orgeh = arrayOrgeh[0];
+
+			var slart = that.getView().byId(entryokul5).getValue();
+			var arraySlart = slart.split(" / ");
+			oTerfiPersonel.Slart = arraySlart[0];
+
+			var stell = that.getView().byId(entryinputIsAnahtar5).getValue();
+			var arrayStell = stell.split(" / ");
+			oTerfiPersonel.Stell = arrayStell[0];
+
 			var werks = that.getView().byId(entryinputPerAlan5).getValue();
 			var arrayWerks = werks.split(" / ");
 			oTerfiPersonel.Werks = arrayWerks[0];

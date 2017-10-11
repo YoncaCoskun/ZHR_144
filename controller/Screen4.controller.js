@@ -452,7 +452,27 @@ sap.ui.define([
 			oEntryTerfiPersonel.Insti = that.getView().byId(entryOkulAdi).getValue();
 			oEntryTerfiPersonel.Fach1 = that.getView().byId(entryEgitim).getValue();
 
-			//split edip kodu backende yollama begin of ycoskun
+		//split edip kodu backende yollama begin of ycoskun
+			var plans = that.getView().byId(entryPosAd4).getValue();
+			var arrayPlans = plans.split(" / ");
+			oEntryTerfiPersonel.Plans = arrayPlans[0];
+
+			var fach1 = that.getView().byId(entryEgitim).getValue();
+			var arrayFach1 = fach1.split(" / ");
+			oEntryTerfiPersonel.Fach1 = arrayFach1[0];
+
+			var orgeh = that.getView().byId(entryorgBirim4).getValue();
+			var arrayOrgeh = orgeh.split(" / ");
+			oEntryTerfiPersonel.Orgeh = arrayOrgeh[0];
+
+			var slart = that.getView().byId(entryOkulTur).getValue();
+			var arraySlart = slart.split(" / ");
+			oEntryTerfiPersonel.Slart = arraySlart[0];
+
+			var stell = that.getView().byId(entryisAnahtar4).getValue();
+			var arrayStell = stell.split(" / ");
+			oEntryTerfiPersonel.Stell = arrayStell[0];
+
 			var werks = that.getView().byId(entryPerAlan4).getValue();
 			var arrayWerks = werks.split(" / ");
 			oEntryTerfiPersonel.Werks = arrayWerks[0];
@@ -644,6 +664,7 @@ sap.ui.define([
 			oEntry[entrymevPrim4] = that.getView().byId(entrymevPrim4).getValue();
 			oEntry[entryvekPrim4] = that.getView().byId(entryvekPrim4).getValue();
 			oEntry[entrydiger4] = that.getView().byId(entrydiger4).getValue();
+			
 			oEntry[entryinputPosAd4] = that.getView().byId(entryinputPosAd4).getValue();
 			oEntry[entryinputPerAlan4] = that.getView().byId(entryinputPerAlan4).getValue();
 			oEntry[entryinputPerAltAlan4] = that.getView().byId(entryinputPerAltAlan4).getValue();
@@ -689,7 +710,27 @@ sap.ui.define([
 			oTerfiPersonel.Insti = that.getView().byId(entryokulAd4).getValue();
 			oTerfiPersonel.Fach1 = that.getView().byId(entryegitim4).getValue();
 
-			//split edip kodu backende yollama begin of ycoskun
+		//split edip kodu backende yollama begin of ycoskun
+			var plans = that.getView().byId(entryinputPosAd4).getValue();
+			var arrayPlans = plans.split(" / ");
+			oTerfiPersonel.Plans = arrayPlans[0];
+
+			var fach1 = that.getView().byId(entryegitim4).getValue();
+			var arrayFach1 = fach1.split(" / ");
+			oTerfiPersonel.Fach1 = arrayFach1[0];
+
+			var orgeh = that.getView().byId(entryinputOrgBirim4).getValue();
+			var arrayOrgeh = orgeh.split(" / ");
+			oTerfiPersonel.Orgeh = arrayOrgeh[0];
+
+			var slart = that.getView().byId(entryokul4).getValue();
+			var arraySlart = slart.split(" / ");
+			oTerfiPersonel.Slart = arraySlart[0];
+
+			var stell = that.getView().byId(entryinputIsAnahtar4).getValue();
+			var arrayStell = stell.split(" / ");
+			oTerfiPersonel.Stell = arrayStell[0];
+
 			var werks = that.getView().byId(entryinputPerAlan4).getValue();
 			var arrayWerks = werks.split(" / ");
 			oTerfiPersonel.Werks = arrayWerks[0];
