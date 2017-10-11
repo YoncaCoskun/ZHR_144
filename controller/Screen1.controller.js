@@ -701,6 +701,9 @@ sap.ui.define([
 			var fach1 = that.getView().byId(entryegitim1).getValue();
 			var arrayFach1 = fach1.split(" / ");
 			oEntryPersonel.Fach1 = arrayFach1[0];
+			
+			var plans = that.getView().byId(entryPosAd1).getValue();
+			oEntryPersonel.Plans = (plans.split("/"))[0];
 			//end of ycoskun
 
 			oEntryPersonel.Tarih = "";
@@ -1468,6 +1471,10 @@ sap.ui.define([
 			var fach1 = that.getView().byId(entryegitim1).getValue();
 			var arrayFach1 = fach1.split(" / ");
 			oPersonel.Fach1 = arrayFach1[0];
+			
+			var plans = that.getView().byId(entryPosAd1).getValue();
+			oPersonel.Plans = (plans.split("/"))[0];
+			
 			//end of ycoskun
 
 			oPersonel.Tarih = "";
