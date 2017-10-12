@@ -96,9 +96,9 @@
 									<Label text="Şirket"/>
 									<Input class="inputForm" value="" id="InputSirket6"/>
 									<Label text="İş Anahtarı"/>
-									<Input class="inputForm" value="" id="InputIsAnahtari6"/>
+									<Input class="inputForm" value="" id="InputIsAnahtari6" enabled="true"/>
 									<Label text="Org. Birimi"/>
-									<Input class="inputForm" value="" id="InputOrgBirim6"/>
+									<Input class="inputForm" value="" id="InputOrgBirim6" enabled="true"/>
 									<Label text="Çalışan Grb."/>
 									<Input class="inputForm" id="InputCalisanGrp6" placeholder="Çalışan Grb." liveChange="additionalInfoValidation" showSuggestion="true"
 										showValueHelp="true" suggestionItems="{/CalisanGrSet}" type="Text" valueHelpRequest="handleValueHelp" valueState="{/calisanGrbState}">

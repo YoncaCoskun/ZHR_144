@@ -1831,7 +1831,9 @@ sap.ui.define([
 					vOrg = oData.Orgeh;
 
 					that.getView().byId("isAnah1").setValue(vStell);
+					that.getView().byId("isAnah1").setEnabled(false);
 					that.getView().byId("orgBir1").setValue(vOrg);
+					that.getView().byId("orgBir1").setEnabled(false);
 
 				});
 

@@ -57,9 +57,9 @@
 										</suggestionItems>
 									</Input>
 									<Label text="İş Anahtarı"/>
-									<Input class="inputForm" id="isAnah1" value=""/>
+									<Input class="inputForm" id="isAnah1" value="" enabled="true"/>
 									<Label text="Org. Birimi"/>
-									<Input class="inputForm" id="orgBir1" value=""/>
+									<Input class="inputForm" id="orgBir1" value="" enabled="true"/>
 									<core:Title/>
 									<Label required="true" text="Çalışan Grb."/>
 									<Input class="inputForm" id="cls1" placeholder="Çalışan Grb." liveChange="additionalInfoValidation" showSuggestion="true"

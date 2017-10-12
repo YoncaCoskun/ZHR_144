@@ -1854,6 +1854,9 @@ sap.ui.define([
 					that.getView().byId("InputIsAnahtari5").setValue(vStell);
 					that.getView().byId("InputOrgBirim5").setValue(vOrg);
 
+					that.getView().byId("InputIsAnahtari5").setEnabled(false);
+					that.getView().byId("InputOrgBirim5").setEnabled(false);
+
 				});
 
 		},

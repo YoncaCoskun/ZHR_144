@@ -452,7 +452,7 @@ sap.ui.define([
 			oEntryTerfiPersonel.Insti = that.getView().byId(entryOkulAdi).getValue();
 			oEntryTerfiPersonel.Fach1 = that.getView().byId(entryEgitim).getValue();
 
-		//split edip kodu backende yollama begin of ycoskun
+			//split edip kodu backende yollama begin of ycoskun
 			var plans = that.getView().byId(entryPosAd4).getValue();
 			var arrayPlans = plans.split(" / ");
 			oEntryTerfiPersonel.Plans = arrayPlans[0];
@@ -664,7 +664,7 @@ sap.ui.define([
 			oEntry[entrymevPrim4] = that.getView().byId(entrymevPrim4).getValue();
 			oEntry[entryvekPrim4] = that.getView().byId(entryvekPrim4).getValue();
 			oEntry[entrydiger4] = that.getView().byId(entrydiger4).getValue();
-			
+
 			oEntry[entryinputPosAd4] = that.getView().byId(entryinputPosAd4).getValue();
 			oEntry[entryinputPerAlan4] = that.getView().byId(entryinputPerAlan4).getValue();
 			oEntry[entryinputPerAltAlan4] = that.getView().byId(entryinputPerAltAlan4).getValue();
@@ -710,7 +710,7 @@ sap.ui.define([
 			oTerfiPersonel.Insti = that.getView().byId(entryokulAd4).getValue();
 			oTerfiPersonel.Fach1 = that.getView().byId(entryegitim4).getValue();
 
-		//split edip kodu backende yollama begin of ycoskun
+			//split edip kodu backende yollama begin of ycoskun
 			var plans = that.getView().byId(entryinputPosAd4).getValue();
 			var arrayPlans = plans.split(" / ");
 			oTerfiPersonel.Plans = arrayPlans[0];
@@ -1835,6 +1835,9 @@ sap.ui.define([
 
 					that.getView().byId("InputIsAnahtari4").setValue(vStell);
 					that.getView().byId("InputOrgBirim4").setValue(vOrg);
+
+					that.getView().byId("InputIsAnahtari4").setEnabled(false);
+					that.getView().byId("InputOrgBirim4").setEnabled(false);
 
 				});
 

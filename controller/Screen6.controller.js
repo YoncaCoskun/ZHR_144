@@ -1821,6 +1821,9 @@ sap.ui.define([
 					that.getView().byId("InputIsAnahtari6").setValue(vStell);
 					that.getView().byId("InputOrgBirim6").setValue(vOrg);
 
+					that.getView().byId("InputIsAnahtari6").setEnabled(false);
+					that.getView().byId("InputOrgBirim6").setEnabled(false);
+
 				});
 
 		},
