@@ -407,9 +407,8 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/core/routing/History", "sap
 						});
 					that.getView().setModel(ozbModel, "ozbModel");
 					zbtable.setModel(this.getView().getModel("ozbModel"));
-
-					//end of ycoskun
-
+					//end of ycoskun 
+					
 					//pd sonucları goruntuleme begin of ycoskun
 					var oPDModel = new sap.ui.model.json.JSONModel();
 					var perFilterPD = "Pernr eq '" + firstPernr + "'";
@@ -867,31 +866,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/core/routing/History", "sap
 				oModel.read("/ZHRTalepPersonelBilgiSet('" + selectPernr + "')", null, null, true,
 					function(oData) {
 						oJPerModel.setData(oData);
-						/*	pozisyon = oData.Plans;
-							perAlan = oData.Werks;
-							perAltAlan = oData.Btrtl;
-							isAlan = oData.Gsber;
-							isAnahtar = oData.Stell;
-							orgBirim = oData.Orgeh;
-							clsGrup = oData.Persg;
-							clsAltGrp = oData.Persk;
-							skala = oData.Trfgr;
-							ucret = oData.Bet01;
-							diger = oData.Diger;
-							okulTur = oData.Slart;
-							okulAd = oData.Insti;
-							egitim = oData.Fach1;
-							adSoyad = oData.Ename;
-							dogumTarih = oData.Gbdat;
-							gecerTarih = oData.Begda;
-							aracPrim = "";
-							dilPrim = "";
-							mevPrim = "";
-							vekPrim = "";
-							sirket = "";
-							tc = "";
-							sicil = "";
-							fisKonu = "İşe Alım";*/
+					
 						pozisyon = oData.Stext;
 						perAlan = oData.Pbtxt;
 						perAltAlan = oData.Btext;
@@ -1004,10 +979,9 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/core/routing/History", "sap
 						//	console.log(oData);
 					});
 				that.getView().setModel(attachModel, "attachModel");
-
 				//end of ycoskun
+				
 				//işe alım personelinin onaycılarının getirilmesi
-
 				oModel.read("/ZHROnayciStatuSet", null, ["$filter=" + filterOnayci], false,
 					function(oData) {
 						onayciModel.setData(oData);
@@ -1019,31 +993,6 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/core/routing/History", "sap
 				oModel.read("/ZHRIstenCikisSet('" + selectPernr + "')", null, null, true,
 					function(oData) {
 						oJPerModel.setData(oData);
-						/*pozisyon = oData.Plans;
-						perAlan = oData.Werks;
-						perAltAlan = oData.Btrtl;
-						isAlan = oData.Gsber;
-						isAnahtar = oData.Stell;
-						orgBirim = oData.Orgeh;
-						clsGrup = oData.Persg;
-						clsAltGrp = oData.Persk;
-						skala = oData.Trfgr;
-						ucret = oData.Ucret;
-						diger = oData.Diger;
-						okulTur = "";
-						okulAd = "";
-						egitim = "";
-						adSoyad = oData.Ename;
-						dogumTarih = oData.Gbdat;
-						gecerTarih = oData.Begda;
-						aracPrim = oData.Arcpr;
-						dilPrim = oData.Dilpr;
-						mevPrim = oData.Mvspr;
-						vekPrim = oData.Vklpr;
-						sirket = oData.Bukrs;
-						tc = oData.Tckno;
-						sicil = selectPernr;
-						fisKonu = "İşten Çıkış";*/
 
 						pozisyon = oData.Stext;
 						perAlan = oData.Pbtxt;
