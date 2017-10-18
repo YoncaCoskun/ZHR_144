@@ -12,12 +12,14 @@
 									<core:Title/>
 									<Label text="Fiş Konusu"/>
 									<Input class="inputForm" enabled="false" id="fisKonu1" value="İşe Giriş"/>
-									<Label text="Ad Soyad"/>
-									<Input class="inputForm" id="adSoyad1" value=""/>
+									<Label required="true" text="Ad Soyad"/>
+									<Input class="inputForm" id="adSoyad1" value="" placeholder="Ad Soyad" liveChange="additionalInfoValidation" showSuggestion="true"
+										showValueHelp="true"  type="Text"  valueState="{/adSoyadState}">
+									</Input>
 									<core:Title/>
-									<Label text="Doğum Tarihi"/>
+									<Label required="true" text="Doğum Tarihi"/>
 									<DatePicker class="inputForm" id="dogumTarih1" value=""/>
-									<Label text="Geçerlilik Tarihi"/>
+									<Label required="true" text="Geçerlilik Tarihi"/>
 									<DatePicker class="inputForm" id="gecerTarih1" value=""/>
 								</form:content>
 							</form:SimpleForm>

@@ -578,12 +578,14 @@ sap.ui.define([
 			var skala = this.getView().byId("skala1").getValue();
 			var isAlan1 = this.getView().byId("isAlan1").getValue();
 
+
 			if (cls1.length < 1 || perAlan1.length < 4 || clsAlt1.length < 2 || skala.length < 8 || isAlan1.length < 4) {
 				this._wizard.invalidateStep(this.getView().byId("YeniStep1"));
 			} else {
 				this._wizard.validateStep(this.getView().byId("YeniStep1"));
 
 			}
+
 
 		},
 		optionalStepActivation: function() {
@@ -881,6 +883,7 @@ sap.ui.define([
 			this.model.setProperty("/calisanAltGrbState", "Error");
 			this.model.setProperty("/skalaState", "Error");
 			this.model.setProperty("/isAlanState", "Error");
+			this.model.setProperty("/adSoyadState", "Error");
 			clearContent(this._wizard.getSteps());
 		},
 		onAddLanguage: function() {
