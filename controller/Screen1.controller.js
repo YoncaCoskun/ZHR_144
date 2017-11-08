@@ -12,6 +12,7 @@ sap.ui.define([
 
 	var oModel = new sap.ui.model.odata.ODataModel("/sap/opu/odata/sap/ZHR_144_SRV_01");
 	var vPernr;
+	
 	var attachFiles = [];
 	var osJson = new sap.ui.model.json.JSONModel();
 	var osJsonPerAlan = new sap.ui.model.json.JSONModel();
