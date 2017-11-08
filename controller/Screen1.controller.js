@@ -578,14 +578,12 @@ sap.ui.define([
 			var skala = this.getView().byId("skala1").getValue();
 			var isAlan1 = this.getView().byId("isAlan1").getValue();
 
-
 			if (cls1.length < 1 || perAlan1.length < 4 || clsAlt1.length < 2 || skala.length < 8 || isAlan1.length < 4) {
 				this._wizard.invalidateStep(this.getView().byId("YeniStep1"));
 			} else {
 				this._wizard.validateStep(this.getView().byId("YeniStep1"));
 
 			}
-
 
 		},
 		optionalStepActivation: function() {
@@ -627,43 +625,216 @@ sap.ui.define([
 			var countGecer;
 			try {
 				splitArrayDogumT = that.getView().byId(entrydogumTarih1).getValue();
-				array = splitArrayDogumT.split(".");
+				splitArrayGecerT = that.getView().byId(entrygecerTarih1).getValue();
+
+				var startNok;
+				var endNok;
+				var counter;
+				var arrayStart;
+				var arrayEnd;
+				var dTarih;
+				var gTarih;
+
+				//date'in EN veya TR gelip gelmedğinin kontrolü begin of
+				startNok = splitArrayDogumT.slice(1, 2);
+				endNok = splitArrayGecerT.slice(1, 2);
+
+				debugger;
+				if (startNok !== ".") {
+					startNok = splitArrayDogumT.slice(2, 3);
+					//endNok = endDate.slice(2,3);
+				} else {
+					startNok = splitArrayDogumT.slice(1, 2);
+					//endNok = endDate.slice(1,2);
+				}
+				if (endNok !== ".") {
+					endNok = splitArrayGecerT.slice(2, 3);
+				} else {
+					endNok = splitArrayGecerT.slice(1, 2);
+				}
+				//end of
+				if (startNok === ".") {
+					arrayStart = splitArrayDogumT.split(".");
+					count = arrayStart[0].length;
+					if (count === 1) {
+						arrayStart[0] = "0" + arrayStart[0];
+
+					}
+					dTarih = arrayStart[2] + arrayStart[1] + arrayStart[0];
+
+				} else {
+					arrayStart = splitArrayDogumT.split("/");
+					count = arrayStart[0].length;
+
+					if (arrayStart[1] === undefined) {
+
+					} else {
+						counter = arrayStart[1].length;
+					}
+					if (count === 1) {
+						arrayStart[0] = "0" + arrayStart[0];
+
+					}
+					if (counter === 1) {
+						arrayStart[1] = "0" + arrayStart[1];
+
+					}
+
+					dTarih = "20" + arrayStart[2] + arrayStart[0] + arrayStart[1];
+
+				}
+				if (endNok === ".") {
+
+					arrayEnd = splitArrayGecerT.split(".");
+					count = arrayEnd[0].length;
+
+					if (count === 1) {
+						arrayEnd[0] = "0" + arrayEnd[0];
+
+					}
+
+					gTarih = arrayEnd[2] + arrayEnd[1] + arrayEnd[0];
+
+				} else {
+					arrayEnd = splitArrayGecerT.split("/");
+					count = arrayEnd[0].length;
+					if (arrayEnd[1] === undefined) {
+
+					} else {
+						counter = arrayEnd[1].length;
+					}
+					if (count === 1) {
+						arrayEnd[0] = "0" + arrayEnd[0];
+
+					}
+					if (counter === 1) {
+						arrayEnd[1] = "0" + arrayEnd[1];
+
+					}
+					gTarih = "20" + arrayEnd[2] + arrayEnd[0] + arrayEnd[1];
+				}
+
+				/*array = splitArrayDogumT.split(".");
 				count = array[0].length;
 				if (count === 1) {
 					array[0] = "0" + array[0];
 				}
-				dogumTarih = array[2] + array[1] + array[0];
+				dogumTarih = array[2] + array[1] + array[0];*/
 
-				splitArrayGecerT = that.getView().byId(entrygecerTarih1).getValue();
+				/*splitArrayGecerT = that.getView().byId(entrygecerTarih1).getValue();
 				arrayGecer = splitArrayGecerT.split(".");
 				countGecer = arrayGecer[0].length;
 				if (countGecer === 1) {
 					arrayGecer[0] = "0" + arrayGecer[0];
 				}
-				gecerTarih = arrayGecer[2] + arrayGecer[1] + arrayGecer[0];
+				gecerTarih = arrayGecer[2] + arrayGecer[1] + arrayGecer[0];*/
 			} catch (err) {
 				splitArrayDogumT = that.getView().byId(entrydogumTarih1).getValue();
-				array = splitArrayDogumT.split("/");
-				count = array[0].length;
-				if (count === 1) {
-					array[0] = "0" + array[0];
-				}
-				dogumTarih = array[2] + array[1] + array[0];
-
 				splitArrayGecerT = that.getView().byId(entrygecerTarih1).getValue();
-				arrayGecer = splitArrayGecerT.split("/");
-				countGecer = arrayGecer[0].length;
-				if (countGecer === 1) {
-					arrayGecer[0] = "0" + arrayGecer[0];
+
+				var startNok;
+				var endNok;
+				var counter;
+				var arrayStart;
+				var arrayEnd;
+				var dTarih;
+				var gTarih;
+
+				//date'in EN veya TR gelip gelmedğinin kontrolü begin of
+				startNok = splitArrayDogumT.slice(2, 3);
+				endNok = splitArrayDogumT.slice(2, 3);
+
+				debugger;
+				if (startNok !== ".") {
+					startNok = splitArrayDogumT.slice(2, 3);
+					//endNok = endDate.slice(2,3);
+				} else {
+					startNok = splitArrayDogumT.slice(1, 2);
+					//endNok = endDate.slice(1,2);
 				}
-				gecerTarih = arrayGecer[2] + arrayGecer[1] + arrayGecer[0];
+				if (endNok !== ".") {
+					endNok = splitArrayGecerT.slice(2, 3);
+				} else {
+					endNok = splitArrayGecerT.slice(1, 2);
+				}
+				//end of
+				if (startNok === ".") {
+					arrayStart = splitArrayDogumT.split(".");
+					count = arrayStart[0].length;
+					if (count === 1) {
+						arrayStart[0] = "0" + arrayStart[0];
+
+					}
+					dTarih = arrayStart[2] + arrayStart[1] + arrayStart[0];
+
+				} else {
+					arrayStart = splitArrayDogumT.split("/");
+					count = arrayStart[0].length;
+
+					if (arrayStart[1] === undefined) {
+
+					} else {
+						counter = arrayStart[1].length;
+					}
+					if (count === 1) {
+						arrayStart[0] = "0" + arrayStart[0];
+
+					}
+					if (counter === 1) {
+						arrayStart[1] = "0" + arrayStart[1];
+
+					}
+
+					dTarih = "20" + arrayStart[2] + arrayStart[0] + arrayStart[1];
+
+				}
+				if (endNok === ".") {
+
+					arrayEnd = splitArrayGecerT.split(".");
+					count = arrayEnd[0].length;
+
+					if (count === 1) {
+						arrayEnd[0] = "0" + arrayEnd[0];
+
+					}
+
+					gTarih = arrayEnd[2] + arrayEnd[1] + arrayEnd[0];
+
+				} else {
+					arrayEnd = splitArrayGecerT.split("/");
+					count = arrayEnd[0].length;
+					if (arrayEnd[1] === undefined) {
+
+					} else {
+						counter = arrayEnd[1].length;
+					}
+					if (count === 1) {
+						arrayEnd[0] = "0" + arrayEnd[0];
+
+					}
+					if (counter === 1) {
+						arrayEnd[1] = "0" + arrayEnd[1];
+
+					}
+					gTarih = "20" + arrayEnd[2] + arrayEnd[0] + arrayEnd[1];
+				}
+
 			}
+			//begin of ycoskun 08112017
+			var orgeh = that.getView().byId(entryorgBirim1).getValue();
+			var arrayOrgeh = orgeh.split(" / ");
+			oEntryPersonel.Orgeh = arrayOrgeh[0];
+
+			var stell = that.getView().byId(entryisAnahtar1).getValue();
+			var arrayStell = stell.split(" / ");
+			oEntryPersonel.Stell = arrayStell[0];
+			//end of ycoskun 08112017
 			oEntryPersonel.Ename = that.getView().byId(entryadSoyad1).getValue();
-			oEntryPersonel.Gbdat = dogumTarih;
-			oEntryPersonel.Begda = gecerTarih;
+			oEntryPersonel.Gbdat = dTarih;
+			oEntryPersonel.Begda = gTarih;
 			oEntryPersonel.Plans = that.getView().byId(entryPosAd1).getValue();
-			oEntryPersonel.Stell = that.getView().byId(entryisAnahtar1).getValue();
-			oEntryPersonel.Orgeh = that.getView().byId(entryorgBirim1).getValue();
+			oEntryPersonel.Stell = arrayStell[0];
+			oEntryPersonel.Orgeh = arrayOrgeh[0];
 			oEntryPersonel.Bet01 = that.getView().byId(entryucret1).getValue();
 			oEntryPersonel.Diger = that.getView().byId(entrydiger1).getValue();
 
@@ -703,9 +874,11 @@ sap.ui.define([
 			var fach1 = that.getView().byId(entryegitim1).getValue();
 			var arrayFach1 = fach1.split(" / ");
 			oEntryPersonel.Fach1 = arrayFach1[0];
-			
+
 			var plans = that.getView().byId(entryPosAd1).getValue();
 			oEntryPersonel.Plans = (plans.split("/"))[0];
+
+	
 			//end of ycoskun
 
 			oEntryPersonel.Tarih = "";
@@ -717,14 +890,14 @@ sap.ui.define([
 
 			// onaycılar ekranına genel bilgilerin getirilmesi için bilgilerin global olarak doldurulması begin of ycoskun
 			sap.ui.getCore().cAdSoyad = that.getView().byId(entryadSoyad1).getValue();
-			sap.ui.getCore().cDogumTarih = that.getView().byId(entrydogumTarih1).getValue();
-			sap.ui.getCore().cGecerTarih = that.getView().byId(entrygecerTarih1).getValue();
+			sap.ui.getCore().cDogumTarih = dTarih;
+			sap.ui.getCore().cGecerTarih = gTarih;
 			sap.ui.getCore().cPozisyon = that.getView().byId(entryPosAd1).getValue();
 			sap.ui.getCore().cPerAlan = arrayWerks[0];
 			sap.ui.getCore().cPerAltAlan = arrayBtrtl[0];
 			sap.ui.getCore().cIsAlan = arrayGsber[0];
-			sap.ui.getCore().cIsAnahtari = that.getView().byId(entryisAnahtar1).getValue();
-			sap.ui.getCore().cOrgBirim = that.getView().byId(entryorgBirim1).getValue();
+			sap.ui.getCore().cIsAnahtari = arrayStell[0];
+			sap.ui.getCore().cOrgBirim = arrayOrgeh[0];
 			sap.ui.getCore().cClsGrup = arrayPersg[0];
 			sap.ui.getCore().cClsAltGrp = arrayPersk[0];
 			sap.ui.getCore().cSkala = arrayTrfgr[0];
@@ -1394,7 +1567,96 @@ sap.ui.define([
 			var count;
 			var countGecer;
 			try {
-				splitArrayDogumT = that.getView().byId(entrydogumTarih1).getValue();
+					splitArrayDogumT = that.getView().byId(entrydogumTarih1).getValue();
+				splitArrayGecerT = that.getView().byId(entrygecerTarih1).getValue();
+
+				var startNok;
+				var endNok;
+				var counter;
+				var arrayStart;
+				var arrayEnd;
+				var dTarih;
+				var gTarih;
+
+				//date'in EN veya TR gelip gelmedğinin kontrolü begin of
+				startNok = splitArrayDogumT.slice(1, 2);
+				endNok = splitArrayGecerT.slice(1, 2);
+
+				debugger;
+				if (startNok !== ".") {
+					startNok = splitArrayDogumT.slice(2, 3);
+					//endNok = endDate.slice(2,3);
+				} else {
+					startNok = splitArrayDogumT.slice(1, 2);
+					//endNok = endDate.slice(1,2);
+				}
+				if (endNok !== ".") {
+					endNok = splitArrayGecerT.slice(2, 3);
+				} else {
+					endNok = splitArrayGecerT.slice(1, 2);
+				}
+				//end of
+				if (startNok === ".") {
+					arrayStart = splitArrayDogumT.split(".");
+					count = arrayStart[0].length;
+					if (count === 1) {
+						arrayStart[0] = "0" + arrayStart[0];
+
+					}
+					dTarih = arrayStart[2] + arrayStart[1] + arrayStart[0];
+
+				} else {
+					arrayStart = splitArrayDogumT.split("/");
+					count = arrayStart[0].length;
+
+					if (arrayStart[1] === undefined) {
+
+					} else {
+						counter = arrayStart[1].length;
+					}
+					if (count === 1) {
+						arrayStart[0] = "0" + arrayStart[0];
+
+					}
+					if (counter === 1) {
+						arrayStart[1] = "0" + arrayStart[1];
+
+					}
+
+					dTarih = "20" + arrayStart[2] + arrayStart[0] + arrayStart[1];
+
+				}
+				if (endNok === ".") {
+
+					arrayEnd = splitArrayGecerT.split(".");
+					count = arrayEnd[0].length;
+
+					if (count === 1) {
+						arrayEnd[0] = "0" + arrayEnd[0];
+
+					}
+
+					gTarih = arrayEnd[2] + arrayEnd[1] + arrayEnd[0];
+
+				} else {
+					arrayEnd = splitArrayGecerT.split("/");
+					count = arrayEnd[0].length;
+					if (arrayEnd[1] === undefined) {
+
+					} else {
+						counter = arrayEnd[1].length;
+					}
+					if (count === 1) {
+						arrayEnd[0] = "0" + arrayEnd[0];
+
+					}
+					if (counter === 1) {
+						arrayEnd[1] = "0" + arrayEnd[1];
+
+					}
+					gTarih = "20" + arrayEnd[2] + arrayEnd[0] + arrayEnd[1];
+				}
+			/*	splitArrayDogumT = that.getView().byId(entrydogumTarih1).getValue();
 				array = splitArrayDogumT.split(".");
 				count = array[0].length;
 				if (count === 1) {
@@ -1408,9 +1670,98 @@ sap.ui.define([
 				if (countGecer === 1) {
 					arrayGecer[0] = "0" + arrayGecer[0];
 				}
-				gecerTarih = arrayGecer[2] + arrayGecer[1] + arrayGecer[0];
+				gecerTarih = arrayGecer[2] + arrayGecer[1] + arrayGecer[0];*/
 			} catch (err) {
 				splitArrayDogumT = that.getView().byId(entrydogumTarih1).getValue();
+				splitArrayGecerT = that.getView().byId(entrygecerTarih1).getValue();
+
+				var startNok;
+				var endNok;
+				var counter;
+				var arrayStart;
+				var arrayEnd;
+				var dTarih;
+				var gTarih;
+
+				//date'in EN veya TR gelip gelmedğinin kontrolü begin of
+				startNok = splitArrayDogumT.slice(2, 3);
+				endNok = splitArrayDogumT.slice(2, 3);
+
+			
+				if (startNok !== ".") {
+					startNok = splitArrayDogumT.slice(2, 3);
+					//endNok = endDate.slice(2,3);
+				} else {
+					startNok = splitArrayDogumT.slice(1, 2);
+					//endNok = endDate.slice(1,2);
+				}
+				if (endNok !== ".") {
+					endNok = splitArrayGecerT.slice(2, 3);
+				} else {
+					endNok = splitArrayGecerT.slice(1, 2);
+				}
+				//end of
+				if (startNok === ".") {
+					arrayStart = splitArrayDogumT.split(".");
+					count = arrayStart[0].length;
+					if (count === 1) {
+						arrayStart[0] = "0" + arrayStart[0];
+
+					}
+					dTarih = arrayStart[2] + arrayStart[1] + arrayStart[0];
+
+				} else {
+					arrayStart = splitArrayDogumT.split("/");
+					count = arrayStart[0].length;
+
+					if (arrayStart[1] === undefined) {
+
+					} else {
+						counter = arrayStart[1].length;
+					}
+					if (count === 1) {
+						arrayStart[0] = "0" + arrayStart[0];
+
+					}
+					if (counter === 1) {
+						arrayStart[1] = "0" + arrayStart[1];
+
+					}
+
+					dTarih = "20" + arrayStart[2] + arrayStart[0] + arrayStart[1];
+
+				}
+				if (endNok === ".") {
+
+					arrayEnd = splitArrayGecerT.split(".");
+					count = arrayEnd[0].length;
+
+					if (count === 1) {
+						arrayEnd[0] = "0" + arrayEnd[0];
+
+					}
+
+					gTarih = arrayEnd[2] + arrayEnd[1] + arrayEnd[0];
+
+				} else {
+					arrayEnd = splitArrayGecerT.split("/");
+					count = arrayEnd[0].length;
+					if (arrayEnd[1] === undefined) {
+
+					} else {
+						counter = arrayEnd[1].length;
+					}
+					if (count === 1) {
+						arrayEnd[0] = "0" + arrayEnd[0];
+
+					}
+					if (counter === 1) {
+						arrayEnd[1] = "0" + arrayEnd[1];
+
+					}
+					gTarih = "20" + arrayEnd[2] + arrayEnd[0] + arrayEnd[1];
+				}
+			/*	splitArrayDogumT = that.getView().byId(entrydogumTarih1).getValue();
 				array = splitArrayDogumT.split("/");
 				count = array[0].length;
 				if (count === 1) {
@@ -1424,17 +1775,27 @@ sap.ui.define([
 				if (countGecer === 1) {
 					arrayGecer[0] = "0" + arrayGecer[0];
 				}
-				gecerTarih = arrayGecer[2] + arrayGecer[1] + arrayGecer[0];
+				gecerTarih = arrayGecer[2] + arrayGecer[1] + arrayGecer[0];*/
 			}
 
 			var oPersonel = {};
+			
+			//begin of ycoskun 08112017
+			var orgeh = that.getView().byId(entryorgBirim1).getValue();
+			var arrayOrgeh = orgeh.split(" / ");
+			oPersonel.Orgeh = arrayOrgeh[0];
+
+			var stell = that.getView().byId(entryisAnahtar1).getValue();
+			var arrayStell = stell.split(" / ");
+			oPersonel.Stell = arrayStell[0];
+			//end of ycoskun 08112017
 
 			oPersonel.Ename = that.getView().byId(entryadSoyad1).getValue();
-			oPersonel.Gbdat = dogumTarih;
-			oPersonel.Begda = gecerTarih;
+			oPersonel.Gbdat = dTarih;
+			oPersonel.Begda = gTarih;
 			oPersonel.Plans = that.getView().byId(entryPosAd1).getValue();
-			oPersonel.Stell = that.getView().byId(entryisAnahtar1).getValue();
-			oPersonel.Orgeh = that.getView().byId(entryorgBirim1).getValue();
+			oPersonel.Stell = arrayStell[0];
+			oPersonel.Orgeh = arrayOrgeh[0];
 			oPersonel.Bet01 = that.getView().byId(entryucret1).getValue();
 			oPersonel.Diger = that.getView().byId(entrydiger1).getValue();
 
@@ -1474,10 +1835,12 @@ sap.ui.define([
 			var fach1 = that.getView().byId(entryegitim1).getValue();
 			var arrayFach1 = fach1.split(" / ");
 			oPersonel.Fach1 = arrayFach1[0];
-			
+
 			var plans = that.getView().byId(entryPosAd1).getValue();
 			oPersonel.Plans = (plans.split("/"))[0];
-			
+
+	
+
 			//end of ycoskun
 
 			oPersonel.Tarih = "";
@@ -1493,14 +1856,14 @@ sap.ui.define([
 
 			// onaycılar ekranına genel bilgilerin getirilmesi için bilgilerin global olarak doldurulması begin of ycoskun
 			sap.ui.getCore().cAdSoyad = that.getView().byId(entryadSoyad1).getValue();
-			sap.ui.getCore().cDogumTarih = that.getView().byId(entrydogumTarih1).getValue();
-			sap.ui.getCore().cGecerTarih = that.getView().byId(entrygecerTarih1).getValue();
+			sap.ui.getCore().cDogumTarih = dTarih;
+			sap.ui.getCore().cGecerTarih = gTarih;
 			sap.ui.getCore().cPozisyon = that.getView().byId(entryPosAd1).getValue();
 			sap.ui.getCore().cPerAlan = arrayWerks[0];
 			sap.ui.getCore().cPerAltAlan = arrayBtrtl[0];
 			sap.ui.getCore().cIsAlan = arrayGsber[0];
-			sap.ui.getCore().cIsAnahtari = that.getView().byId(entryisAnahtar1).getValue();
-			sap.ui.getCore().cOrgBirim = that.getView().byId(entryorgBirim1).getValue();
+			sap.ui.getCore().cIsAnahtari = arrayStell[0];
+			sap.ui.getCore().cOrgBirim = arrayOrgeh[0];
 			sap.ui.getCore().cClsGrup = arrayPersg[0];
 			sap.ui.getCore().cClsAltGrp = arrayPersk[0];
 			sap.ui.getCore().cSkala = arrayTrfgr[0];
@@ -1819,7 +2182,7 @@ sap.ui.define([
 		onSelect: function() {
 			var that = this;
 			var osJsonStelOrg = new sap.ui.model.json.JSONModel();
-			var vStell, vOrg;
+			var vStell, vOrg, vStellText, vOrgText;
 			var vPosition = sap.ui.getCore().cPosition;
 			var arrayPos = vPosition.split("/");
 			var vPos = arrayPos[0];
@@ -1832,10 +2195,12 @@ sap.ui.define([
 					osJsonStelOrg.setData(oData);
 					vStell = oData.Stell;
 					vOrg = oData.Orgeh;
+					vStellText = oData.Stext;
+					vOrgText = oData.Otext;
 
-					that.getView().byId("isAnah1").setValue(vStell);
+					that.getView().byId("isAnah1").setValue(vStell + " / " + vStellText);
 					that.getView().byId("isAnah1").setEnabled(false);
-					that.getView().byId("orgBir1").setValue(vOrg);
+					that.getView().byId("orgBir1").setValue(vOrg + " / " + vOrgText);
 					that.getView().byId("orgBir1").setEnabled(false);
 
 				});

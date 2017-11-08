@@ -16,9 +16,9 @@
 									<SearchField class="inputForm" width="60%" id="sicilNo2" placeholder="Ara" search="handleSicilNoSearch"/>
 									<Label text="Ad Soyad"/>
 									<Input class="inputForm" value="" enabled="false" id="adSoyad2"/>
+									<core:Title/>
 									<Label text="TC Kimlik No"/>
 									<Input class="inputForm" value="" enabled="false" id="idTC2"/>
-									<core:Title/>
 									<Label text="Doğum Tarihi"/>
 									<DatePicker class="inputForm" value="" enabled="false" id="dogumTarih2"/>
 									<Label text="Geçerlilik Tarihi"/>
