@@ -14,8 +14,7 @@
 									<Input class="inputForm" enabled="false" id="fisKonu1" value="İşe Giriş"/>
 									<Label required="true" text="Ad Soyad"/>
 									<Input class="inputForm" id="adSoyad1" value="" placeholder="Ad Soyad" liveChange="additionalInfoValidation" showSuggestion="true"
-										showValueHelp="true"  type="Text"  valueState="{/adSoyadState}">
-									</Input>
+										showValueHelp="true" type="Text" valueState="{/adSoyadState}"></Input>
 									<core:Title/>
 									<Label required="true" text="Doğum Tarihi"/>
 									<DatePicker class="inputForm" id="dogumTarih1" value=""/>
@@ -84,7 +83,7 @@
 									<Input class="inputForm" id="skala1" placeholder="Skala Kodu" liveChange="additionalInfoValidation" showSuggestion="true"
 										showValueHelp="true" suggestionItems="{/SkalaKoduSet}" type="Text" valueHelpRequest="handleValueHelpSkala" valueState="{/skalaState}">
 										<suggestionItems>
-											<core:Item key="{Persk}" text="{Ptext}"/>
+											<core:Item key="{Trfgr}" text="{Trfgr}"/>
 										</suggestionItems>
 									</Input>
 									<Label text="Ücret"/>
