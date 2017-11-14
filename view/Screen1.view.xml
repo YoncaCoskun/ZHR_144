@@ -117,7 +117,7 @@
 									<Input class="inputForm" id="egitim1" placeholder="Eğitim Dalı" liveChange="additionalInfoValidation" showSuggestion="true"
 										showValueHelp="true" suggestionItems="{/EgitimSet}" type="Text" valueHelpRequest="handleValueHelpEgitim" valueState="{/egitimState}">
 										<suggestionItems>
-											<core:Item key="{Schcd}" text="{Insti}"/>
+											<core:Item key="{Faart}" text="{Ftext}"/>
 										</suggestionItems>
 									</Input>
 									<core:Title/>
