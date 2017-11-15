@@ -12,7 +12,7 @@ sap.ui.define([
 
 	var oModel = new sap.ui.model.odata.ODataModel("/sap/opu/odata/sap/ZHR_144_SRV_01");
 	var vPernr;
-	
+
 	var attachFiles = [];
 	var osJson = new sap.ui.model.json.JSONModel();
 	var osJsonPerAlan = new sap.ui.model.json.JSONModel();
@@ -879,7 +879,6 @@ sap.ui.define([
 			var plans = that.getView().byId(entryPosAd1).getValue();
 			oEntryPersonel.Plans = (plans.split("/"))[0];
 
-	
 			//end of ycoskun
 
 			oEntryPersonel.Tarih = "";
@@ -1373,74 +1372,88 @@ sap.ui.define([
 			var file = jQuery.sap.domById(oFileUploader.getId() + "-fu").files[0];
 			var form = this.getView().byId("simpleFormAttaches");
 
-			try {
-				if (file) {
-					this._bUploading = true;
-					var that = this;
-					var a = "/sap/opu/odata/sap/ZHR_144_SRV_01/";
-					var f = {
-						headers: {
-							"X-Requested-With": "XMLHttpRequest",
-							"Content-Type": "application/atom + xml",
-							DataServiceVersion: "2.0",
-							"x-csrf-token": "Fetch"
-						},
-						requestUri: a,
-						method: "GET"
-					};
-					var oHeaders;
-					var sUrl = "/sap/opu/odata/sap/ZHR_144_SRV_01/";
-					var omModel = new sap.ui.model.odata.ODataModel(sUrl, true);
-					var pernr = vPernr;
-					this.getView().setModel(omModel);
-					OData.request(f, function(data, oSuccess) {
-						var oToken = oSuccess.headers['x-csrf-token'];
-						oHeaders = {
-							"x-csrf-token": oToken,
-							"slug": "QF"
-						};
+			if (file.type === "application/vnd.openxmlformats-officedocument.wordprocessingml.document" || file.type ===
+				"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" || file.type === "application/pdf" || file.type ===
+				"application/vnd.ms-powerpoint") {
+					
+				try {
 
-						var oURL = "/sap/opu/odata/sap/ZHR_144_SRV_01" + "/ZHRIseAlimFileSet('" + file.name + "," + pernr + "')/$value";
-						jQuery.ajax({
-							type: 'PUT',
-							url: oURL,
-							headers: oHeaders,
-							cache: false,
-							contentType: file.type,
-							processData: false,
-							data: file,
-							success: function() {
-								sap.m.MessageToast.show("Dosya Başarıyla yüklendi");
-								oFileUploader.setValue("");
-
-								attachFiles.push(file);
-
-								//attach butonları yaratma
-								var oButton = new sap.ui.commons.Button({
-									text: file.name,
-									icon: "sap-icon://attachment",
-									lite: true,
-									width: "40%",
-									press: function(oEvent) {
-										var ogetURL = "/sap/opu/odata/sap/ZHR_144_SRV_01" + "/ZHRIseAlimFileSet('" + file.name + "," + pernr + "')/$value";
-
-										sap.m.URLHelper.redirect(ogetURL, true);
-
-									}
-								});
-								form.addContent(oButton);
-								that.oAttachAddDialog.close();
-
+					if (file) {
+						this._bUploading = true;
+						var that = this;
+						var a = "/sap/opu/odata/sap/ZHR_144_SRV_01/";
+						var f = {
+							headers: {
+								"X-Requested-With": "XMLHttpRequest",
+								"Content-Type": "application/atom + xml",
+								DataServiceVersion: "2.0",
+								"x-csrf-token": "Fetch"
 							},
-							error: function() {
-								sap.m.MessageToast.show("File Upload Error!");
-							}
+							requestUri: a,
+							method: "GET"
+						};
+						var oHeaders;
+						var sUrl = "/sap/opu/odata/sap/ZHR_144_SRV_01/";
+						var omModel = new sap.ui.model.odata.ODataModel(sUrl, true);
+						var pernr = vPernr;
+						this.getView().setModel(omModel);
+						OData.request(f, function(data, oSuccess) {
+							var oToken = oSuccess.headers['x-csrf-token'];
+							oHeaders = {
+								"x-csrf-token": oToken,
+								"slug": "QF"
+							};
+							//begin of ycoskun kontrol ne yuklendıgıne dait
+
+							//end of ycoskun
+							var oURL = "/sap/opu/odata/sap/ZHR_144_SRV_01" + "/ZHRIseAlimFileSet('" + file.name + "," + pernr + "')/$value";
+							jQuery.ajax({
+								type: 'PUT',
+								url: oURL,
+								headers: oHeaders,
+								cache: false,
+								contentType: file.type,
+								processData: false,
+								data: file,
+								success: function() {
+									sap.m.MessageToast.show("Dosya Başarıyla yüklendi");
+									oFileUploader.setValue("");
+
+									attachFiles.push(file);
+
+									//attach butonları yaratma
+									var oButton = new sap.ui.commons.Button({
+										text: file.name,
+										icon: "sap-icon://attachment",
+										lite: true,
+										width: "40%",
+										press: function(oEvent) {
+											var ogetURL = "/sap/opu/odata/sap/ZHR_144_SRV_01" + "/ZHRIseAlimFileSet('" + file.name + "," + pernr + "')/$value";
+
+											sap.m.URLHelper.redirect(ogetURL, true);
+
+										}
+									});
+									form.addContent(oButton);
+									that.oAttachAddDialog.close();
+
+								},
+								error: function() {
+									sap.m.MessageToast.show("File Upload Error!");
+								}
+							});
 						});
-					});
+					}
+				} catch (oException) {
+					jQuery.sap.log.error("File upload failed: \n" + oException.message);
 				}
-			} catch (oException) {
-				jQuery.sap.log.error("File upload failed: \n" + oException.message);
+			
+				
+
+			} else {
+				sap.m.MessageToast.show("Lütfen word,excel,pdf yada ppt giriniz");
 			}
+
 			//end of ycoskun
 		},
 		onAttachAdd: function() {
@@ -1568,7 +1581,7 @@ sap.ui.define([
 			var count;
 			var countGecer;
 			try {
-					splitArrayDogumT = that.getView().byId(entrydogumTarih1).getValue();
+				splitArrayDogumT = that.getView().byId(entrydogumTarih1).getValue();
 				splitArrayGecerT = that.getView().byId(entrygecerTarih1).getValue();
 
 				var startNok;
@@ -1657,21 +1670,21 @@ sap.ui.define([
 					}
 					gTarih = "20" + arrayEnd[2] + arrayEnd[0] + arrayEnd[1];
 				}
-			/*	splitArrayDogumT = that.getView().byId(entrydogumTarih1).getValue();
-				array = splitArrayDogumT.split(".");
-				count = array[0].length;
-				if (count === 1) {
-					array[0] = "0" + array[0];
-				}
-				dogumTarih = array[2] + array[1] + array[0];
+				/*	splitArrayDogumT = that.getView().byId(entrydogumTarih1).getValue();
+					array = splitArrayDogumT.split(".");
+					count = array[0].length;
+					if (count === 1) {
+						array[0] = "0" + array[0];
+					}
+					dogumTarih = array[2] + array[1] + array[0];
 
-				splitArrayGecerT = that.getView().byId(entrygecerTarih1).getValue();
-				arrayGecer = splitArrayGecerT.split(".");
-				countGecer = arrayGecer[0].length;
-				if (countGecer === 1) {
-					arrayGecer[0] = "0" + arrayGecer[0];
-				}
-				gecerTarih = arrayGecer[2] + arrayGecer[1] + arrayGecer[0];*/
+					splitArrayGecerT = that.getView().byId(entrygecerTarih1).getValue();
+					arrayGecer = splitArrayGecerT.split(".");
+					countGecer = arrayGecer[0].length;
+					if (countGecer === 1) {
+						arrayGecer[0] = "0" + arrayGecer[0];
+					}
+					gecerTarih = arrayGecer[2] + arrayGecer[1] + arrayGecer[0];*/
 			} catch (err) {
 				splitArrayDogumT = that.getView().byId(entrydogumTarih1).getValue();
 				splitArrayGecerT = that.getView().byId(entrygecerTarih1).getValue();
@@ -1688,7 +1701,6 @@ sap.ui.define([
 				startNok = splitArrayDogumT.slice(2, 3);
 				endNok = splitArrayDogumT.slice(2, 3);
 
-			
 				if (startNok !== ".") {
 					startNok = splitArrayDogumT.slice(2, 3);
 					//endNok = endDate.slice(2,3);
@@ -1762,25 +1774,25 @@ sap.ui.define([
 					}
 					gTarih = "20" + arrayEnd[2] + arrayEnd[0] + arrayEnd[1];
 				}
-			/*	splitArrayDogumT = that.getView().byId(entrydogumTarih1).getValue();
-				array = splitArrayDogumT.split("/");
-				count = array[0].length;
-				if (count === 1) {
-					array[0] = "0" + array[0];
-				}
-				dogumTarih = array[2] + array[1] + array[0];
+				/*	splitArrayDogumT = that.getView().byId(entrydogumTarih1).getValue();
+					array = splitArrayDogumT.split("/");
+					count = array[0].length;
+					if (count === 1) {
+						array[0] = "0" + array[0];
+					}
+					dogumTarih = array[2] + array[1] + array[0];
 
-				splitArrayGecerT = that.getView().byId(entrygecerTarih1).getValue();
-				arrayGecer = splitArrayGecerT.split("/");
-				countGecer = arrayGecer[0].length;
-				if (countGecer === 1) {
-					arrayGecer[0] = "0" + arrayGecer[0];
-				}
-				gecerTarih = arrayGecer[2] + arrayGecer[1] + arrayGecer[0];*/
+					splitArrayGecerT = that.getView().byId(entrygecerTarih1).getValue();
+					arrayGecer = splitArrayGecerT.split("/");
+					countGecer = arrayGecer[0].length;
+					if (countGecer === 1) {
+						arrayGecer[0] = "0" + arrayGecer[0];
+					}
+					gecerTarih = arrayGecer[2] + arrayGecer[1] + arrayGecer[0];*/
 			}
 
 			var oPersonel = {};
-			
+
 			//begin of ycoskun 08112017
 			var orgeh = that.getView().byId(entryorgBirim1).getValue();
 			var arrayOrgeh = orgeh.split(" / ");
@@ -1839,8 +1851,6 @@ sap.ui.define([
 
 			var plans = that.getView().byId(entryPosAd1).getValue();
 			oPersonel.Plans = (plans.split("/"))[0];
-
-	
 
 			//end of ycoskun
 
