@@ -25,7 +25,7 @@ sap.ui.define([
 	var osJsonEgitim = new sap.ui.model.json.JSONModel();
 	var osJsonDil = new sap.ui.model.json.JSONModel();
 	var osJsonSinavTur = new sap.ui.model.json.JSONModel();
-	var osJsonPos = new sap.ui.model.json.JSONModel();
+//	var osJsonPos = new sap.ui.model.json.JSONModel();
 
 	var vSlart;
 	var vWerks;
@@ -145,14 +145,14 @@ sap.ui.define([
 				function() {
 
 				});
-			oModel.read("/PozisyonSet", null, null, true,
+			/*oModel.read("/PozisyonSet", null, null, true,
 
 				function(oData) {
 					osJsonPos.setData(oData);
 				},
 				function() {
 
-				});
+				});*/
 
 			this.getView().setModel(oModel);
 
