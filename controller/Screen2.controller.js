@@ -35,7 +35,7 @@ sap.ui.define([
 			this._setEmptyValue("/productDescription");
 			this._setEmptyValue("/productPrice");
 
-			oModel.setSizeLimit(99999);
+			//oModel.setSizeLimit(99999);
 			oModel.read("/AyrilmaNedeniSet", null, null, true,
 
 				function(oData) {

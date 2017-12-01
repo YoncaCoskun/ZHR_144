@@ -151,7 +151,7 @@
 							</form:SimpleForm>
 						</WizardStep>
 						<WizardStep id="idLanguage3" validated="true" activate="stepLanguage" title="Yabancı Dil">
-							<Table growing="true" growingThreshold="10" id="idLanguageTable3" inset="false" items="{ path: '/results', sorter: { path: 'Sptxt' } }"
+							<Table growing="true" growingThreshold="10" id="idLanguageTable3" inset="false" items="{ path: '/results'}"
 								mode="SingleSelectMaster" selectionChange="onPressLang">
 								<headerToolbar>
 									<OverflowToolbar id="otbSubheader">
@@ -202,7 +202,7 @@
 							</Table>
 						</WizardStep>
 						<WizardStep id="idBeceri" validated="true" activate="stepAbility" title="Zihinsel Beceri">
-							<Table growing="true" growingThreshold="10" id="idAbilityTable3" inset="false" items="{ path: '/results', sorter: { path: 'SinavTuru' } }"
+							<Table growing="true" growingThreshold="10" id="idAbilityTable3" inset="false" items="{ path: '/results'}"
 								mode="SingleSelectMaster" selectionChange="onPressZihin">
 								<headerToolbar>
 									<OverflowToolbar id="otbSubheader1">

@@ -95,7 +95,7 @@
 														labelSpanM="4" labelSpanXL="4" layout="ResponsiveGridLayout" maxContainerCols="3" title="Yabancı Dil">
 														<form:content>
 															<Table growing="true" growingThreshold="10" id="idLanguageTableApprove6" inset="false"
-																items="{ path: '/results', sorter: { path: 'Sptxt' } }" mode="SingleSelectMaster">
+																items="{ path: '/results'}" mode="SingleSelectMaster">
 																<columns>
 																	<Column width="12em">
 																		<Text text="Dil Türü"/>
@@ -145,7 +145,7 @@
 														labelSpanM="4" labelSpanXL="4" layout="ResponsiveGridLayout" maxContainerCols="3" title="Zihinsel Beceri">
 														<form:content>
 															<Table growing="true" growingThreshold="10" id="idAbilityTableApprove6" inset="false"
-																items="{ path: '/results', sorter: { path: 'SinavTuru' } }" mode="SingleSelectMaster">
+																items="{ path: '/results'}" mode="SingleSelectMaster">
 																<columns>
 																	<Column width="12em">
 																		<Text text="Sınav Türü"/>
@@ -174,7 +174,7 @@
 													<form:SimpleForm columnsXL="3" emptySpanM="0" columnsM="2" columnsL="2" editable="true" emptySpanL="0" emptySpanXL="0" labelSpanL="4"
 														labelSpanM="4" labelSpanXL="4" layout="ResponsiveGridLayout" maxContainerCols="3" title="PD Sonuçları" id="formPD">
 														<form:content>
-															<Table growing="true" growingThreshold="10" id="idPDTableApprove6" inset="false" items="{ path: '/results', sorter: { path: 'Pdyear' } }"
+															<Table growing="true" growingThreshold="10" id="idPDTableApprove6" inset="false" items="{ path: '/results'}"
 																mode="SingleSelectMaster">
 																<columns>
 																	<Column width="12em">

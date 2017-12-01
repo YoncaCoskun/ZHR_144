@@ -4,10 +4,8 @@ sap.ui.define([
 	'sap/ui/core/mvc/Controller',
 	'sap/ui/model/json/JSONModel',
 	"sap/m/MessageToast",
-	"sap/m/MessageBox",
-	"sap/ui/model/Filter",
-	"sap/ui/commons/TextField"
-], function(jQuery, Controller, JSONModel, MessageToast, MessageBox, Filter, TextField) {
+	"sap/m/MessageBox"
+], function(jQuery, Controller, JSONModel, MessageToast, MessageBox) {
 	"use strict";
 
 	var oModel = new sap.ui.model.odata.ODataModel("/sap/opu/odata/sap/ZHR_144_SRV_01");
@@ -25,7 +23,6 @@ sap.ui.define([
 	var osJsonEgitim = new sap.ui.model.json.JSONModel();
 	var osJsonDil = new sap.ui.model.json.JSONModel();
 	var osJsonSinavTur = new sap.ui.model.json.JSONModel();
-//	var osJsonPos = new sap.ui.model.json.JSONModel();
 
 	var vSlart;
 	var vWerks;
@@ -43,8 +40,6 @@ sap.ui.define([
 			this._oNavContainer.addPage(this._oWizardReviewPage);
 			this.model = new sap.ui.model.json.JSONModel();
 
-			var oModelMetadata = new JSONModel("ZHR_144/Clothing.json");
-			this.getView().setModel(oModelMetadata);
 
 			this.model.setData({
 				posAdState: "Error",
@@ -57,12 +52,6 @@ sap.ui.define([
 				okulAdState: "Error",
 				egitimState: "Error",
 				perAltAlanState: "Error"
-					//productWeightState: "Error",
-					//perAlanState: "Error",
-					/*perAltAlanState: "Error",
-				isAlanState: "Error",
-			
-				calisanAltGrbState: "Error"*/
 			});
 			this.getView().setModel(this.model);
 			this.model.setProperty("/productType", "Mobile");
@@ -72,92 +61,22 @@ sap.ui.define([
 			this._setEmptyValue("/productDescription");
 			this._setEmptyValue("/productPrice");
 
-			oModel.setSizeLimit(99999);
-			oModel.read("/CalisanGrSet", null, null, true,
-
-				function(oData, response) {
-					osJson.setData(oData);
-				},
-				function(oEvent) {
-
-				});
-			oModel.read("/PerAlanSet", null, null, true,
-
-				function(oData) {
-					osJsonPerAlan.setData(oData);
-				},
-				function() {
-
-				});
-			oModel.read("/CalisanAltGrSet", null, null, true,
-
-				function(oData) {
-					osJsonClsALtGrb.setData(oData);
-				},
-				function() {
-
-				});
-			oModel.read("/SkalaKoduSet", null, null, true,
-
-				function(oData) {
-					osJsonSkala.setData(oData);
-				},
-				function() {
-
-				});
-			oModel.read("/IsAlaniSet", null, null, true,
-
-				function(oData) {
-					osJsonIsAlan.setData(oData);
-				},
-				function() {
-
-				});
-			oModel.read("/OkulTurSet", null, null, true,
-
-				function(oData) {
-					osJsonOkulTur.setData(oData);
-				},
-				function() {
-
-				});
-			oModel.read("/EgitimDalSet", null, null, true,
-
-				function(oData) {
-					osJsonEgitim.setData(oData);
-				},
-				function() {
-
-				});
-			oModel.read("/YabanciDilSet", null, null, true,
-
-				function(oData) {
-					osJsonDil.setData(oData);
-				},
-				function() {
-
-				});
-			oModel.read("/SinavTuruSet", null, null, true,
-
-				function(oData) {
-					osJsonSinavTur.setData(oData);
-				},
-				function() {
-
-				});
-			/*oModel.read("/PozisyonSet", null, null, true,
-
-				function(oData) {
-					osJsonPos.setData(oData);
-				},
-				function() {
-
-				});*/
+			//oModel.setSizeLimit(99999);
 
 			this.getView().setModel(oModel);
 
 		},
 		handleValueHelp: function(oEvent) {
+
+			oModel.read("/CalisanGrSet", null, null, true,
+
+				function(oData) {
+					osJson.setData(oData);
+				},
+				function() {
+
+				});
+
 			var that = this;
 			var handleClose = function(oEvent) {
 				var oSelectedItem = oEvent.getParameter("selectedItem");
@@ -207,9 +126,6 @@ sap.ui.define([
 			this.oMessageDialog = sap.ui.xmlfragment("ZHR_144.view.Screen1Position", this);
 			this.getView().addDependent(this.oMessageDialog);
 
-			// 			var oModel = new JSONModel(jQuery.sap.getModulePath("zn11_expense/mockserver", "/Products.json"));
-			// 			this.getView().setModel(oModel);
-
 			return this.oMessageDialog;
 		},
 		onExit: function() {
@@ -218,6 +134,14 @@ sap.ui.define([
 			}
 		},
 		handleValueHelpOkulTur: function() {
+			oModel.read("/OkulTurSet", null, null, true,
+
+				function(oData) {
+					osJsonOkulTur.setData(oData);
+				},
+				function() {
+
+				});
 
 			var that = this;
 			var handleClose = function(oEvent) {
@@ -266,7 +190,6 @@ sap.ui.define([
 
 		},
 		handleValueHelpOkulAd: function() {
-
 			var that = this;
 			var handleClose = function(oEvent) {
 				var oSelectedItem = oEvent.getParameter("selectedItem");
@@ -307,6 +230,14 @@ sap.ui.define([
 
 		},
 		handleValueHelpEgitim: function() {
+			oModel.read("/EgitimDalSet", null, null, true,
+
+				function(oData) {
+					osJsonEgitim.setData(oData);
+				},
+				function() {
+
+				});
 
 			var that = this;
 			var handleClose = function(oEvent) {
@@ -348,6 +279,14 @@ sap.ui.define([
 
 		},
 		handleValueHelpSkala: function() {
+			oModel.read("/SkalaKoduSet", null, null, true,
+
+				function(oData) {
+					osJsonSkala.setData(oData);
+				},
+				function() {
+
+				});
 			var that = this;
 			var handleClose = function(oEvent) {
 				var oSelectedItem = oEvent.getParameter("selectedItem");
@@ -388,6 +327,15 @@ sap.ui.define([
 
 		},
 		handleValueHelpIsAlan: function(oEvent) {
+
+			oModel.read("/IsAlaniSet", null, null, true,
+
+				function(oData) {
+					osJsonIsAlan.setData(oData);
+				},
+				function() {
+
+				});
 			var that = this;
 			var handleClose = function(oEvent) {
 				var oSelectedItem = oEvent.getParameter("selectedItem");
@@ -428,6 +376,14 @@ sap.ui.define([
 
 		},
 		handleValueHelpPerA: function(oEvent) {
+			oModel.read("/PerAlanSet", null, null, true,
+
+				function(oData) {
+					osJsonPerAlan.setData(oData);
+				},
+				function() {
+
+				});
 			var that = this;
 			var handleClose = function(oEvent) {
 				var oSelectedItem = oEvent.getParameter("selectedItem");
@@ -516,6 +472,14 @@ sap.ui.define([
 
 		},
 		handleValueHelpClsAlt: function() {
+			oModel.read("/CalisanAltGrSet", null, null, true,
+
+				function(oData) {
+					osJsonClsALtGrb.setData(oData);
+				},
+				function() {
+
+				});
 
 			var that = this;
 			var handleClose = function(oEvent) {
@@ -1060,6 +1024,15 @@ sap.ui.define([
 			clearContent(this._wizard.getSteps());
 		},
 		onAddLanguage: function() {
+			oModel.read("/YabanciDilSet", null, null, true,
+
+				function(oData) {
+					osJsonDil.setData(oData);
+				},
+				function() {
+
+				});
+				
 			var pernr = vPernr;
 
 			var oDialog;
@@ -1244,6 +1217,16 @@ sap.ui.define([
 
 		},
 		onAddAbility: function() {
+			
+			oModel.read("/SinavTuruSet", null, null, true,
+
+				function(oData) {
+					osJsonSinavTur.setData(oData);
+				},
+				function() {
+
+				});
+
 			var pernr = vPernr;
 			var oDialogAbility;
 			var itemTemplate;
@@ -1375,7 +1358,7 @@ sap.ui.define([
 			if (file.type === "application/vnd.openxmlformats-officedocument.wordprocessingml.document" || file.type ===
 				"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" || file.type === "application/pdf" || file.type ===
 				"application/vnd.ms-powerpoint") {
-					
+
 				try {
 
 					if (file) {
@@ -1447,8 +1430,6 @@ sap.ui.define([
 				} catch (oException) {
 					jQuery.sap.log.error("File upload failed: \n" + oException.message);
 				}
-			
-				
 
 			} else {
 				sap.m.MessageToast.show("Lütfen word,excel,pdf yada ppt giriniz");

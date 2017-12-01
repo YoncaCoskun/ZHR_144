@@ -105,7 +105,7 @@
 			<form:SimpleForm title="4. Yabancı Dil" minWidth="1024" editable="false" layout="ResponsiveGridLayout">
 				<form:content>
 					<core:Title/>
-					<Table id="idLang5" growing="true" growingThreshold="10" inset="false" items="{ path: '/results', sorter: { path: 'Sptxt' } }">
+					<Table id="idLang5" growing="true" growingThreshold="10" inset="false" items="{ path: '/results'}">
 						<columns>
 							<Column width="12em">
 								<Text text="Dil Türü"/>
@@ -153,7 +153,7 @@
 				<form:content>
 					<core:Title/>
 					<Table id="idExamZihin5" growing="true" growingThreshold="10" width="100%" inset="false"
-						items="{ path: '/results', sorter: { path: 'SinavTuru' } }">
+						items="{ path: '/results'}">
 						<columns>
 							<Column width="12em">
 								<Text text="Sınav Türü"/>
@@ -181,7 +181,7 @@
 				<form:content>
 					<core:Title/>
 					<Table id="idPd5"  growing="true" growingThreshold="10" width="100%" inset="false"
-						items="{ path: '/results', sorter: { path: 'Pdyear' } }">
+						items="{ path: '/results'}">
 						<columns>
 							<Column width="12em">
 								<Text text="Yıl"/>

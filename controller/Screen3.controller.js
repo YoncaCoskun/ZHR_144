@@ -48,7 +48,7 @@ sap.ui.define([
 			this._setEmptyValue("/productPrice");
 
 			var osModel = new sap.ui.model.odata.ODataModel("/sap/opu/odata/sap/ZHR_144_SRV_01");
-			osModel.setSizeLimit(99999);
+			//osModel.setSizeLimit(99999);
 			osModel.read("/PerAlanSet", null, null, true,
 
 				function(oData, response) {

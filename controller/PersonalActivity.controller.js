@@ -6,10 +6,6 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function(Controller) {
 
 		onInit: function() {
 
-			/*	var sUrl = "#" + this.getOwnerComponent().getRouter().getURL("screen1");
-
-				this.byId("link").setHref(sUrl);*/
-
 		},
 
 		onAfterRendering: function() {

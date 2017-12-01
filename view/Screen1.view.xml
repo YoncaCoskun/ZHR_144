@@ -69,8 +69,6 @@
 											<core:Item key="{Persg}" text="{Ptext}"/>
 										</suggestionItems>
 									</Input>
-									<!--<Input class="inputForm" id="cls1" liveChange="additionalInfoValidation" value="1" valueState="{/calisanGrbState}"-->
-									<!--	valueStateText="1 karakter girmelisiniz"/>-->
 									<Label required="true" text="Çalışan Alt Grb."/>
 									<Input class="inputForm" id="clsAlt1" placeholder="Çalışan Alt Grubu" liveChange="additionalInfoValidation" showSuggestion="true"
 										showValueHelp="true" suggestionItems="{/CalisanAltGrSet}" type="Text" valueHelpRequest="handleValueHelpClsAlt"
@@ -114,7 +112,7 @@
 									</Input>
 									<Label text="Eğitim Dalı"/>
 									<Input class="inputForm" id="egitim1" placeholder="Eğitim Dalı" liveChange="additionalInfoValidation" showSuggestion="true"
-										showValueHelp="true" suggestionItems="{/EgitimSet}" type="Text" valueHelpRequest="handleValueHelpEgitim" valueState="{/egitimState}">
+										showValueHelp="true" suggestionItems="{/EgitimDalSet}" type="Text" valueHelpRequest="handleValueHelpEgitim" valueState="{/egitimState}">
 										<suggestionItems>
 											<core:Item key="{Faart}" text="{Ftext}"/>
 										</suggestionItems>
@@ -124,7 +122,7 @@
 							</form:SimpleForm>
 						</WizardStep>
 						<WizardStep activate="stepLanguage" id="idLanguage" title="Yabancı Dil" validated="true">
-							<Table growing="true" growingThreshold="10" id="idLanguageTable" inset="false" items="{ path: '/results', sorter: { path: 'Sptxt' } }"
+							<Table growing="true" growingThreshold="10" id="idLanguageTable" inset="false" items="{ path: '/results' }"
 								mode="SingleSelectMaster" selectionChange="onPressLang">
 								<headerToolbar>
 									<OverflowToolbar id="otbSubheader">
@@ -175,7 +173,7 @@
 							</Table>
 						</WizardStep>
 						<WizardStep activate="stepAbility" id="idAbility" title="Zihinsel Beceri" validated="true">
-							<Table growing="true" growingThreshold="10" id="idAbilityTable" inset="false" items="{ path: '/results', sorter: { path: 'SinavTuru' } }"
+							<Table growing="true" growingThreshold="10" id="idAbilityTable" inset="false" items="{ path: '/results' }"
 								mode="SingleSelectMaster" selectionChange="onPressZihin">
 								<headerToolbar>
 									<OverflowToolbar id="otbSubheader1">
