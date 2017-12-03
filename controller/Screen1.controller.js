@@ -543,7 +543,7 @@ sap.ui.define([
 			var skala = this.getView().byId("skala1").getValue();
 			var isAlan1 = this.getView().byId("isAlan1").getValue();
 
-			if (cls1.length < 1 || perAlan1.length < 4 || clsAlt1.length < 2 || skala.length < 8 || isAlan1.length < 4) {
+			if (cls1.length < 1 || perAlan1.length < 4 || clsAlt1.length < 2 || isAlan1.length < 4 || skala.length === 0) {
 				this._wizard.invalidateStep(this.getView().byId("YeniStep1"));
 			} else {
 				this._wizard.validateStep(this.getView().byId("YeniStep1"));
