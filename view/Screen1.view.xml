@@ -5,7 +5,7 @@
 			<Page id="wizardContentPage" showHeader="false">
 				<content>
 					<Wizard complete="wizardCompletedHandler" id="CreateProductWizard">
-						<WizardStep id="ProductTypeStep" title="Genel Bilgiler" validated="true">
+						<WizardStep activate="optionalStepYeni" id="ProductTypeStep" title="Genel Bilgiler" validated="true">
 							<form:SimpleForm columnsL="2" columnsM="2" columnsXL="3" editable="true" emptySpanL="0" emptySpanM="0" emptySpanXL="0" labelSpanL="4"
 								labelSpanM="4" labelSpanXL="4" layout="ResponsiveGridLayout" maxContainerCols="3">
 								<form:content>
@@ -13,13 +13,13 @@
 									<Label text="Fiş Konusu"/>
 									<Input class="inputForm" enabled="false" id="fisKonu1" value="İşe Giriş"/>
 									<Label required="true" text="Ad Soyad"/>
-									<Input class="inputForm" id="adSoyad1" value="" placeholder="Ad Soyad" liveChange="additionalInfoValidation" showSuggestion="true"
-										showValueHelp="true" type="Text" valueState="{/adSoyadState}"></Input>
+									<Input class="inputForm"  valueStateText="Lütfen ad soyad alanını doldurunuz" valueState="{/adSoyadState}" id="adSoyad1" liveChange="additionalFirstInf"
+											placeholder="Ad Soyad" value="{/adSoyad}" type="Text"/>
 									<core:Title/>
 									<Label required="true" text="Doğum Tarihi"/>
-									<DatePicker class="inputForm" id="dogumTarih1" value=""/>
+									<DatePicker class="inputForm" id="dogumTarih1" value="" change="additionalFirstInf"/>
 									<Label required="true" text="Geçerlilik Tarihi"/>
-									<DatePicker class="inputForm" id="gecerTarih1" value=""/>
+									<DatePicker class="inputForm" id="gecerTarih1" value="" change="additionalFirstInf"/>
 								</form:content>
 							</form:SimpleForm>
 						</WizardStep>
@@ -84,8 +84,8 @@
 											<core:Item key="{Trfgr}" text="{Trfgr}"/>
 										</suggestionItems>
 									</Input>
-									<Label text="Ücret"/>
-									<Input class="inputForm" id="ucret1" value=""/>
+									<Label required="true" text="Ücret"/>
+									<Input class="inputForm" id="ucret1" value=""  liveChange="additionalInfoValidation"/>
 									<Label text="Diğer Bilgiler"/>
 									<Input class="inputForm" id="diger1" value=""/>
 								</form:content>

@@ -40,7 +40,6 @@ sap.ui.define([
 			this._oNavContainer.addPage(this._oWizardReviewPage);
 			this.model = new sap.ui.model.json.JSONModel();
 
-
 			this.model.setData({
 				posAdState: "Error",
 				calisanGrbState: "Error",
@@ -51,7 +50,8 @@ sap.ui.define([
 				okulTurState: "Error",
 				okulAdState: "Error",
 				egitimState: "Error",
-				perAltAlanState: "Error"
+				perAltAlanState: "Error",
+				adSoyadState: "Error"
 			});
 			this.getView().setModel(this.model);
 			this.model.setProperty("/productType", "Mobile");
@@ -521,14 +521,19 @@ sap.ui.define([
 
 		},
 		handlePressMenu: function() {
-
+			debugger;
 			var oSplitApp = this.getView().byId("SplitAppDemo");
 			oSplitApp.setMode(sap.m.SplitAppMode.ShowHideMode);
 		},
 		setProductType: function(evt) {
+			debugger;
 			var productType = evt.getSource().getTitle();
 			this.model.setProperty("/productType", productType);
 			this.getView().byId("ProductStepChosenType").setText("Chosen product type: " + productType);
+
+			//date ler icin kontrol ekle begin of ycoskun
+
+			//date ler icin kontrol ekle end of ycoskun
 			this._wizard.validateStep(this.getView().byId("ProductTypeStep"));
 		},
 		setProductTypeFromSegmented: function(evt) {
@@ -542,8 +547,9 @@ sap.ui.define([
 			var clsAlt1 = this.getView().byId("clsAlt1").getValue();
 			var skala = this.getView().byId("skala1").getValue();
 			var isAlan1 = this.getView().byId("isAlan1").getValue();
+			var ucret1 = this.getView().byId("ucret1").getValue();
 
-			if (cls1.length < 1 || perAlan1.length < 4 || clsAlt1.length < 2 || isAlan1.length < 4 || skala.length === 0) {
+			if (cls1.length < 1 || perAlan1.length < 4 || clsAlt1.length < 2 || isAlan1.length < 4 || skala.length === 0 || ucret1.length < 1) {
 				this._wizard.invalidateStep(this.getView().byId("YeniStep1"));
 			} else {
 				this._wizard.validateStep(this.getView().byId("YeniStep1"));
@@ -551,8 +557,20 @@ sap.ui.define([
 			}
 
 		},
-		optionalStepActivation: function() {
+		optionalStepYeni:function(){
+			var name = this.getView().byId("adSoyad1").getValue();
+			var gDate = this.getView().byId("gecerTarih1").getValue();
+			var dDate = this.getView().byId("dogumTarih1").getValue();
 
+			if (name.length < 1 || gDate.length < 1 || dDate.length < 1) {
+				this._wizard.invalidateStep(this.getView().byId("ProductTypeStep"));
+			} else {
+				this._wizard.validateStep(this.getView().byId("ProductTypeStep"));
+
+			}
+		},
+		optionalStepActivation: function() {
+		
 		},
 		optionalStepCompletion: function() {
 
@@ -604,7 +622,6 @@ sap.ui.define([
 				startNok = splitArrayDogumT.slice(1, 2);
 				endNok = splitArrayGecerT.slice(1, 2);
 
-				debugger;
 				if (startNok !== ".") {
 					startNok = splitArrayDogumT.slice(2, 3);
 					//endNok = endDate.slice(2,3);
@@ -709,7 +726,6 @@ sap.ui.define([
 				startNok = splitArrayDogumT.slice(2, 3);
 				endNok = splitArrayDogumT.slice(2, 3);
 
-				debugger;
 				if (startNok !== ".") {
 					startNok = splitArrayDogumT.slice(2, 3);
 					//endNok = endDate.slice(2,3);
@@ -1021,9 +1037,21 @@ sap.ui.define([
 			this.model.setProperty("/skalaState", "Error");
 			this.model.setProperty("/isAlanState", "Error");
 			this.model.setProperty("/adSoyadState", "Error");
+
 			clearContent(this._wizard.getSteps());
 		},
+		setDateSinavTarihi: function(value) {
+			var gun, yil, ay, tarih;
+			yil = value.substring(0, 4);
+			ay = value.substring(4, 6);
+			gun = value.substring(6, 8);
+
+			tarih = gun + "." + ay + "." + yil;
+
+			return tarih;
+		},
 		onAddLanguage: function() {
+			var that = this;
 			oModel.read("/YabanciDilSet", null, null, true,
 
 				function(oData) {
@@ -1032,7 +1060,7 @@ sap.ui.define([
 				function() {
 
 				});
-				
+
 			var pernr = vPernr;
 
 			var oDialog;
@@ -1178,6 +1206,11 @@ sap.ui.define([
 
 						oModel.read("/ZHRIseAlimYDSet", null, ["$filter=" + perFilter], true,
 							function(oData) {
+								debugger;
+								for (var a = 0; a < oData.results.length; a++) {
+									oData.results[a].SinavTarihi = that.setDateSinavTarihi(oData.results[a].SinavTarihi);
+
+								}
 								oLangModel.setData(oData);
 							});
 						oView.setModel(oLangModel, "LangModel");
@@ -1217,7 +1250,8 @@ sap.ui.define([
 
 		},
 		onAddAbility: function() {
-			
+			var that = this;
+
 			oModel.read("/SinavTuruSet", null, null, true,
 
 				function(oData) {
@@ -1310,12 +1344,16 @@ sap.ui.define([
 						// end of ycoskun
 						oModel.refresh(true);
 
-						//begin of ycoskun yabancı dilleri listele 
+						//begin of ycoskun ability listele 
 						var oAbilityModel = new sap.ui.model.json.JSONModel();
 						var perAbFilter = "Pernr eq '" + pernr + "'";
 
 						oModel.read("/ZHRIseAlimZBSet", null, ["$filter=" + perAbFilter], true,
-							function(oData, response) {
+							function(oData) {
+								for (var k = 0; k < oData.results.length; k++) {
+									oData.results[k].SinavTarihi = that.setDateSinavTarihi(oData.results[k].SinavTarihi);
+
+								}
 								oAbilityModel.setData(oData);
 
 							});
@@ -1432,7 +1470,7 @@ sap.ui.define([
 				}
 
 			} else {
-				sap.m.MessageToast.show("Lütfen word,excel,pdf yada ppt giriniz");
+				sap.m.MessageToast.show("Lütfen Word,Excel,Pdf ya da Power Point sunusu seçiniz.");
 			}
 
 			//end of ycoskun
@@ -1535,6 +1573,10 @@ sap.ui.define([
 
 			oModel.read("/ZHRIseAlimYDSet", null, ["$filter=" + perFilter], true,
 				function(oData) {
+					for (var f = 0; f < oData.results.length; f++) {
+						oData.results[f].SinavTarihi = that.setDateSinavTarihi(oData.results[f].SinavTarihi);
+
+					}
 					oLangModel.setData(oData);
 				});
 			oThat.getView().setModel(oLangModel, "LangModel");
@@ -1548,6 +1590,10 @@ sap.ui.define([
 
 			oModel.read("/ZHRIseAlimZBSet", null, ["$filter=" + perAbFilter], true,
 				function(oData) {
+					for (var l = 0; l < oData.results.length; l++) {
+						oData.results[l].SinavTarihi = that.setDateSinavTarihi(oData.results[l].SinavTarihi);
+
+					}
 					oAbModel.setData(oData);
 				});
 			oThat.getView().setModel(oAbModel, "oAbModel");
@@ -2202,6 +2248,25 @@ sap.ui.define([
 			var that = this;
 			that.oMessageDialog.close();
 			that.oMessageDialog.destroy();
+		},
+		additionalFirstInf: function() {
+			var name = this.getView().byId("adSoyad1").getValue();
+			var gDate = this.getView().byId("gecerTarih1").getValue();
+			var dDate = this.getView().byId("dogumTarih1").getValue();
+			//var bCompact = !!this.getView().$().closest(".sapUiSizeCompact").length;
+
+			if (name.length < 6 || gDate.length < 1 || dDate.length < 1) {
+				this.model.setProperty("/adSoyadState", "Error");
+			} else {
+				this.model.setProperty("/adSoyadState", "None");
+			}
+
+			if (name.length < 6 || gDate.length < 1 || dDate.length < 1) {
+				this._wizard.invalidateStep(this.getView().byId("ProductTypeStep"));
+			} else {
+				this._wizard.validateStep(this.getView().byId("ProductTypeStep"));
+			}
+
 		}
 	});
 

@@ -44,56 +44,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/core/routing/History", "sap
 			var pozisyon, perAlan, perAltAlan, isAlan, isAnahtar, orgBirim, clsGrup, aracPrim, dilPrim, mevPrim, vekPrim;
 
 			var clsAltGrp, skala, ucret, diger, okulTur, okulAd, egitim, adSoyad, dogumTarih, gecerTarih, sirket, tc, sicil, fisKonu;
-			/*
-						pozisyon = sap.ui.getCore().cPozisyon;
-						perAlan = sap.ui.getCore().cPerAlan;
-						perAltAlan = sap.ui.getCore().cPerAltAlan;
-						isAlan = sap.ui.getCore().cIsAlan;
-						isAnahtar = sap.ui.getCore().cIsAnahtari;
-						orgBirim = sap.ui.getCore().cOrgBirim;
-						clsGrup = sap.ui.getCore().cClsGrup;
-						clsAltGrp = sap.ui.getCore().cClsAltGrp;
-						skala = sap.ui.getCore().cSkala;
-						ucret = sap.ui.getCore().cUcret;
-						diger = sap.ui.getCore().cDiger;
-						okulTur = sap.ui.getCore().cOkulTur;
-						okulAd = sap.ui.getCore().cOkulAd;
-						egitim = sap.ui.getCore().cEgitim;
-						adSoyad = sap.ui.getCore().cAdSoyad;
-						dogumTarih = sap.ui.getCore().cDogumTarih;
-						gecerTarih = sap.ui.getCore().cGecerTarih;
-						aracPrim = sap.ui.getCore().cAracPrim;
-						dilPrim = sap.ui.getCore().cDilPrim;
-						mevPrim = sap.ui.getCore().cMevPrim;
-						vekPrim = sap.ui.getCore().cVekPrim;
-						sirket = sap.ui.getCore().cSirket;
-						tc = sap.ui.getCore().cTC;
-						sicil = sap.ui.getCore().cPernr;*/
 
-			/*	this.getView().byId("adSoyadApprove").setText(adSoyad);
-				this.getView().byId("dogumTarihApprove").setText(dogumTarih);
-				this.getView().byId("gecerTarihApprove").setText(gecerTarih);
-				this.getView().byId("posApprove").setValue(pozisyon);
-				this.getView().byId("perAlanApprove").setValue(perAlan);
-				this.getView().byId("perAltAlanApprove").setValue(perAltAlan);
-				this.getView().byId("isAlanApprove").setValue(isAlan);
-				this.getView().byId("isAnahApprove").setValue(isAnahtar);
-				this.getView().byId("orgBrmApprove").setValue(orgBirim);
-				this.getView().byId("clsGrpApprove").setValue(clsGrup);
-				this.getView().byId("clsAltGrpApprove").setValue(clsAltGrp);
-				this.getView().byId("skalaApprove").setValue(skala);
-				this.getView().byId("ucretApprove").setValue(ucret);
-				this.getView().byId("digerApprove").setValue(diger);
-				this.getView().byId("okulTurApprove").setValue(okulTur);
-				this.getView().byId("okulAdApprove").setValue(okulAd);
-				this.getView().byId("egitimApprove").setValue(egitim);
-				this.getView().byId("sirketApprove").setValue(sirket);
-				this.getView().byId("dilPrimApprove").setValue(dilPrim);
-				this.getView().byId("aracPrimApprove").setValue(aracPrim);
-				this.getView().byId("mevPrimApprove").setValue(mevPrim);
-				this.getView().byId("vekPrimApprove").setValue(vekPrim);
-				this.getView().byId("tcApprove").setValue(tc);
-				this.getView().byId("sicilApprove").setValue(sicil);*/
 			sicil = sap.ui.getCore().cPernr;
 			oModel.read("/ZHRIseAlimPersonelSet('" + sicil + "')", null, null, true,
 				function(oData) {
@@ -124,8 +75,8 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/core/routing/History", "sap
 					fisKonu = "İşe Alım";
 
 					that.getView().byId("adSoyadApprove").setText(adSoyad);
-					that.getView().byId("dogumTarihApprove").setText(dogumTarih);
-					that.getView().byId("gecerTarihApprove").setText(gecerTarih);
+					that.getView().byId("dogumTarihApprove").setText(that.setDateSinavTarihi(dogumTarih));
+					that.getView().byId("gecerTarihApprove").setText(that.setDateSinavTarihi(gecerTarih));
 					that.getView().byId("posApprove").setValue(pozisyon);
 					that.getView().byId("perAlanApprove").setValue(perAlan);
 					that.getView().byId("perAltAlanApprove").setValue(perAltAlan);
@@ -156,6 +107,10 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/core/routing/History", "sap
 
 			oModel.read("/ZHRIseAlimYDSet", null, ["$filter=" + perFilter], false,
 				function(oData) {
+					for (var c = 0; c < oData.results.length; c++) {
+						oData.results[c].SinavTarihi = that.setDateSinavTarihi(oData.results[c].SinavTarihi);
+
+					}
 					oLangModel.setData(oData);
 					//	console.log(oData);
 				});
@@ -166,6 +121,10 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/core/routing/History", "sap
 
 			oModel.read("/ZHRIseAlimZBSet", null, ["$filter=" + perAbFilter], false,
 				function(oData) {
+					for (var r = 0; r < oData.results.length; r++) {
+						oData.results[r].SinavTarihi = that.setDateSinavTarihi(oData.results[r].SinavTarihi);
+
+					}
 					oAbModel.setData(oData);
 
 				});
@@ -256,6 +215,16 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/core/routing/History", "sap
 		},
 		onBackScreen: function() {
 			this.getOwnerComponent().getRouter().navTo("PersonalActivity");
+		},
+		setDateSinavTarihi: function(value) {
+			var gun, yil, ay, tarih;
+			yil = value.substring(0, 4);
+			ay = value.substring(4, 6);
+			gun = value.substring(6, 8);
+
+			tarih = gun + "." + ay + "." + yil;
+
+			return tarih;
 		}
 
 	});
