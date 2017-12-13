@@ -93,7 +93,7 @@
 												visible="{NumberOfAttachments}">
 												<List id="listAttach1" showSeparators="None" inset="true" items="{attachModel>/results}">
 													<StandardListItem id="fList1" title="{attachModel>Filename}" icon="{attachModel>Filemime}" description="{attachModel>FileSize}"
-														iconInset="false" press="onAttachment" type="Active" info="{attachModel>CreatedAt}"></StandardListItem>
+														iconInset="false" press="onpressAttachment" type="Active" info="{attachModel>CreatedAt}"></StandardListItem>
 												</List>
 											</IconTabFilter>
 											<IconTabFilter icon="sap-icon://table-view" id="iconTabTable">

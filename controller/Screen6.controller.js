@@ -1804,7 +1804,7 @@ sap.ui.define([
 		onSelect: function() {
 			var that = this;
 			var osJsonStelOrg = new sap.ui.model.json.JSONModel();
-			var vStell, vOrg;
+			var vStell, vOrg,vStellText,vOrgText;
 			var vPosition = sap.ui.getCore().cPosition;
 			var arrayPos = vPosition.split("/");
 			var vPos = arrayPos[0];
@@ -1817,12 +1817,15 @@ sap.ui.define([
 					osJsonStelOrg.setData(oData);
 					vStell = oData.Stell;
 					vOrg = oData.Orgeh;
+					vStellText = oData.Stext;
+					vOrgText = oData.Otext;
 
-					that.getView().byId("InputIsAnahtari6").setValue(vStell);
-					that.getView().byId("InputOrgBirim6").setValue(vOrg);
+					that.getView().byId("InputIsAnahtari6").setValue(vStell + " / " + vStellText);
+					that.getView().byId("InputOrgBirim6").setValue(vOrg + " / " + vOrgText);
 
 					that.getView().byId("InputIsAnahtari6").setEnabled(false);
 					that.getView().byId("InputOrgBirim6").setEnabled(false);
+					
 
 				});
 

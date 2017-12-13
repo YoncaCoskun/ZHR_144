@@ -225,6 +225,14 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/core/routing/History", "sap
 			tarih = gun + "." + ay + "." + yil;
 
 			return tarih;
+		},
+		onpressAttachment:function(oEvent){
+			debugger;
+			var fileName, pernr;
+			fileName = oEvent.oSource.mProperties.title; 
+			pernr =  sap.ui.getCore().cPernr;
+			var ogetURL = "/sap/opu/odata/sap/ZHR_144_SRV_01" + "/ZHRIseAlimFileSet('" + fileName + "," + pernr + "')/$value";
+			sap.m.URLHelper.redirect(ogetURL, true);
 		}
 
 	});
