@@ -30,6 +30,7 @@ sap.ui.define([
 	var oExam;
 	var oLanguage;
 
+
 	var WizardController = Controller.extend("ZHR_144.controller.Screen1", {
 		onInit: function() {
 			this._wizard = this.getView().byId("CreateProductWizard");
@@ -51,7 +52,8 @@ sap.ui.define([
 				okulAdState: "Error",
 				egitimState: "Error",
 				perAltAlanState: "Error",
-				adSoyadState: "Error"
+				adSoyadState: "Error",
+				productNameState:"Error"
 			});
 			this.getView().setModel(this.model);
 			this.model.setProperty("/productType", "Mobile");
@@ -557,7 +559,7 @@ sap.ui.define([
 			}
 
 		},
-		optionalStepYeni:function(){
+		optionalStepYeni: function() {
 			var name = this.getView().byId("adSoyad1").getValue();
 			var gDate = this.getView().byId("gecerTarih1").getValue();
 			var dDate = this.getView().byId("dogumTarih1").getValue();
@@ -570,7 +572,7 @@ sap.ui.define([
 			}
 		},
 		optionalStepActivation: function() {
-		
+
 		},
 		optionalStepCompletion: function() {
 
@@ -1051,6 +1053,7 @@ sap.ui.define([
 			return tarih;
 		},
 		onAddLanguage: function() {
+			debugger;
 			var that = this;
 			oModel.read("/YabanciDilSet", null, null, true,
 
@@ -1066,6 +1069,7 @@ sap.ui.define([
 			var oDialog;
 			var itemTemplate;
 			var selectLang;
+		
 
 			itemTemplate = new sap.ui.core.ListItem({
 				key: "{Sprsl}",
@@ -1094,35 +1098,127 @@ sap.ui.define([
 				value: "",
 				enabled: true
 			});
-			var oYazma = new sap.ui.commons.TextField({
+			var oYazma = new sap.m.Input({
 				value: "",
-				enabled: true
+				enabled: true,
+				id: "idYazma",
+				change: function() {
+					var name = sap.ui.getCore().byId("idYazma").getValue();
+					var arrayName = name.split(".");
+					var yazma;
+					
+					if(arrayName.length > 1){
+						yazma = name;
+					}
+					else{
+						yazma = parseFloat(name.toString().replace(/\D/g, '')).toFixed(1);
+					}
+					sap.ui.getCore().byId("idYazma").setValue(yazma);
+
+				}
 			});
-			var oOkuma = new sap.ui.commons.TextField({
+			var oOkuma = new sap.m.Input({
 				value: "",
-				enabled: true
+				enabled: true,
+				id: "idOkuma",
+				change: function() {
+					var name = sap.ui.getCore().byId("idOkuma").getValue();
+					var arrayName = name.split(".");
+					var okuma;
+					
+					if(arrayName.length > 1){
+						okuma = name;
+					}
+					else{
+						okuma = parseFloat(name.toString().replace(/\D/g, '')).toFixed(1);
+					}
+					sap.ui.getCore().byId("idOkuma").setValue(okuma);
+
+				}
 
 			});
-			var oDinleme = new sap.ui.commons.TextField({
+			var oDinleme = new sap.m.Input({
 				value: "",
-				enabled: true
+				enabled: true,
+				id: "idDinleme",
+				change: function() {
+					var name = sap.ui.getCore().byId("idDinleme").getValue();
+					var arrayName = name.split(".");
+					var dinlenme;
+					
+					if(arrayName.length > 1){
+						dinlenme = name;
+					}
+					else{
+						dinlenme = parseFloat(name.toString().replace(/\D/g, '')).toFixed(1);
+					}
+					sap.ui.getCore().byId("idDinleme").setValue(dinlenme);
+
+				}
 
 			});
-			var oKonusma = new sap.ui.commons.TextField({
+			var oKonusma = new sap.m.Input({
 				value: "",
-				enabled: true
+				enabled: true,
+				id: "idKonusma",
+				change: function() {
+					var name = sap.ui.getCore().byId("idKonusma").getValue();
+					var arrayName = name.split(".");
+					var konusma;
+					
+					if(arrayName.length > 1){
+						konusma = name;
+					}
+					else{
+						konusma = parseFloat(name.toString().replace(/\D/g, '')).toFixed(1);
+					}
+					sap.ui.getCore().byId("idKonusma").setValue(konusma);
+
+				}
 
 			});
-			var oGenel = new sap.ui.commons.TextField({
+			var oGenel = new sap.m.Input({
 				value: "",
-				enabled: true
+				enabled: true,
+				id: "idGenel",
+				change: function() {
+					var name = sap.ui.getCore().byId("idGenel").getValue();
+					var arrayName = name.split(".");
+					var genel;
+					
+					if(arrayName.length > 1){
+						genel = name;
+					}
+					else{
+						genel = parseFloat(name.toString().replace(/\D/g, '')).toFixed(1);
+					}
+					sap.ui.getCore().byId("idGenel").setValue(genel);
+
+				}
 
 			});
-			var oPuan = new sap.ui.commons.TextField({
+			var oPuan = new sap.m.Input({
 				value: "",
-				enabled: true
-
+				enabled: true,
+				id: "idPuan",
+				change: function() {
+					var name = sap.ui.getCore().byId("idPuan").getValue();
+					var arrayName = name.split(".");
+					var puan;
+					
+					if(arrayName.length > 1){
+						puan = name;
+					}
+					else{
+						puan = parseFloat(name.toString().replace(/\D/g, '')).toFixed(1);
+					}
+					sap.ui.getCore().byId("idPuan").setValue(puan);
+				}
 			});
+			
+	
+			
+			
 			var oForm = new sap.ui.layout.form.SimpleForm({
 				editable: true,
 				content: [
@@ -1133,26 +1229,26 @@ sap.ui.define([
 						text: "Yabancı Dil"
 					}), oLang,
 					new sap.ui.commons.Label({
-						text: "Puan"
+						text: "Puan (**.* formatında olmalıdır)"
 					}), oPuan,
 					new sap.ui.commons.Label({
 						text: "Sınav Tarihi"
 					}), oTarih,
 					new sap.ui.commons.Label({
-						text: "Yazma"
+						text: "Yazma (**.* formatında olmalıdır)"
 					}), oYazma,
 					new sap.ui.commons.Label({
-						text: "Okuma"
+						text: "Okuma (**.* formatında olmalıdır)"
 					}), oOkuma,
 					new sap.ui.commons.Label({
-						text: "Dinleme"
+						text: "Dinleme (**.* formatında olmalıdır)"
 					}), oDinleme,
 					new sap.ui.commons.Label({
-						text: "Konuşma"
+						text: "Konuşma (**.* formatında olmalıdır)"
 					}), oKonusma,
 					new sap.ui.commons.Label({
-						text: "Genel"
-					}), oGenel
+						text: "Genel (**.* formatında olmalıdır)"
+					}), oGenel 
 				]
 			});
 
@@ -1284,9 +1380,24 @@ sap.ui.define([
 			});
 			sap.ui.getCore().byId("idAbility").setModel(osJsonSinavTur);
 
-			var oPuanExam = new sap.ui.commons.TextField({
+			var oPuanExam = new sap.m.Input({
 				value: "",
-				enabled: true
+				enabled: true,
+				id: "idPuanExam",
+				change: function() {
+					var name = sap.ui.getCore().byId("idPuanExam").getValue();
+					var arrayName = name.split(".");
+					var puanExam;
+					
+					if(arrayName.length > 1){
+						puanExam = name;
+					}
+					else{
+						puanExam = parseFloat(name.toString().replace(/\D/g, '')).toFixed(1);
+					}
+					sap.ui.getCore().byId("idPuanExam").setValue(puanExam);
+
+				}
 			});
 			var oTarih = new sap.ui.commons.DatePicker({
 				value: "",
@@ -1299,7 +1410,7 @@ sap.ui.define([
 						text: "Sınav Türü"
 					}), oExam,
 					new sap.ui.commons.Label({
-						text: "Puan"
+						text: "Puan (**.* formatında olmalıdır)"
 					}), oPuanExam,
 					new sap.ui.commons.Label({
 						text: "Sınav Tarihi"
@@ -1352,7 +1463,6 @@ sap.ui.define([
 							function(oData) {
 								for (var k = 0; k < oData.results.length; k++) {
 									oData.results[k].SinavTarihi = that.setDateSinavTarihi(oData.results[k].SinavTarihi);
-
 								}
 								oAbilityModel.setData(oData);
 
