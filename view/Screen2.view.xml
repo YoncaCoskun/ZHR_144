@@ -13,7 +13,7 @@
 									<Label text="Fiş Konusu"/>
 									<Input class="inputForm" value="İşten Çıkış" enabled="false" id="fisKonu2"/>
 									<Label text="Sicil No"/>
-									<SearchField class="inputForm" width="60%" id="sicilNo2" placeholder="Ara" search="handleSicilNoSearch"/>
+									<SearchField class="inputForm" width="60%" id="sicilNo2" placeholder="Ara" search="onSearchSicil"/>
 									<Label text="Ad Soyad"/>
 									<Input class="inputForm" value="" enabled="false" id="adSoyad2"/>
 									<core:Title/>

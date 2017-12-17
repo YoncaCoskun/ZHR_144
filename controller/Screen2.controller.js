@@ -73,33 +73,50 @@ sap.ui.define([
 
 		},
 		onSearchSicil: function() {
-			vad = sap.ui.getCore().byId("adIdSicil").getValue();
-			vsoyad = sap.ui.getCore().byId("soyadIdSicil").getValue();
-		},
-		handleSicilNoSearch: function() {
-			if (!this.oSearchDialog) {
-				this.oSearchDialog = sap.ui.xmlfragment("ZHR_144.view.Screen2SicilSearch", this);
-			}
+			this.oSearchDialog = sap.ui.xmlfragment("ZHR_144.view.Screen2SicilSearch", this);
 
 			this.oSearchDialog.open();
-
+		},
+		handleSicilNoSearch: function() {
 			//begin of ycoskun sicilno girip tıklayınca verileri getirme
-			
-			var sicilNo;
 			//	var sicilNo = oThat.getView().byId("sicilNo2").getValue();
-			var istenCikis = {};
 
+			vad = sap.ui.getCore().byId("adIdSicil").getValue();
+			vsoyad = sap.ui.getCore().byId("soyadIdSicil").getValue();
+			var that = this;
+			var oJsonSicilModel = new sap.ui.model.json.JSONModel();
 			var filterSicil = "IAd eq '" + vad + "' and ISoyad eq '" + vsoyad + "' ";
 			debugger;
 			oModel.read("/SearchSicilSet", null, ["$filter=" + filterSicil], true,
 				function(oData) {
 					debugger;
-					sicilNo = oData.PERNR;
-				});
+					//sicilNo = oData.results.Pernr;
+					oJsonSicilModel.setData(oData.results);
 
+				});
+				that.oSicilTableDialog = sap.ui.xmlfragment("ZHR_144.view.Screen2SicilTable", that);
+			that.getView().setModel(oJsonSicilModel, "JModel");
+			sap.ui.getCore().byId("idSicilTable").setModel(this.getView().getModel("JModel"));
+
+			that.oSicilTableDialog.open();
+
+		},
+		handleCancelSicil: function() {
+			this.oSicilTableDialog.destroy();
+		},
+		handleCloseSicil: function(oEvent) {
+			var that = this;
+			var sicilNo;
+			var istenCikis = {};
+			var aContexts = oEvent.getParameter("selectedContexts");
+
+			if (aContexts && aContexts.length) {
+				sicilNo = aContexts.map(function(oContext) {
+					return oContext.getObject().Pernr;
+				}).join(", ");
+			}
 			oModel.read("/ZHRIstenCikisSet('" + sicilNo + "')", null, null, false,
 				function(oData) {
-					debugger;
 					istenCikis = oData;
 
 				},
@@ -109,6 +126,7 @@ sap.ui.define([
 					MessageToast.show(message);
 				}
 				//end of ycoskun
+				 
 			);
 
 			this.getView().byId("fisKonu2").setValue("İşten Çıkış");
@@ -133,6 +151,13 @@ sap.ui.define([
 			this.getView().byId("perAltAlan2").setValue(istenCikis.Btrtl + " / " + istenCikis.Btext);
 			this.getView().byId("dogumTarih2").setValue(this.vDate(istenCikis.Gbdat));
 			this.getView().byId("gecerTarih2").setValue(this.vDate(istenCikis.Begda));
+			
+			this.oSicilTableDialog.destroy();
+			this.oSearchDialog.destroy();   
+			vad="";
+			vsoyad="";
+			
+			
 
 			//end of ycoskun
 

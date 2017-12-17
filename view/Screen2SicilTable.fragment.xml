@@ -1,0 +1,28 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout" xmlns="sap.m">
+<TableSelectDialog  id="idSicilTable" inset="false" noDataText="Sicil No bulunamadı" title="Budget Approval Form" confirm="handleCloseSicil" cancel="handleCancelSicil" items="{ path: '/' }">
+		<ColumnListItem>
+			<cells>
+				<Text text="{Pernr}"/>
+				<Text text="{IAd}"/>
+				<Text text="{ISoyad}"/>
+			</cells>
+		</ColumnListItem>
+		<columns>
+			<Column demandPopin="true" minScreenWidth="Tablet">
+				<header>
+					<Text text="Sicil No"/>
+				</header>
+			</Column>
+			<Column demandPopin="true" minScreenWidth="Tablet">
+				<header>
+					<Text text="İsim"/>
+				</header>
+			</Column>
+			<Column demandPopin="true" minScreenWidth="Tablet">
+				<header>
+					<Text text="Soyisim"/>
+				</header>
+			</Column>
+		</columns>
+	</TableSelectDialog>
+</core:FragmentDefinition>

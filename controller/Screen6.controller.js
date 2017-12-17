@@ -24,6 +24,8 @@ sap.ui.define([
 	var oExam;
 	var oLanguage;
 	var vWerks;
+	
+	var vad, vsoyad;
 
 	var WizardController = Controller.extend("ZHR_144.controller.Screen6", {
 
@@ -1370,69 +1372,6 @@ sap.ui.define([
 			this.getOwnerComponent().getRouter().navTo("PersonalActivity");
 			window.location.reload();
 		},
-		handleSicilNoSearch: function() {
-			//begin of ycoskun sicilno girip tıklayınca verileri getirme
-
-			var oThat = this;
-			var sicilNo = oThat.getView().byId("sicilNo6").getValue();
-			var Terfi = {};
-
-			oModel.read("/ZHRTerfiSet('" + sicilNo + "')", null, null, false,
-				function(oData) {
-					Terfi = oData;
-				},
-				//begin of ycoskun response ta donen hatayı gosterme 
-				function(oEvent) {
-					var message = $(oEvent.response.body).find('message').first().text();
-					MessageToast.show(message);
-				}
-				//end of ycoskun
-			);
-
-			this.getView().byId("fisKonu6").setValue("Ücret Değişikliği");
-			this.getView().byId("sicilNo6").setValue(sicilNo);
-			this.getView().byId("adSoyad6").setValue(Terfi.Ename);
-			this.getView().byId("idTC6").setValue(Terfi.Tckno);
-			this.getView().byId("dogumTarih6").setValue(Terfi.Gbdat);
-			this.getView().byId("gecerTarih6").setValue(Terfi.Endda);
-			this.getView().byId("PosAd6").setValue(Terfi.Plans + " / " + Terfi.Stext);
-			this.getView().byId("sirket6").setValue(Terfi.Bukrs);
-			this.getView().byId("isAlan6").setValue(Terfi.Gsber + " / " + Terfi.Gtext);
-			this.getView().byId("isAnahtari6").setValue(Terfi.Stell + " / " + Terfi.StellTxt);
-			this.getView().byId("orgBirim6").setValue(Terfi.Orgeh + " / " + Terfi.OrgehTxt);
-			this.getView().byId("calisanGrp6").setValue(Terfi.Persg + " / " + Terfi.Psgtext);
-			this.getView().byId("calisanAlt6").setValue(Terfi.Persk + " / " + Terfi.Psktext);
-			this.getView().byId("skala6").setValue(Terfi.Trfgr);
-			this.getView().byId("ucret6").setValue(Terfi.Ucret);
-			this.getView().byId("dilPrim6").setValue(Terfi.Dilpr);
-			this.getView().byId("aracPrim6").setValue(Terfi.Arcpr);
-			this.getView().byId("mevPrim6").setValue(Terfi.Mevpr);
-			this.getView().byId("vekPrim6").setValue(Terfi.Vklpr);
-			this.getView().byId("diger6").setValue(Terfi.Diger);
-			this.getView().byId("perAlan6").setValue(Terfi.Werks + " / " + Terfi.Pbtxt);
-			this.getView().byId("perAltAlan6").setValue(Terfi.Btrtl + " / " + Terfi.Btext);
-			this.getView().byId("okulTur6").setValue(Terfi.Slart + " / " + Terfi.SlartTxt);
-			this.getView().byId("okulAd6").setValue(Terfi.Insti);
-			this.getView().byId("egitim6").setValue(Terfi.Fach1 + " / " + Terfi.Ftext);
-
-			this.getView().byId("InputPosAd6").setValue(Terfi.Plans + " / " + Terfi.Stext);
-			this.getView().byId("InputSirket6").setValue(Terfi.Bukrs);
-			this.getView().byId("InputIsAlan6").setValue(Terfi.Gsber + " / " + Terfi.Gtext);
-			this.getView().byId("InputIsAnahtari6").setValue(Terfi.Stell + " / " + Terfi.StellTxt);
-			this.getView().byId("InputOrgBirim6").setValue(Terfi.Orgeh + " / " + Terfi.OrgehTxt);
-			this.getView().byId("InputCalisanGrp6").setValue(Terfi.Persg + " / " + Terfi.Psgtext);
-			this.getView().byId("InputCalisanAlt6").setValue(Terfi.Persk + " / " + Terfi.Psktext);
-			this.getView().byId("InputSkala6").setValue(Terfi.Trfgr);
-			this.getView().byId("InputUcret6").setValue(Terfi.Ucret);
-			this.getView().byId("InputDilPrim6").setValue(Terfi.Dilpr);
-			this.getView().byId("InputAracPrim6").setValue(Terfi.Arcpr);
-			this.getView().byId("InputMevPrim6").setValue(Terfi.Mvspr);
-			this.getView().byId("InputVekPrim6").setValue(Terfi.Vklpr);
-			this.getView().byId("InputDiger6").setValue(Terfi.Diger);
-			this.getView().byId("InputPerAlan6").setValue(Terfi.Werks + " / " + Terfi.Pbtxt);
-			this.getView().byId("InputPerAltAlan6").setValue(Terfi.Btrtl + " / " + Terfi.Btext);
-			//end of ycoskun
-		},
 		onPressLang: function() {
 			var pernr = vPernr;
 			var oView = this.getView();
@@ -1849,6 +1788,116 @@ sap.ui.define([
 			var that = this;
 			that.oMessageDialog.close();
 			that.oMessageDialog.destroy();
+		},
+		onSearchSicil6: function() {
+			this.oSearchDialog = sap.ui.xmlfragment("ZHR_144.view.Screen2SicilSearch", this);
+
+			this.oSearchDialog.open();
+		},
+		handleSicilNoSearch: function() {
+			//begin of ycoskun sicilno girip tıklayınca verileri getirme
+			//	var sicilNo = oThat.getView().byId("sicilNo2").getValue();
+
+			vad = sap.ui.getCore().byId("adIdSicil").getValue();
+			vsoyad = sap.ui.getCore().byId("soyadIdSicil").getValue();
+			var that = this;
+			var oJsonSicilModel = new sap.ui.model.json.JSONModel();
+			var filterSicil = "IAd eq '" + vad + "' and ISoyad eq '" + vsoyad + "' ";
+			debugger;
+			oModel.read("/SearchSicilSet", null, ["$filter=" + filterSicil], true,
+				function(oData) {
+					debugger;
+					//sicilNo = oData.results.Pernr;
+					oJsonSicilModel.setData(oData.results);
+
+				});
+				that.oSicilTableDialog = sap.ui.xmlfragment("ZHR_144.view.Screen2SicilTable", that);
+			that.getView().setModel(oJsonSicilModel, "JModel");
+			sap.ui.getCore().byId("idSicilTable").setModel(this.getView().getModel("JModel"));
+
+			that.oSicilTableDialog.open();
+
+		},
+		handleCancelSicil: function() {
+			this.oSicilTableDialog.destroy();
+		},
+		handleCloseSicil: function(oEvent) {
+			var that = this;
+			var sicilNo;
+			var UcretD = {};
+			var aContexts = oEvent.getParameter("selectedContexts");
+
+			if (aContexts && aContexts.length) {
+				sicilNo = aContexts.map(function(oContext) {
+					return oContext.getObject().Pernr;
+				}).join(", ");
+			}
+			oModel.read("/ZHRIstenCikisSet('" + sicilNo + "')", null, null, false,
+				function(oData) {
+					UcretD = oData;
+
+				},
+				//begin of ycoskun response ta donen hatayı gosterme 
+				function(oEvent) {
+					var message = $(oEvent.response.body).find('message').first().text();
+					MessageToast.show(message);
+				}
+				//end of ycoskun
+				 
+			);
+
+			this.getView().byId("fisKonu6").setValue("Ücret Değişikliği");
+			this.getView().byId("sicilNo6").setValue(sicilNo);
+			this.getView().byId("adSoyad6").setValue(UcretD.Ename);
+			this.getView().byId("idTC6").setValue(UcretD.Tckno);
+			this.getView().byId("dogumTarih6").setValue(UcretD.Gbdat);
+			this.getView().byId("gecerTarih6").setValue(UcretD.Endda);
+			this.getView().byId("PosAd6").setValue(UcretD.Plans + " / " + UcretD.Stext);
+			this.getView().byId("sirket6").setValue(UcretD.Bukrs);
+			this.getView().byId("isAlan6").setValue(UcretD.Gsber + " / " + UcretD.Gtext);
+			this.getView().byId("isAnahtari6").setValue(UcretD.Stell + " / " + UcretD.StellTxt);
+			this.getView().byId("orgBirim6").setValue(UcretD.Orgeh + " / " + UcretD.OrgehTxt);
+			this.getView().byId("calisanGrp6").setValue(UcretD.Persg + " / " + UcretD.Psgtext);
+			this.getView().byId("calisanAlt6").setValue(UcretD.Persk + " / " + UcretD.Psktext);
+			this.getView().byId("skala6").setValue(UcretD.Trfgr);
+			this.getView().byId("ucret6").setValue(UcretD.Ucret);
+			this.getView().byId("dilPrim6").setValue(UcretD.Dilpr);
+			this.getView().byId("aracPrim6").setValue(UcretD.Arcpr);
+			this.getView().byId("mevPrim6").setValue(UcretD.Mevpr);
+			this.getView().byId("vekPrim6").setValue(UcretD.Vklpr);
+			this.getView().byId("diger6").setValue(UcretD.Diger);
+			this.getView().byId("perAlan6").setValue(UcretD.Werks + " / " + UcretD.Pbtxt);
+			this.getView().byId("perAltAlan6").setValue(UcretD.Btrtl + " / " + UcretD.Btext);
+			this.getView().byId("okulTur6").setValue(UcretD.Slart + " / " + UcretD.SlartTxt);
+			this.getView().byId("okulAd6").setValue(UcretD.Insti);
+			this.getView().byId("egitim6").setValue(UcretD.Fach1 + " / " + UcretD.Ftext);
+
+			this.getView().byId("InputPosAd6").setValue(UcretD.Plans + " / " + UcretD.Stext);
+			this.getView().byId("InputSirket6").setValue(UcretD.Bukrs);
+			this.getView().byId("InputIsAlan6").setValue(UcretD.Gsber + " / " + UcretD.Gtext);
+			this.getView().byId("InputIsAnahtari6").setValue(UcretD.Stell + " / " + UcretD.StellTxt);
+			this.getView().byId("InputOrgBirim6").setValue(UcretD.Orgeh + " / " + UcretD.OrgehTxt);
+			this.getView().byId("InputCalisanGrp6").setValue(UcretD.Persg + " / " + UcretD.Psgtext);
+			this.getView().byId("InputCalisanAlt6").setValue(UcretD.Persk + " / " + UcretD.Psktext);
+			this.getView().byId("InputSkala6").setValue(UcretD.Trfgr);
+			this.getView().byId("InputUcret6").setValue(UcretD.Ucret);
+			this.getView().byId("InputDilPrim6").setValue(UcretD.Dilpr);
+			this.getView().byId("InputAracPrim6").setValue(UcretD.Arcpr);
+			this.getView().byId("InputMevPrim6").setValue(UcretD.Mvspr);
+			this.getView().byId("InputVekPrim6").setValue(UcretD.Vklpr);
+			this.getView().byId("InputDiger6").setValue(UcretD.Diger);
+			this.getView().byId("InputPerAlan6").setValue(UcretD.Werks + " / " + UcretD.Pbtxt);
+			this.getView().byId("InputPerAltAlan6").setValue(UcretD.Btrtl + " / " + UcretD.Btext);
+			
+			this.oSicilTableDialog.destroy();
+			this.oSearchDialog.destroy();   
+			vad="";
+			vsoyad="";
+			
+			
+
+			//end of ycoskun
+
 		}
 	});
 
