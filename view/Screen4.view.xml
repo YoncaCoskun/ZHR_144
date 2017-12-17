@@ -202,7 +202,7 @@
 								</items>
 							</Table>
 						</WizardStep>
-						<WizardStep id="idBeceri4" validated="true" activate="stepAbility" title="Zihinsel Beceri">
+						<WizardStep id="PricingStep4" activate="pricingActivate" complete="pricingComplete" validated="true" title="Zihinsel Beceri">
 							<Table growing="true" growingThreshold="10" id="idAbilityTable4" inset="false" items="{ path: '/results'}"
 								mode="SingleSelectMaster" selectionChange="onPressZihin">
 								<headerToolbar>
@@ -228,37 +228,6 @@
 											<Text text="{SinavTuru}"/>
 											<Text text="{Puan}"/>
 											<Text text="{SinavTarihi}"/>
-										</cells>
-									</ColumnListItem>
-								</items>
-							</Table>
-						</WizardStep>
-						<WizardStep id="PricingStep4" activate="pricingActivate" complete="pricingComplete" validated="true" title="PD Sonuçları">
-							<Table growing="true" growingThreshold="10" id="idPDTable4" inset="false" items="{ path: '/results' }" mode="SingleSelectMaster"
-								selectionChange="onPressPD">
-								<headerToolbar>
-									<OverflowToolbar>
-										<ToolbarSpacer/>
-										<Button text="Ekle" type="Emphasized" press="onAddPD"/>
-									</OverflowToolbar>
-								</headerToolbar>
-								<columns>
-									<Column width="12em">
-										<Text text="Tarih"/>
-									</Column>
-									<Column width="12em">
-										<Text text="Sonuç"/>
-									</Column>
-									<Column width="12em">
-										<Text text="Puan"/>
-									</Column>
-								</columns>
-								<items>
-									<ColumnListItem>
-										<cells>
-											<Text text="{path: 'Pdyear' , formatter: '.vDate'}"/>
-											<Text text="{Pdsonuc}"/>
-											<Text text="{Pdpuan}"/>
 										</cells>
 									</ColumnListItem>
 								</items>

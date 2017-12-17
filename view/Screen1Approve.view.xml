@@ -111,6 +111,9 @@
 																		<Text text="Yabancı Dil"/>
 																	</Column>
 																	<Column width="12em">
+																		<Text text="Sınav Tipi"/>
+																	</Column>
+																	<Column width="12em">
 																		<Text text="Puan"/>
 																	</Column>
 																	<Column width="12em">
@@ -134,6 +137,7 @@
 																		<cells>
 																			<Text text="{Spras}"/>
 																			<Text text="{Sptxt}"/>
+																			<Text text="{SinavTipi}"/>
 																			<Text text="{Puan}"/>
 																			<Text text="{SinavTarihi}"/>
 																			<Text text="{Yazma}"/>

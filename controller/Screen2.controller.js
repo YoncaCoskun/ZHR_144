@@ -13,6 +13,7 @@ sap.ui.define([
 	var osJsonIstenCikisTipi = new sap.ui.model.json.JSONModel();
 	var osJsonCikisNedeni = new sap.ui.model.json.JSONModel();
 	var osJsonAyrilma = new sap.ui.model.json.JSONModel();
+	var vad, vsoyad;
 
 	var WizardController = Controller.extend("ZHR_144.controller.Screen2", {
 
@@ -24,8 +25,7 @@ sap.ui.define([
 			this._oWizardReviewPage = sap.ui.xmlfragment("ZHR_144.view.Screen2ReviewPage", this);
 			this._oNavContainer.addPage(this._oWizardReviewPage);
 			this.model = new sap.ui.model.json.JSONModel();
-			this.model.setData({
-			});
+			this.model.setData({});
 
 			this.getView().setModel(this.model);
 			this.model.setProperty("/productType", "Mobile");
@@ -72,17 +72,34 @@ sap.ui.define([
 			oSplitApp.setMode(sap.m.SplitAppMode.ShowHideMode);
 
 		},
-
+		onSearchSicil: function() {
+			vad = sap.ui.getCore().byId("adIdSicil").getValue();
+			vsoyad = sap.ui.getCore().byId("soyadIdSicil").getValue();
+		},
 		handleSicilNoSearch: function() {
+			if (!this.oSearchDialog) {
+				this.oSearchDialog = sap.ui.xmlfragment("ZHR_144.view.Screen2SicilSearch", this);
+			}
+
+			this.oSearchDialog.open();
 
 			//begin of ycoskun sicilno girip tıklayınca verileri getirme
-
-			var oThat = this;
-			var sicilNo = oThat.getView().byId("sicilNo2").getValue();
+			
+			var sicilNo;
+			//	var sicilNo = oThat.getView().byId("sicilNo2").getValue();
 			var istenCikis = {};
+
+			var filterSicil = "IAd eq '" + vad + "' and ISoyad eq '" + vsoyad + "' ";
+			debugger;
+			oModel.read("/SearchSicilSet", null, ["$filter=" + filterSicil], true,
+				function(oData) {
+					debugger;
+					sicilNo = oData.PERNR;
+				});
 
 			oModel.read("/ZHRIstenCikisSet('" + sicilNo + "')", null, null, false,
 				function(oData) {
+					debugger;
 					istenCikis = oData;
 
 				},
@@ -120,6 +137,12 @@ sap.ui.define([
 			//end of ycoskun
 
 		},
+		onDialogClose: function() {
+			this.oSearchDialog.destroy();
+			this.oSearchDialog = sap.ui.xmlfragment("ZHR_144.view.Screen2SicilSearch", this.getView().getController());
+
+			this.oSearchDialog.close();
+		},
 
 		setProductType: function(evt) {
 			var productType = evt.getSource().getTitle();
@@ -141,11 +164,9 @@ sap.ui.define([
 
 		},
 
-		optionalStepActivation: function() {
-		},
+		optionalStepActivation: function() {},
 
-		optionalStepCompletion: function() {
-		},
+		optionalStepCompletion: function() {},
 
 		pricingActivate: function() {
 			this.model.setProperty("/navApiEnabled", true);
@@ -292,7 +313,7 @@ sap.ui.define([
 			that.getElement("digerRew2").setValue(oEntry.diger2);
 			that.getElement("ayrilmaKodRew2").setValue(oEntry.ayrilmaKod2);
 			that.getElement("gercekAyrilmaKod2Rew").setValue(oEntry.gercekAyrilmaKod2);
-			
+
 			that.getElement("gercekNeden1Rew").setValue(oEntry.gercekNeden1);
 			that.getElement("gercekNeden2Rew").setValue(oEntry.gercekNeden2);
 			that.getElement("gercekNeden3Rew").setValue(oEntry.gercekNeden3);
@@ -326,8 +347,8 @@ sap.ui.define([
 		},
 
 		_handleNavigationToStep: function(iStepNumber) {
-			var that = this; 
-			
+			var that = this;
+
 			function fnAfterNavigate() {
 				that._wizard.goToStep(that._wizard.getSteps()[iStepNumber]);
 				that._oNavContainer.detachAfterNavigate(fnAfterNavigate);
@@ -411,12 +432,12 @@ sap.ui.define([
 			var entryucret2 = "ucret2";
 			var entrydiger2 = "diger2";
 			var entryayrilmaKod2 = "ayrilmaKod2";
-			
+
 			var entryCikisTipiKod2 = "gercekAyrilmaKod2";
 			var entryCikisNeden1 = "gercekNeden1";
 			var entryCikisNeden2 = "gercekNeden2";
 			var entryCikisNeden3 = "gercekNeden3";
-			
+
 			var entryDilPrim2 = "dilPrim2";
 			var entryAracPrim2 = "aracPrim2";
 			var entryMevPrim2 = "mevPrim2";
@@ -508,25 +529,25 @@ sap.ui.define([
 			var massg = that.getView().byId(entryayrilmaKod2).getValue();
 			var arrayMassg = massg.split(" / ");
 			oPersonelIstenCikis.Massg = arrayMassg[0];
-			
+
 			var cikis_tipi = that.getView().byId(entryCikisTipiKod2).getValue();
 			var arrayCikisTipi = cikis_tipi.split(" / ");
 			oPersonelIstenCikis.CikisTipi = arrayCikisTipi[0];
-			
+
 			var cikis_neden1 = that.getView().byId(entryCikisNeden1).getValue();
 			var arrayCikisNeden1 = cikis_neden1.split(" / ");
 			oPersonelIstenCikis.CikisNeden1 = arrayCikisNeden1[0];
-			
+
 			var cikis_neden2 = that.getView().byId(entryCikisNeden2).getValue();
 			var arrayCikisNeden2 = cikis_neden2.split(" / ");
 			oPersonelIstenCikis.CikisNeden2 = arrayCikisNeden2[0];
-			
+
 			var cikis_neden3 = that.getView().byId(entryCikisNeden3).getValue();
 			var arrayCikisNeden3 = cikis_neden3.split(" / ");
 			oPersonelIstenCikis.CikisNeden3 = arrayCikisNeden3[0];
-			
+
 			//end of ycoskun
-			
+
 			oPersonelIstenCikis.Dilpr = that.getView().byId(entryDilPrim2).getValue();
 			oPersonelIstenCikis.Arcpr = that.getView().byId(entryAracPrim2).getValue();
 			oPersonelIstenCikis.Mvspr = that.getView().byId(entryMevPrim2).getValue();

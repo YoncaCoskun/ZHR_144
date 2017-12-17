@@ -22,6 +22,7 @@ sap.ui.define([
 			var osJsonOkulAd = new sap.ui.model.json.JSONModel();
 			var osJsonEgitim = new sap.ui.model.json.JSONModel();
 			var osJsonDil = new sap.ui.model.json.JSONModel();
+			var osJsonSinavTipi = new sap.ui.model.json.JSONModel();
 			var osJsonSinavTur = new sap.ui.model.json.JSONModel();
 
 			var vSlart;
@@ -29,6 +30,7 @@ sap.ui.define([
 			var oLang;
 			var oExam;
 			var oLanguage;
+			var oExamType;
 
 			var WizardController = Controller.extend("ZHR_144.controller.Screen1", {
 					onInit: function() {
@@ -1062,17 +1064,33 @@ sap.ui.define([
 							function() {
 
 							});
+						oModel.read("/SinavTipiSet", null, null, true,
+
+							function(oData) {
+								debugger;
+								osJsonSinavTipi.setData(oData);
+							},
+							function() {
+
+							});	
 
 						var pernr = vPernr;
 
 						var oDialog;
 						var itemTemplate;
+						var itemTemplateExamType;
 						var selectLang;
 
 						itemTemplate = new sap.ui.core.ListItem({
 							key: "{Sprsl}",
 							text: "{Sptxt}",
 							additionalText: "{Sprsl}"
+						});
+						
+						itemTemplateExamType = new sap.ui.core.ListItem({
+							key: "{ExamType}",
+							text: "{ExamType}",
+							additionalText: "{ExamType}"
 						});
 
 						oLang = new sap.m.ComboBox("box_default", {
@@ -1087,6 +1105,20 @@ sap.ui.define([
 							}
 						});
 						sap.ui.getCore().byId("box_default").setModel(osJsonDil);
+						
+						
+						oExamType = new sap.m.ComboBox("box_defaultType", {
+							items: {
+								path: "/results",
+								template: itemTemplateExamType
+							},
+							selectionChange: function(oEvent) {
+								//selectLang = oEvent.oSource.getSelectedKey();
+								//sap.ui.getCore().byId("oLanguage").setValue(selectLang);
+
+							}
+						});
+						sap.ui.getCore().byId("box_defaultType").setModel(osJsonSinavTipi);
 
 						oLanguage = new sap.ui.commons.TextField("oLanguage", {
 							value: selectLang,
@@ -1218,6 +1250,9 @@ sap.ui.define([
 									text: "Yabancı Dil"
 								}), oLang,
 								new sap.ui.commons.Label({
+									text: "Sınav Tipi"
+								}), oExamType, 
+								new sap.ui.commons.Label({
 									text: "Puan (**.* formatında olmalıdır)"
 								}), oPuan,
 								new sap.ui.commons.Label({
@@ -1270,6 +1305,7 @@ sap.ui.define([
 									oEntry.Genel = oGenel.getValue();
 									oEntry.Pernr = pernr;
 									oEntry.Spras = oLanguage.getValue();
+									oEntry.SinavTipi = oExamType.getValue();
 
 									// begin of ycoskun yabancı dilleri kaydet
 									oModel.create("/ZHRIseAlimYDSet", oEntry, {

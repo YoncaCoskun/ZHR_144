@@ -177,34 +177,6 @@
 					</Table>
 				</form:content>
 			</form:SimpleForm>
-			<form:SimpleForm title="6. PD Sonuçları" minWidth="1024" editable="false" layout="ResponsiveGridLayout">
-				<form:content>
-					<core:Title/>
-					<Table id="idPd"  growing="true" growingThreshold="10" width="100%" inset="false"
-						items="{ path: '/results'}">
-						<columns>
-							<Column width="12em">
-								<Text text="Yıl"/>
-							</Column>
-							<Column width="12em">
-								<Text text="Sonuç"/>
-							</Column>
-							<Column width="12em">
-								<Text text="Puan"/>
-							</Column>
-						</columns>
-						<items>
-							<ColumnListItem>
-								<cells>
-									<Text text="{path: 'Pdyear' , formatter: '.vDate'}" id="yilPdRew3"/>
-									<Text text="{Pdsonuc}" id="puanPdRew3"/>
-									<Text text="{Pdpuan}" id="tavanPdRew3"/>
-								</cells>
-							</ColumnListItem>
-						</items>
-					</Table>
-				</form:content>
-			</form:SimpleForm>
 		</content>
 		<footer>
 			<OverflowToolbar>

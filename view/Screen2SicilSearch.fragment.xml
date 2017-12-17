@@ -1,0 +1,16 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout" xmlns="sap.m">
+	<Dialog contentHeight="38%" contentWidth="30%" title="Sicil No Ara">
+		<buttons>
+			<Button icon="sap-icon://search" press="onSearchSicil" text="Ara" type="Emphasized"/>
+			<Button icon="sap-icon://sys-cancel" press="onDialogClose" text="Kapat" type="Emphasized"/>
+		</buttons>
+		<f:SimpleForm adjustLabelSpan="false" columnsL="2" columnsM="2" editable="true" layout="ResponsiveGridLayout">
+			<f:content>
+				<Label text="Ad"/>
+				<Input class="inputForm" id="adIdSicil" value=""/>
+				<Label text="Soyad"/>
+				<Input class="inputForm" id="soyadIdSicil" value=""/>
+			</f:content>
+		</f:SimpleForm>
+	</Dialog>
+</core:FragmentDefinition>

@@ -535,13 +535,13 @@ sap.ui.define([
 			langtable.setModel(this.getView().getModel("oAbModel"));
 			//end of ycoskun
 
-			this._wizard.validateStep(this.getView().byId("PricingStep6"));
+		//	this._wizard.validateStep(this.getView().byId("PricingStep6"));
 
 		},
 
 		pricingActivate: function() {
 			var that = this;
-			var sicilNo = "sicilNo6";
+		/*	var sicilNo = "sicilNo6";
 			var oPDModel = new sap.ui.model.json.JSONModel();
 			vPernr = that.getView().byId(sicilNo).getValue();
 			var perFilter = "Pernr eq '" + vPernr + "'";
@@ -554,7 +554,22 @@ sap.ui.define([
 				});
 			oThat.getView().setModel(oPDModel, "PDModel");
 			var pdtable = oThat.getView().byId("idPDTable6");
-			pdtable.setModel(this.getView().getModel("PDModel"));
+			pdtable.setModel(this.getView().getModel("PDModel"));*/
+				//begin of ycoskun  zihinsel beceri bilgileri getir
+			var pernr = vPernr;
+			var oAbModel = new sap.ui.model.json.JSONModel();
+			var perAbFilter = "Pernr eq '" + pernr + "'";
+			var oThat = this;
+
+			oModel.read("/ZHRTerfiZBSet", null, ["$filter=" + perAbFilter], true,
+				function(oData) {
+					oAbModel.setData(oData);
+
+				});
+			oThat.getView().setModel(oAbModel, "oAbModel");
+			var langtable = oThat.getView().byId("idAbilityTable6");
+			langtable.setModel(this.getView().getModel("oAbModel"));
+			//end of ycoskun
 
 			this.model.setProperty("/navApiEnabled", true);
 
@@ -853,7 +868,7 @@ sap.ui.define([
 			//end of ycoskun
 
 			//begin of ycoskun pd sonucları listele 
-			var oPdModel = new sap.ui.model.json.JSONModel();
+			/*var oPdModel = new sap.ui.model.json.JSONModel();
 			var perPbFilter = "Pernr eq '" + pernr + "'";
 
 			oModel.read("/ZHRTerfiPDSet", null, ["$filter=" + perPbFilter], true,
@@ -863,7 +878,7 @@ sap.ui.define([
 				});
 			oThat.getView().setModel(oPdModel, "oPdModel");
 			var pdtable = sap.ui.getCore().byId("idPd6");
-			pdtable.setModel(oThat.getView().getModel("oPdModel"));
+			pdtable.setModel(oThat.getView().getModel("oPdModel"));*/
 			//end of ycoskun
 
 			this._oNavContainer.to(this._oWizardReviewPage);
@@ -1319,7 +1334,7 @@ sap.ui.define([
 						oModel.refresh(true);
 
 						//begin of ycoskun pd sonucları listele 
-						var oPDModel = new sap.ui.model.json.JSONModel();
+					/*	var oPDModel = new sap.ui.model.json.JSONModel();
 						var perFilter = "Pernr eq '" + pernr + "'";
 
 						oModel.read("/ZHRTerfiPDSet", null, ["$filter=" + perFilter], true,
@@ -1328,7 +1343,7 @@ sap.ui.define([
 							});
 						oView.setModel(oPDModel, "PDModel");
 						var pdtable = oView.byId("idPDTable6");
-						pdtable.setModel(oView.getModel("PDModel"));
+						pdtable.setModel(oView.getModel("PDModel"));*/
 						//end of ycoskun
 
 						this.oParent.close();
@@ -1760,7 +1775,7 @@ sap.ui.define([
 						oModel.refresh(true);
 						// end of ycoskun
 
-						var oPDModel = new sap.ui.model.json.JSONModel();
+						/*var oPDModel = new sap.ui.model.json.JSONModel();
 						var perFilter = "Pernr eq '" + pernr + "'";
 
 						oModel.read("/ZHRTerfiPDSet", null, ["$filter=" + perFilter], true,
@@ -1769,7 +1784,7 @@ sap.ui.define([
 							});
 						oView.setModel(oPDModel, "oPDModel");
 						var pdtable = oView.byId("idPDTable6");
-						pdtable.setModel(oView.getModel("oPDModel"));
+						pdtable.setModel(oView.getModel("oPDModel"));*/
 						//end of ycoskun
 						this.oParent.close();
 
