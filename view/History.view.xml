@@ -12,7 +12,7 @@
 								<items>
 									<ObjectListItem title="{Ename}" type="Active" press="onListItemPress" number="{Pernr}" numberUnit="{path: 'Pronr' , formatter: '.setTur'}">
 										<firstStatus>
-											<ObjectStatus title="" text="{path: 'Erdat' , formatter: '.vDate'}"/>
+											<ObjectStatus title="{Uname}" text="{path: 'Erdat' , formatter: '.vDate'}"/>
 										</firstStatus>
 									</ObjectListItem>
 								</items>

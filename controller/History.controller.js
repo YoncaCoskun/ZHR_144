@@ -12,6 +12,12 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/core/routing/History", "sap
 	var formPronr = [];
 	var selectAppnr;
 	var firstAppnr;
+
+	var vOK = "Tamamlandı";
+	var vWait = "Bekleniyor";
+	var xStatu;
+
+	var vrPernr, vrPronr, vrAppnr;
 	return Controller.extend("ZHR_144.controller.History", {
 
 		onInit: function() {
@@ -21,6 +27,32 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/core/routing/History", "sap
 			oModel.read("/ZHRHistorySet", null, null, false,
 				function(oData) {
 					oJasonModel.setData(oData);
+					for (var a = 0; a < oData.results.length; a++) {
+						vrPernr = oData.results[a].Pernr;
+						vrPronr = oData.results[a].Pronr;
+						vrAppnr = oData.results[a].Appnr
+						var filterOnayci = "Pernr eq '" + vrPernr + "' and  Pronr eq '" + vrPronr + "' and Appnr eq '" + vrAppnr + "'";
+						oModel.read("/ZHROnayciStatuSet", null, ["$filter=" + filterOnayci], false,
+							function(oData) {
+							for (var b = 0; b < oData.results.length; b++) {
+								debugger;
+								if(oData.results[b].Statu ===""){
+									xStatu="Bekleniyor";
+								}
+							}
+								//onayciModel.setData(oData);
+								//	console.log(oData);
+							});
+						if(xStatu ==="Bekleniyor"){
+							oData.results[a].Uname = vWait;
+						}
+						else{
+							oData.results[a].Uname = vOK;
+						}
+					
+
+					}
+
 					try {
 						firstPernr = oData.results[0].Pernr;
 						firstPronr = oData.results[0].Pronr;
@@ -408,7 +440,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/core/routing/History", "sap
 					that.getView().setModel(ozbModel, "ozbModel");
 					zbtable.setModel(this.getView().getModel("ozbModel"));
 					//end of ycoskun 
-					
+
 					//pd sonucları goruntuleme begin of ycoskun
 					var oPDModel = new sap.ui.model.json.JSONModel();
 					var perFilterPD = "Pernr eq '" + firstPernr + "'";
@@ -866,7 +898,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/core/routing/History", "sap
 				oModel.read("/ZHRTalepPersonelBilgiSet('" + selectPernr + "')", null, null, true,
 					function(oData) {
 						oJPerModel.setData(oData);
-					
+
 						pozisyon = oData.Stext;
 						perAlan = oData.Pbtxt;
 						perAltAlan = oData.Btext;
@@ -980,7 +1012,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/core/routing/History", "sap
 					});
 				that.getView().setModel(attachModel, "attachModel");
 				//end of ycoskun
-				
+
 				//işe alım personelinin onaycılarının getirilmesi
 				oModel.read("/ZHROnayciStatuSet", null, ["$filter=" + filterOnayci], false,
 					function(oData) {
